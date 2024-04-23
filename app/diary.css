@@ -1,0 +1,20 @@
+table {
+    tr {
+        border-top: 1px solid rgb(var(--accent-rgb));
+        border-bottom: 1px solid rgb(var(--accent-rgb));
+    }
+    td:first-of-type {
+        padding-left: 0;
+    }
+    thead {
+        td {
+            padding-left: 20px;
+        }
+        background-color: rgb(var(--background-end-rgb));
+    }
+    tbody {
+        td {
+            padding: 5px 0 5px 20px;
+        }
+    }
+}
