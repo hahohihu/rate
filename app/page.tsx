@@ -41,7 +41,7 @@ export default async function Home() {
               prevMonth = currentMonth;
             }
             return (
-              <tr>
+              <tr key={movie.name}>
                 <td className="text-center">{monthYear}</td>
                 <td className="text-center">{movie.watch.getDate()}</td>
                 <td>{movie.name}</td>
