@@ -1,16 +1,11 @@
+import './style.css';
 import { addEntry } from "../lib/actions";
-
-// const { name, prod_year, rating } = AddFormSchema.parse({
-//   name: formData.get('name'),
-//   prod_year: formData.get('prod_year'),
-//   rating: formData.get('rating'),
-// });
 
 export default async function Home() {
   return (
     <main>
       <form action={addEntry} className="flex flex-col gap-2">
-        <div className="grid grid-cols-2 gap-y-2">
+        <div className="flex flex-col">
           <label htmlFor="media_name">Name</label>
           <input id="media_name" name="media_name"></input>
           <label htmlFor="prod_year">Production Year</label>
