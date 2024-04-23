@@ -6,7 +6,7 @@ export default async function Home() {
   let movies = await fetchMovies();
   let prevMonth: number;
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between">
       <table>
         <thead>
           <tr>
@@ -18,7 +18,7 @@ export default async function Home() {
             let currentMonth = movie.watch.getMonth();
             let monthYear;
             if (currentMonth != prevMonth) {
-              monthYear = movie.watch.toLocaleString('default', { month: 'long' });
+              monthYear = movie.watch.toLocaleString('default', { month: 'short' });
               prevMonth = currentMonth;
             }
             return (
