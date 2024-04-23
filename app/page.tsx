@@ -38,7 +38,11 @@ export default async function Home() {
       <table>
         <thead>
           <tr>
-            {["Month", "Date", "Name", "Released", "Rating"].map(header => (<td>{header}</td>))}
+            <td className="text-center">Month</td>
+            <td className="text-center">Date</td>
+            <td>Name</td>
+            <td className="text-center">Released</td>
+            <td className="text-center">Rating</td>
           </tr>
         </thead>
         <tbody>
@@ -51,11 +55,11 @@ export default async function Home() {
             }
             return (
               <tr>
-                <td>{monthYear}</td>
-                <td>{movie.watch.getDate()}</td>
+                <td className="text-center">{monthYear}</td>
+                <td className="text-center">{movie.watch.getDate()}</td>
                 <td>{movie.name}</td>
-                <td>{movie.release}</td>
-                <td style={{color: ratingColor(movie.rating)}}>{movie.rating}</td>
+                <td className="text-center">{movie.release}</td>
+                <td className="text-center" style={{color: ratingColor(movie.rating)}}>{movie.rating}</td>
               </tr>
         );
           })}
