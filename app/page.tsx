@@ -45,7 +45,7 @@ export default async function Home() {
                 <td className="text-center">{monthYear}</td>
                 <td className="text-center">{movie.watch.getDate()}</td>
                 <td>{movie.name}</td>
-                <td className="text-center">{movie.release}</td>
+                <td className="text-center text-sm">{movie.release}</td>
                 <td className="text-center" style={{ color: ratingColor(movie.rating) }}>{movie.rating}</td>
               </tr>
             );
