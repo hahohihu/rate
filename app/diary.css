@@ -1,7 +1,7 @@
 table {
     tr {
-        border-top: 1px solid rgb(var(--accent-rgb));
-        border-bottom: 1px solid rgb(var(--accent-rgb));
+        border-top: 1px solid rgb(var(--separator-rgb));
+        border-bottom: 1px solid rgb(var(--separator-rgb));
     }
     td:first-of-type {
         padding-left: 0;
@@ -11,7 +11,7 @@ table {
             padding-left: 20px;
             font-size: small;
         }
-        background-color: rgb(var(--background-end-rgb));
+        background-color: rgb(var(--header2-rgb));
     }
     tbody {
         td {

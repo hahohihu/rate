@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation"
-import styles from '../css/nav.module.css';
 import clsx from "clsx";
 
 const links = [

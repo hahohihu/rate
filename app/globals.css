@@ -2,33 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 245, 245, 245;
-  --background-end-rgb: 224, 229, 230;
-  --accent-rgb: 180, 180, 180;
-  --flair-rgb: 235, 235, 235;
-}
-
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: light) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 30, 35, 38;
-    --background-end-rgb: 15, 16, 16;
-    --flair-rgb: 60, 65, 65;
+    --foreground-rgb: 0, 0, 0;
+    --header1-rgb: 230, 230, 230;
+    --header2-rgb: 230, 230, 230;
+    --background-start-rgb: 245, 245, 245;
+    --background-end-rgb: 224, 229, 230;
+    --separator-rgb: 180, 180, 180;
   }
-}
+} */
 
-.bg-accent {
-  background-color: rgb(var(--accent-rgb));
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --header1-rgb: 60, 65, 65;
+  --header2-rgb: 10, 10, 10;
+  --background-start-rgb: 30, 34, 34;
+  --background-end-rgb: 50, 55, 60;
+  --separator-rgb: 120, 120, 120;
+  --action-rgb: 120, 190, 225;
+  --highlight-rgb: 120, 245, 245;
 }
 
 .bg-flair {
-  background-color: rgb(var(--flair-rgb));
+  background-color: rgb(var(--header1-rgb));
 }
 
 .active-nav {
-  border-bottom: 1px solid rgb(var(--foreground-rgb));
+  border-bottom: 1px solid rgb(var(--highlight-rgb));
+}
+
+input {
+  color: black;
+  padding: 0 5px;
 }
 
 body {
@@ -39,6 +45,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  border-collapse: collapse;
 }
 
 @layer utilities {
