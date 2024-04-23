@@ -1,4 +1,3 @@
-const { formatDatePostgres } = require('@/app/lib/utility');
 const { db } = require('@vercel/postgres');
 
 function formatDatePostgres(date) {
@@ -41,41 +40,61 @@ const movies = [
     new Movie("Starship Troopers", new Date(2024, 3, 20), 1997, 2),
 ];
 
-async function seedMovies(client) {
-    const createTable = await client.sql`
-        CREATE TABLE IF NOT EXISTS entries (
+async function seedObjects(client) {
+    await client.sql`
+        CREATE TABLE IF NOT EXISTS objects (
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
-            prod_year SMALLINT NOT NULL,
+            prod_year SMALLINT NOT NULL
+        );
+    `;
+
+    console.log("Objects table made");
+
+    await Promise.all(
+        movies.map(movie => {
+            return client.sql`
+                INSERT INTO objects (name, prod_year)
+                VALUES (${movie.name}, ${movie.release});
+                `;
+        })
+    );
+
+    console.log("Inserted objects");
+}
+
+async function seedEntries(client) {
+    await client.sql`
+        CREATE TABLE IF NOT EXISTS entries (
+            id SERIAL PRIMARY KEY,
+            object_id SERIAL REFERENCES objects(id),
             watch_date DATE NOT NULL,
             rating REAL NOT NULL CHECK (rating <> 'NaN')
         );
     `;
 
-    console.log("Table made");
+    console.log("Entry table made");
 
-    const insertedMovies = await Promise.all(
+    await Promise.all(
         movies.map(movie => {
             return client.sql`
-                INSERT INTO entries (name, prod_year, watch_date, rating)
-                VALUES (${movie.name}, ${movie.release}, ${formatDatePostgres(movie.watch)}, ${movie.rating});
+                INSERT INTO entries (object_id, watch_date, rating)
+                SELECT objects.id,  ${formatDatePostgres(movie.watch)}, ${movie.rating}
+                FROM objects WHERE objects.name = ${movie.name}
                 `;
         })
     );
 
     console.log("Inserted entries");
-
-    return {
-        createTable,
-        insertedMovies
-    };
 }
 
 async function main() {
     const client = await db.connect();
     
-    await client.sql`DROP TABLE entries;`;
-    await seedMovies(client);
+    await client.sql`DROP TABLE IF EXISTS entries;`;
+    await client.sql`DROP TABLE IF EXISTS objects;`;
+    await seedObjects(client);
+    await seedEntries(client);
 
     await client.end();
 }

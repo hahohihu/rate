@@ -13,8 +13,9 @@ export async function fetchMovies() {
     unstable_noStore();
 
     const data = await sql<Entry>`
-        SELECT id, name, prod_year, watch_date, rating 
-        FROM entries 
+        SELECT entries.id, objects.name, objects.prod_year, entries.watch_date, entries.rating 
+        FROM entries
+        JOIN objects ON objects.id = entries.object_id
         ORDER BY watch_date DESC
         LIMIT 50`;
 
