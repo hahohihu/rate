@@ -1,19 +1,6 @@
-import Image from "next/image";
 import { fetchMovies } from "./lib/data";
 import './diary.css';
-
-function clamp(num: number, min: number, max: number) {
-  return Math.min(Math.max(num, min), max);
-}
-
-function pickHex(color1: number[], color2: number[], weight: number) {
-  var w1 = weight;
-  var w2 = 1 - w1;
-  var rgb = [Math.round(color1[0] * w1 + color2[0] * w2),
-  Math.round(color1[1] * w1 + color2[1] * w2),
-  Math.round(color1[2] * w1 + color2[2] * w2)];
-  return rgb;
-}
+import { clamp, pickHex } from "./lib/utility";
 
 function ratingColor(rating: number) {
   const MAX_RATING = 2.5;
@@ -59,12 +46,12 @@ export default async function Home() {
                 <td className="text-center">{movie.watch.getDate()}</td>
                 <td>{movie.name}</td>
                 <td className="text-center">{movie.release}</td>
-                <td className="text-center" style={{color: ratingColor(movie.rating)}}>{movie.rating}</td>
+                <td className="text-center" style={{ color: ratingColor(movie.rating) }}>{movie.rating}</td>
               </tr>
-        );
+            );
           })}
-      </tbody>
-    </table>
+        </tbody>
+      </table>
     </main >
   );
 }
