@@ -34,18 +34,18 @@ export default async function Home() {
         </thead>
         <tbody>
           {movies?.map(movie => {
-            let currentMonth = movie.watch.getMonth();
+            let currentMonth = movie.watch_date.getMonth();
             let monthYear;
             if (currentMonth != prevMonth) {
-              monthYear = movie.watch.toLocaleString('default', { month: 'short' });
+              monthYear = movie.watch_date.toLocaleString('default', { month: 'short' });
               prevMonth = currentMonth;
             }
             return (
-              <tr key={movie.name}>
+              <tr key={movie.id}>
                 <td className="text-center">{monthYear}</td>
-                <td className="text-center">{movie.watch.getDate()}</td>
+                <td className="text-center">{movie.watch_date.getDate()}</td>
                 <td>{movie.name}</td>
-                <td className="text-center text-sm">{movie.release}</td>
+                <td className="text-center text-sm">{movie.prod_year}</td>
                 <td className="text-center" style={{ color: ratingColor(movie.rating) }}>{movie.rating}</td>
               </tr>
             );
