@@ -10,3 +10,7 @@ export function pickHex(color1: number[], color2: number[], weight: number) {
     Math.round(color1[2] * w1 + color2[2] * w2)];
     return rgb;
 }
+
+export function formatDatePostgres(date: Date) {
+    return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+}

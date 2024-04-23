@@ -1,4 +1,9 @@
+const { formatDatePostgres } = require('@/app/lib/utility');
 const { db } = require('@vercel/postgres');
+
+function formatDatePostgres(date) {
+    return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+}
 
 class Movie {
     constructor(name, watch, release, rating) {
@@ -51,10 +56,9 @@ async function seedMovies(client) {
 
     const insertedMovies = await Promise.all(
         movies.map(movie => {
-            let date = `${movie.watch.getFullYear()}-${movie.watch.getMonth()}-${movie.watch.getDate()}`;
             return client.sql`
                 INSERT INTO entries (name, prod_year, watch_date, rating)
-                VALUES (${movie.name}, ${movie.release}, ${date}, ${movie.rating});
+                VALUES (${movie.name}, ${movie.release}, ${formatDatePostgres(movie.watch)}, ${movie.rating});
                 `;
         })
     );
