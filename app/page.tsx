@@ -21,7 +21,7 @@ export default async function Home() {
   let movies = await fetchMovies();
   let prevMonth: number;
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
+    <main>
       <table>
         <thead>
           <tr>

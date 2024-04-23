@@ -6,7 +6,8 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 245, 245, 245;
   --background-end-rgb: 224, 229, 230;
-  --accent-rgb: 160, 160, 160;
+  --accent-rgb: 180, 180, 180;
+  --flair-rgb: 235, 235, 235;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,8 +15,20 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 30, 35, 38;
     --background-end-rgb: 15, 16, 16;
-    /* todo */
+    --flair-rgb: 60, 65, 65;
   }
+}
+
+.bg-accent {
+  background-color: rgb(var(--accent-rgb));
+}
+
+.bg-flair {
+  background-color: rgb(var(--flair-rgb));
+}
+
+.active-nav {
+  border-bottom: 1px solid rgb(var(--foreground-rgb));
 }
 
 body {
