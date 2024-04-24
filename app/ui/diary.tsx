@@ -1,4 +1,4 @@
-import { fetchMovies } from "../lib/data";
+import { fetchEntries } from "../lib/data";
 import './diary.css';
 import { clamp, pickHex } from "../lib/utility";
 
@@ -18,7 +18,7 @@ function ratingColor(rating: number) {
 }
 
 export default async function Diary() {
-    let movies = await fetchMovies();
+    let entries = await fetchEntries();
     let prevMonth: number;
     return (
         <table className="diary_table">
@@ -32,7 +32,7 @@ export default async function Diary() {
                 </tr>
             </thead>
             <tbody>
-                {movies?.map(movie => {
+                {entries?.map(movie => {
                     let currentMonth = movie.watch_date.getMonth();
                     let monthYear;
                     if (currentMonth != prevMonth) {
