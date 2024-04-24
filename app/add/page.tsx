@@ -1,5 +1,5 @@
 import SearchBar from "./ui/searchbar";
-import { DbObject, fetchObjects } from '../data/object';
+import { DbObject, fetchObjects } from '../../data/object';
 import Link from "next/link";
 import styles from "./ui/search.module.css";
 

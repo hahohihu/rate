@@ -1,6 +1,6 @@
-import { getObject } from '@/app/data/object';
+import { getObject } from '@/data/object';
 import '../ui/forms.css';
-import { addEntry } from '@/app/data/entry';
+import { addEntry } from '@/data/entry';
 
 export default async function Home({
     searchParams
