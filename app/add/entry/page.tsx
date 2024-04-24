@@ -20,7 +20,7 @@ export default async function Home({
             <form action={submitForm} className="flex flex-col gap-2">
                 <div className="flex flex-col">
                     <label htmlFor="rating">Rating</label>
-                    <input type="number" step="0.01" id="rating" name="rating"></input>
+                    <input type="number" step="0.01" id="rating" name="rating" autoComplete="off"></input>
                 </div>
                 <button type="submit">Submit</button>
             </form>

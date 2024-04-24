@@ -1,6 +1,7 @@
 import SearchBar from "../ui/searchbar";
 import { DbObject, fetchObjects } from "../lib/data";
 import Link from "next/link";
+import styles from "@/app/css/search.module.css";
 
 export default async function Page({
   searchParams
@@ -21,16 +22,20 @@ export default async function Page({
     <SearchBar />
     {query != '' ? (
       <div>
-        <ul>
+        <ul className={"p-2 overflow-y-auto " + styles.search_width + " " + styles.search_results}>
           {matches.map(obj =>
-            <li key={obj.id}>
-              <Link href={"/add/entry?object=" + obj.id} >
+            <Link className="w-full" href={"/add/entry?object=" + obj.id} >
+              <li key={obj.id} className={styles.object}>
                 {obj.name + " (" + obj.prod_year + ")"}
-              </Link>
-            </li>
+              </li>
+            </Link>
           )}
         </ul>
-        <Link href={"/add/object?partial=" + query}>Add new object</Link>
+        <Link href={"/add/object?partial=" + query}>
+          <div className={styles.add_object}>
+            Add new object
+          </div>
+        </Link>
       </div>
     ) : null}
   </>

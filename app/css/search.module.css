@@ -1,0 +1,25 @@
+.search_width {
+    width: 600px;
+}
+
+.search_results {
+    max-height: 600px;
+    border-bottom: 1px solid rgb(var(--foreground-rgb));
+
+    .object {
+        padding: 4px;
+    }
+}
+
+.object:hover {
+    background-color: rgb(var(--background-action-rgb));
+}
+
+.add_object {
+    width: 100%;
+    padding: 8px;
+}
+
+.add_object:hover {
+    background-color: rgb(var(--background-action-rgb));
+}

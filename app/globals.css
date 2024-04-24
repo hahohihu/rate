@@ -20,6 +20,7 @@
   --background-start-rgb: 30, 34, 34;
   --background-end-rgb: 50, 55, 60;
   --separator-rgb: 120, 120, 120;
+  --background-action-rgb: 80, 140, 160;
   --action-rgb: 120, 190, 225;
   --highlight-rgb: 120, 245, 245;
 }
@@ -34,7 +35,7 @@
 
 input {
   color: black;
-  padding: 0 5px;
+  padding: 5px 10px;
 }
 
 body {
