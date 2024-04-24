@@ -1,5 +1,5 @@
 import { getObject } from '@/app/lib/data';
-import '@/app/css/forms.css';
+import '../ui/forms.css';
 import { addEntry } from "@/app/lib/actions";
 
 export default async function Home({

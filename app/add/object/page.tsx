@@ -1,4 +1,4 @@
-import '@/app/css/forms.css';
+import '../ui/forms.css';
 import { addObject } from "@/app/lib/actions";
 
 export default async function Home({
