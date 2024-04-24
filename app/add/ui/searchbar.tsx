@@ -19,7 +19,7 @@ export default function SearchBar() {
     }
 
     return (
-        <fieldset className={"flex flex-col " + styles.search_width}>
+        <fieldset className={`flex flex-col ${styles.search_width}`}>
             <input
                 id="search"
                 name="search"

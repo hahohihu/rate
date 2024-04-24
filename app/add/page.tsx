@@ -22,7 +22,7 @@ export default async function Page({
     <SearchBar />
     {query != '' ? (
       <div>
-        <ul className={"p-2 overflow-y-auto " + styles.search_width + " " + styles.search_results}>
+        <ul className={`p-2 overflow-y-auto ${styles.search_width} ${styles.search_results}`}>
           {matches.map(obj =>
             <Link key={obj.id} className="w-full" href={"/add/entry?object=" + obj.id} >
               <li className={styles.object}>
