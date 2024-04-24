@@ -6,9 +6,10 @@
     max-height: 600px;
     border-bottom: 1px solid rgb(var(--foreground-rgb));
 
-    .object {
-        padding: 4px;
-    }
+}
+
+.object {
+    padding: 4px;
 }
 
 .object:hover {
