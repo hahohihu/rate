@@ -1,20 +1,19 @@
-import { getObject } from '@/app/lib/data';
 import '@/app/css/forms.css';
-import { addEntry } from "@/app/lib/actions";
+import { addObject } from "@/app/lib/actions";
 
 export default async function Home({
     searchParams
 }: {
     searchParams?: {
-        name?: string;
+        partial?: string;
     }
 }) {
     return (
         <main>
-            <form className="flex flex-col gap-2">
+            <form action={addObject} className="flex flex-col gap-2">
                 <div className="flex flex-col">
                     <label htmlFor="media_name">Name</label>
-                    <input id="media_name" name="media_name" defaultValue={searchParams?.name}></input>
+                    <input id="media_name" name="media_name" defaultValue={searchParams?.partial}></input>
                     <label htmlFor="prod_year">Production Year</label>
                     <input type="number" step="1" id="prod_year" name="prod_year"></input>
                 </div>

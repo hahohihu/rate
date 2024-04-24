@@ -19,14 +19,19 @@ export default async function Page({
 
   return <>
     <SearchBar />
-    <ul>
-      {matches.map(obj =>
-        <li key={obj.id}>
-          <Link href={"/add/entry?object=" + obj.id} >
-            {obj.name + " (" + obj.prod_year + ")"}
-          </Link>
-        </li>
-      )}
-    </ul>
+    {query != '' ? (
+      <div>
+        <ul>
+          {matches.map(obj =>
+            <li key={obj.id}>
+              <Link href={"/add/entry?object=" + obj.id} >
+                {obj.name + " (" + obj.prod_year + ")"}
+              </Link>
+            </li>
+          )}
+        </ul>
+        <Link href={"/add/object?partial=" + query}>Add new object</Link>
+      </div>
+    ) : null}
   </>
 }
