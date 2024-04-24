@@ -1,9 +1,31 @@
 - Split up entries and objects (e.g. watching vs. movie)
-    1. Modify DB + seed but otherwise identical to status quo
-    2. Split up the add page into (add object) > (add entry)
     3. Add a page for objects
     4. Add a page for entries
     5. Link towards those pages in other pages
+        - Diary, post-add
+    6. Relocate queries to domain-specific folders
+- Add reviews
+    1. 0 or 1 per entry
+    2. New table
+    3. /add/entry
+    4. /view/entry
+    5. Click to expand in diary
+    6. Far down the line: WYSIWYG editing / ability to include images
+- Add other-site webscraping
+    - Automatically capture metadata and add object
+        - mangaupdates
+        - Letterboxd
+        - YouTube
+    - Extern link for more information (part of object page)
+    - Brainstorm displaying some metadata (e.g. genre, maker, crew, etc)
+    - Search other sites for media
+    - Note: this precludes ever making this public since that would probably touch their target markets
+- Add type (e.g. novel, manga, TV, movie, etc.)
+- Add poster/image?
+     - Doesn't quite line up with the rest of the aesthetic, maybe omit
+- Add specificity to entry time (currenty out of order)
+- Add maker (major associated names: director, mangaka, etc.)
+- Add tags (arbitrary)
 - Have entries support segments of objects (e.g. chapters 1-50)
     1. Effectively just an associated range + unit
         - How to handle volumes + chapters?
@@ -21,14 +43,6 @@
         - edge -> <empty>
         - edge LHS must be >= RHS
         - each additional edge on the left of the LHS is interpreted as a collapsed segment
-- Add other-site webscraping
-    - Automatically capture metadata and add object
-        - mangaupdates
-        - Letterboxd
-        - YouTube
-    - Extern link for more information (part of object page)
-    - Brainstorm displaying some metadata (e.g. genre, maker, crew, etc)
-    - Note: this precludes ever making this public since that would probably touch their target markets
 - Brainstorm alternative space-efficient display
     - Segments probably need to leak to next row
     - Images allow for a grid and are compact
@@ -40,3 +54,4 @@
     - List view is still useful, esp if it adds a sidebar where I can read information
 - Rework font choices
     - Restyle month, date, name
+- Add genres 
