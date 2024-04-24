@@ -1,7 +1,7 @@
-import SearchBar from "../ui/searchbar";
+import SearchBar from "./search/searchbar";
 import { DbObject, fetchObjects } from "../lib/data";
 import Link from "next/link";
-import styles from "@/app/css/search.module.css";
+import styles from "./search/search.module.css";
 
 export default async function Page({
   searchParams

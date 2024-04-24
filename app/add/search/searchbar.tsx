@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import styles from "@/app/css/search.module.css";
+import styles from "./search.module.css";
 
 export default function SearchBar() {
     const searchParams = useSearchParams();
