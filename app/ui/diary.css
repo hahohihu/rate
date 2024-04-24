@@ -1,4 +1,4 @@
-table {
+.diary_table {
     tr {
         border-top: 1px solid rgb(var(--separator-rgb));
         border-bottom: 1px solid rgb(var(--separator-rgb));

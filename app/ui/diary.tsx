@@ -21,7 +21,7 @@ export default async function Diary() {
     let movies = await fetchMovies();
     let prevMonth: number;
     return (
-        <table>
+        <table className="diary_table">
             <thead>
                 <tr>
                     <td className="text-center">Month</td>
