@@ -24,8 +24,8 @@ export default async function Page({
       <div>
         <ul className={"p-2 overflow-y-auto " + styles.search_width + " " + styles.search_results}>
           {matches.map(obj =>
-            <Link className="w-full" href={"/add/entry?object=" + obj.id} >
-              <li key={obj.id} className={styles.object}>
+            <Link key={obj.id} className="w-full" href={"/add/entry?object=" + obj.id} >
+              <li className={styles.object}>
                 {obj.name + " (" + obj.prod_year + ")"}
               </li>
             </Link>
