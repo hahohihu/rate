@@ -1,4 +1,4 @@
-import { fetchEntries } from "../lib/data";
+import { fetchEntries } from '../data/entry';
 import './diary.css';
 import { clamp, pickHex } from "../lib/utility";
 
