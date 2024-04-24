@@ -1,6 +1,6 @@
-import { fetchEntries } from '../data/entry';
+import { fetchEntries } from '../../data/entry';
 import './diary.css';
-import { clamp, pickHex } from "../lib/utility";
+import { clamp, pickHex } from "../../lib/utility";
 
 function ratingColor(rating: number) {
     const MAX_RATING = 2.5;

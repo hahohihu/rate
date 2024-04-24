@@ -1,4 +1,4 @@
-import Diary from "../ui/diary";
+import Diary from "../ui/diary/diary";
 
 export default async function Home() {
   return (
