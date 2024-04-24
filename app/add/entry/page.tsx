@@ -1,4 +1,4 @@
-import { getObject } from '../lib/data';
+import { getObject } from '@/app/data/object';
 import '../ui/forms.css';
 import { addEntry } from "../lib/actions";
 
