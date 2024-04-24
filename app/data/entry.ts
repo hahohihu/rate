@@ -1,5 +1,9 @@
+'use server';
+
 import { sql } from "@vercel/postgres";
-import { unstable_noStore } from "next/cache";
+import { revalidatePath, unstable_noStore } from "next/cache";
+import { redirect } from "next/navigation";
+import { z } from "zod";
 
 export type Entry = {
     id: number;
@@ -21,3 +25,24 @@ export async function fetchEntries() {
 
     return data.rows;
 }
+
+const AddEntrySchema = z.object({
+    rating: z.coerce.number(),
+});
+
+export async function addEntry(object_id: number, formData: FormData) {
+    const { rating } = AddEntrySchema.parse({
+        rating: formData.get('rating'),
+    });
+
+    // todo: not handling timezones
+    await sql`
+        INSERT INTO entries (object_id, watch_date, rating)
+        VALUES (${object_id}, NOW(), ${rating});
+    `;
+
+    // todo: navigate to object
+    revalidatePath("/");
+    redirect("/");
+}
+

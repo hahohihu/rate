@@ -1,5 +1,5 @@
 import '../ui/forms.css';
-import { addObject } from "../lib/actions";
+import { addObject } from '@/app/data/object';
 
 export default async function Home({
     searchParams
