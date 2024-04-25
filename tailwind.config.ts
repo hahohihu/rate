@@ -16,6 +16,7 @@ const config: Config = {
       },
       colors: {
         "fg-c": "var(--foreground-color)",
+        "fg2-c": "var(--foreground2-color)",
         "h1-c": "var(--header1-color)",
         "h2-c": "var(--header2-color)",
         "bgs-c": "var(--background-start-color)",

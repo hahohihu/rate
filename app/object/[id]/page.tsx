@@ -1,11 +1,10 @@
 import { getObject } from "@/data/object";
+import ObjectInfo from "./object-info";
 
 export default async function Home({ params }: { params: { id: number } }) {
-    let object = await getObject(params.id);
-
     return (
         <main className="p-4">
-            {object.name}
+            <ObjectInfo id={params.id} />
         </main >
     );
 }

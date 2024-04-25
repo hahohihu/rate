@@ -4,6 +4,7 @@
 
 :root {
   --foreground-color: rgb(255, 255, 255);
+  --foreground2-color: rgb(200, 225, 230);
   --header1-color: rgb(60, 65, 65);
   --header2-color: rgb(50, 50, 50);
   --background-start-color: rgb(30, 34, 34);
