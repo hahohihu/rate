@@ -7,21 +7,36 @@ import { z } from "zod";
 
 export type Entry = {
     id: number;
-    name: string;
-    prod_year: number;
     watch_date: Date
     rating: number;
+};
+
+export type FullEntry = Entry & {
+    name: string;
+    prod_year: number;
 };
 
 export async function fetchEntries() {
     unstable_noStore();
 
-    const data = await sql<Entry> `
+    const data = await sql<FullEntry> `
         SELECT entries.id, objects.name, objects.prod_year, entries.watch_date, entries.rating 
         FROM entries
         JOIN objects ON objects.id = entries.object_id
         ORDER BY watch_date DESC
         LIMIT 50`;
+
+    return data.rows;
+}
+
+export async function fetchEntriesForObject(objectId: number) {
+    unstable_noStore();
+
+    const data = await sql<Entry>`
+        SELECT id, watch_date, rating
+        FROM entries
+        WHERE object_id = ${objectId}
+    `;
 
     return data.rows;
 }
