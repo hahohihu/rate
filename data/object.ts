@@ -32,7 +32,9 @@ export async function getObject(id: number) {
     `;
 
     return data.rows[0];
-}const AddObjectSchema = z.object({
+}
+
+const AddObjectSchema = z.object({
     media_name: z.string(),
     prod_year: z.coerce.number().int(),
 });
