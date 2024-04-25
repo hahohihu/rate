@@ -9,11 +9,11 @@ export default async function Diary() {
         <table className="diary_table">
             <thead>
                 <tr>
-                    <td className="text-center">Month</td>
-                    <td className="text-center">Date</td>
-                    <td>Name</td>
-                    <td className="text-center">Released</td>
-                    <td className="text-center">Rating</td>
+                    <td className="text-center">month</td>
+                    <td className="text-center">date</td>
+                    <td>name</td>
+                    <td className="text-center">released</td>
+                    <td className="text-center">rating</td>
                 </tr>
             </thead>
             <tbody>
