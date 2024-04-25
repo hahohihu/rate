@@ -1,9 +1,9 @@
 'use client';
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import styles from "./search.module.css";
+import { Input } from "antd";
 
-export default function SearchBar() {
+export default function SearchBar(props: any) {
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const { replace } = useRouter();
@@ -19,15 +19,11 @@ export default function SearchBar() {
     }
 
     return (
-        <fieldset className={`flex flex-col ${styles.search_width}`}>
-            <input
-                id="search"
-                name="search"
-                placeholder="Search"
-                autoComplete="off"
-                onChange={e => handleSearch(e.target.value)}
-                defaultValue={searchParams.get("object")?.toString()}
+        <Input 
+            placeholder="Search object"
+            onChange={e => handleSearch(e.target.value)}
+            defaultValue={searchParams.get("object")?.toString()}
+            {...props}
             />
-        </fieldset>
     );
 }
