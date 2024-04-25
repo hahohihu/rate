@@ -2,6 +2,10 @@ export function clamp(num: number, min: number, max: number) {
     return Math.min(Math.max(num, min), max);
 }
 
+function interpolate(a: number, b: number, weight: number) {
+    return a * weight + b * (1 - weight);
+}
+
 function pickHex(color1: number[], color2: number[], weight: number) {
     var w1 = weight;
     var w2 = 1 - w1;
@@ -14,16 +18,19 @@ function pickHex(color1: number[], color2: number[], weight: number) {
 export function ratingColor(rating: number) {
     const MAX_RATING = 2.5;
     rating = clamp(rating, -MAX_RATING, MAX_RATING);
-    const WHITE = [120, 120, 120];
-    const RED = [240, 0, 0];
-    const GREEN = [0, 240, 0];
-    let color;
+    const RED = 360;
+    const GREEN = 120;
+    let normalizedRating;
+    let hue;
     if (rating > 0) {
-        color = pickHex(GREEN, WHITE, rating / MAX_RATING);
+        normalizedRating = rating / MAX_RATING;
+        hue = GREEN;
     } else {
-        color = pickHex(RED, WHITE, rating / -MAX_RATING);
+        normalizedRating = rating / -MAX_RATING;
+        hue = RED;
     }
-    return `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+    let lightness = interpolate(50, 100, normalizedRating);
+    return `hsl(${hue}, 90%, ${lightness}%)`;
 }
 
 export function formatDatePostgres(date: Date) {
