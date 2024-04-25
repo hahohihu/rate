@@ -1,13 +1,12 @@
 import { fetchObjects } from "@/data/object";
-import { Select } from "antd";
+import { AutoComplete, Input, Select } from "antd";
 import { DefaultOptionType } from "antd/es/select";
 import { useState } from "react";
 
 export default function SearchBar(props: any) {
-    const initOptions: DefaultOptionType = [];
-    let [options, setOptions] = useState(initOptions);
+    let [options, setOptions] = useState<DefaultOptionType[]>([]);
 
-    async function onSearch(value: string) {
+    async function onEdit(value: string) {
         if (value) {
             let objects = await fetchObjects(value);
             setOptions(objects.map(object => {
@@ -22,19 +21,26 @@ export default function SearchBar(props: any) {
         }
     }
 
-    function onSelect(value: string) {
+    function onSelect(value: number) {
+        console.log(value);
+    }
 
+    function onSearch(value: string) {
+        console.log(value);
     }
 
     return (
-        <Select
-            showSearch
-            placeholder="Search objects"
-            filterOption={false}
-            onSearch={onSearch}
+        <AutoComplete
+            onSearch={onEdit}
             onSelect={onSelect}
             options={options}
             {...props}
-        ></Select>
+        >
+            <Input.Search 
+                placeholder="search objects" 
+                enterButton
+                onSearch={onSearch}
+                />
+        </AutoComplete>
     );
 }
