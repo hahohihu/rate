@@ -15,11 +15,11 @@ import Link from "next/link";
 
 export default function Header() {
     return (
-        <div className="flex h-10">
+        <div className="flex h-10 bg-h1-c w-full">
             <Link href="/">
                 <Image src={logo} alt="home" className="h-full w-auto"></Image>
             </Link>
-            <SearchBar/>
+            <SearchBar />
         </div>
     );
 }
