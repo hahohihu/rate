@@ -2,50 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @media (prefers-color-scheme: light) {
-  :root {
-    --foreground-rgb: 0, 0, 0;
-    --header1-rgb: 230, 230, 230;
-    --header2-rgb: 230, 230, 230;
-    --background-start-rgb: 245, 245, 245;
-    --background-end-rgb: 224, 229, 230;
-    --separator-rgb: 180, 180, 180;
-  }
-} */
-
 :root {
-  --foreground-rgb: 255, 255, 255;
-  --header1-rgb: 60, 65, 65;
-  --header2-rgb: 50, 50, 50;
-  --background-start-rgb: 30, 34, 34;
-  --background-end-rgb: 50, 55, 60;
-  --separator-rgb: 120, 120, 120;
-  --background-action-rgb: 80, 140, 160;
-  --action-rgb: 120, 190, 225;
-  --highlight-rgb: 120, 245, 245;
-}
-
-.bg-flair {
-  background-color: rgb(var(--header1-rgb));
-}
-
-.active-nav {
-  border-bottom: 1px solid rgb(var(--highlight-rgb));
-}
-
-input {
-  color: black;
-  padding: 5px 10px;
+  --foreground-color: rgb(255, 255, 255);
+  --header1-color: rgb(60, 65, 65);
+  --header2-color: rgb(50, 50, 50);
+  --background-start-color: rgb(30, 34, 34);
+  --background-end-color: rgb(50, 55, 60);
+  --separator-color: rgb(120, 120, 120);
+  --background-action-color: rgb(80, 140, 160);
+  --action-color: rgb(120, 190, 225);
+  --highlight-color: rgb(120, 245, 245);
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: var(--foreground-color);
   background: linear-gradient(
       to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
+      var(--background-end-color)
     )
-    rgb(var(--background-start-rgb));
+    var(--background-start-color);
   border-collapse: collapse;
 }
 

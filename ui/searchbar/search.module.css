@@ -4,7 +4,7 @@
 
 .search_results {
     max-height: 600px;
-    border-bottom: 1px solid rgb(var(--foreground-rgb));
+    border-bottom: 1px solid var(--foreground-color);
 
 }
 
@@ -13,7 +13,7 @@
 }
 
 .object:hover {
-    background-color: rgb(var(--background-action-rgb));
+    background-color: var(--background-action-color);
 }
 
 .add_object {
@@ -22,5 +22,5 @@
 }
 
 .add_object:hover {
-    background-color: rgb(var(--background-action-rgb));
+    background-color: var(--background-action-color);
 }
