@@ -1,21 +1,6 @@
 import { fetchEntries } from '../../data/entry';
 import './diary.css';
-import { clamp, pickHex } from "../../lib/utility";
-
-function ratingColor(rating: number) {
-    const MAX_RATING = 2.5;
-    rating = clamp(rating, -MAX_RATING, MAX_RATING);
-    const WHITE = [120, 120, 120];
-    const RED = [240, 0, 0];
-    const GREEN = [0, 240, 0];
-    let color;
-    if (rating > 0) {
-        color = pickHex(GREEN, WHITE, rating / MAX_RATING);
-    } else {
-        color = pickHex(RED, WHITE, rating / -MAX_RATING);
-    }
-    return `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
-}
+import { ratingColor } from "../../lib/utility";
 
 export default async function Diary() {
     let entries = await fetchEntries();
