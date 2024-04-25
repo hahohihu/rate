@@ -17,12 +17,10 @@ const config: Config = {
       colors: {
         "fg-c": "var(--foreground-color)",
         "fg2-c": "var(--foreground2-color)",
+        "fg3-c": "var(--foreground3-color)",
         "h1-c": "var(--header1-color)",
         "h2-c": "var(--header2-color)",
-        "bgs-c": "var(--background-start-color)",
-        "bge-c": "var(--background-end-color)",
         "sep-c": "var(--separator-color)",
-        "bga-c": "var(--background-action-color)",
         "act-c": "var(--action-color)",
         "hi-c": "var(--highlight-color)",
       }
