@@ -4,7 +4,7 @@ import { DefaultOptionType } from "antd/es/select";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function SearchBar(props: any) {
+export default function SearchBar({ className }: { className: string }) {
     // Need this to dynamically display objects from DB
     let [options, setOptions] = useState<DefaultOptionType[]>([]);
     // Need this to clear shown value on select
@@ -39,7 +39,7 @@ export default function SearchBar(props: any) {
                 router.push(`/object/${opt.id}`);
             }}
             options={options}
-            {...props}
+            className={className}
         >
             <Input.Search 
                 placeholder="search objects" 
