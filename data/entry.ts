@@ -36,6 +36,7 @@ export async function fetchEntriesForObject(objectId: number) {
         SELECT id, watch_date, rating
         FROM entries
         WHERE object_id = ${objectId}
+        ORDER BY watch_date DESC
     `;
 
     return data.rows;
