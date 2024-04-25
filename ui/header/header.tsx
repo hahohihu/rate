@@ -12,7 +12,7 @@ export default function Header() {
                 <Link href="/">
                     <Image src={logo} alt="home" className="h-full w-auto"></Image>
                 </Link>
-                <SearchBar className="max-w-lg ml-auto" />
+                <SearchBar className="w-full max-w-lg ml-auto" />
             </div>
         </div>
     );

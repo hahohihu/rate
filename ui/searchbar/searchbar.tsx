@@ -1,29 +1,40 @@
-'use client';
-
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Input } from "antd";
+import { fetchObjects } from "@/data/object";
+import { Select } from "antd";
+import { DefaultOptionType } from "antd/es/select";
+import { useState } from "react";
 
 export default function SearchBar(props: any) {
-    const searchParams = useSearchParams();
-    const pathname = usePathname();
-    const { replace } = useRouter();
+    const initOptions: DefaultOptionType = [];
+    let [options, setOptions] = useState(initOptions);
 
-    function handleSearch(term: string) {
-        const params = new URLSearchParams(searchParams);
-        if (term) {
-            params.set("object", term);
+    async function onSearch(value: string) {
+        if (value) {
+            let objects = await fetchObjects(value);
+            setOptions(objects.map(object => {
+                let year = object.prod_year ? `(${object.prod_year})` : '';
+                return {
+                    value: object.id,
+                    label: `${object.name} ${year}`
+                }
+            }));
         } else {
-            params.delete("object");
+            setOptions([]);
         }
-        replace(`${pathname}?${params.toString()}`);
+    }
+
+    function onSelect(value: string) {
+
     }
 
     return (
-        <Input 
-            placeholder="Search object"
-            onChange={e => handleSearch(e.target.value)}
-            defaultValue={searchParams.get("object")?.toString()}
+        <Select
+            showSearch
+            placeholder="Search objects"
+            filterOption={false}
+            onSearch={onSearch}
+            onSelect={onSelect}
+            options={options}
             {...props}
-            />
+        ></Select>
     );
 }
