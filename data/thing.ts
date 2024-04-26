@@ -13,7 +13,7 @@ export async function fetchThings(query: string) {
 
     return db.query.things.findMany({
         limit: 25,
-        where: ilike(things.name, query),
+        where: ilike(things.name, `%${query}%`),
     });
 }
 
