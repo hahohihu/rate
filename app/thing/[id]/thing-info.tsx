@@ -3,6 +3,10 @@ import { getThing } from "@/data/thing";
 export default async function ThingInfo({ id, className }: { id: number, className?: string }) {
     let thing = await getThing(id);
 
+    if (!thing) {
+        throw new Error(`Thing (${id}) doesn't exist`);
+    }
+
     return (
         <div className={`flex flex-col ${className}`}>
             <div className="flex items-end gap-2">
