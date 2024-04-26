@@ -42,10 +42,13 @@ export default function SearchBar({ className }: { className: string }) {
             className={className}
         >
             <Input.Search 
-                placeholder="search objects" 
+                placeholder="search objects"
                 enterButton
+                variant="filled"
                 onSearch={value => {
-                    router.push(`/search?name=${value}`);
+                    if (value != '') {
+                        router.push(`/search?name=${value}`);
+                    }
                 }}
                 />
         </AutoComplete>

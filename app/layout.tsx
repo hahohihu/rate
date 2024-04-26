@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/ui/header/header";
 import { AntdRegistry } from '@ant-design/nextjs-registry';
+import { ConfigProvider } from "antd";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,12 +19,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className + " min-h-screen flex flex-col items-center"}>
+      <ConfigProvider
+        theme={{
+          token: {
+            colorFillSecondary: "hsla(235, 30%, 80%, 40%)",
+            colorFillTertiary: "hsla(235, 25%, 65%, 30%)",
+            colorTextQuaternary: "var(--fg-reach)",
+            // antd doesn't work using a var here for some reason
+            colorPrimary: "hsl(265, 50%, 50%)"
+          }
+        }}
+      >
         <AntdRegistry>
-          <Header/>
-          {children}
+          <body className={inter.className + " min-h-screen flex flex-col items-center"}>
+            <Header />
+            {children}
+          </body>
         </AntdRegistry>
-      </body>
+      </ConfigProvider>
     </html>
   );
 }
