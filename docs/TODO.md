@@ -1,5 +1,3 @@
-- Minor
-    - Line up scores in the entries view
 - Add popup to add entries (currently routes to a separate page)
     - Then have it support edits
 - Add reviews
@@ -19,6 +17,8 @@
     - Brainstorm displaying some metadata (e.g. genre, maker, crew, etc)
     - Search other sites for media
     - Note: this precludes ever making this public since that would probably touch their target markets
+- Minor
+    - Line up scores in the entries view
 - Non-breaking nice-to-have metadata
     - Add poster/image?
         - Doesn't quite line up with the rest of the aesthetic, maybe omit
