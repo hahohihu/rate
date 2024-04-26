@@ -10,9 +10,6 @@
     5. Click to expand in diary
     6. Far down the line: WYSIWYG editing / ability to include images
 - Implement search page
-- Breaking changes
-    - Add type (e.g. novel, manga, TV, movie, etc.)
-    - Add specificity to entry time (currenty out of order)
 - Add other-site webscraping
     - Automatically capture metadata and add object
         - mangaupdates
@@ -28,6 +25,8 @@
     - Add maker (major associated names: director, mangaka, etc.)
     - Add tags (arbitrary)
     - Add genres 
+- Add type (e.g. novel, manga, TV, movie, etc.)
+    - Open question: Should this actually be a media type, or should it be bound to providers? It's just going to be filled in from the provider anyways, so converting to type early is just losing information. That also adds an ability to associate links. On the flip side, there could be multiple providers, so this should just be another added table, which also allows for inference and/or manual input.
 - Have entries support segments of objects (e.g. chapters 1-50)
     1. Effectively just an associated range + unit
         - How to handle volumes + chapters?
