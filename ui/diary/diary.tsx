@@ -1,7 +1,7 @@
 import { fetchEntries } from '../../data/entry';
 import './diary.css';
 import { ratingColor } from "../../lib/utility";
-import { Title } from '../text';
+import { ObjectTitleLink } from '../text';
 
 export default async function Diary() {
     let entries = await fetchEntries();
@@ -29,8 +29,7 @@ export default async function Diary() {
                         <tr key={entry.id}>
                             <td className={`text-center text-sm font-extralight`}>{monthYear}</td>
                             <td className={`text-center text-sm font-extralight`}>{entry.watch_date.getDate()}</td>
-                            <td><Title name={entry.name} objectId={entry.object_id}></Title>
-                            </td>
+                            <td><ObjectTitleLink name={entry.name} objectId={entry.object_id}></ObjectTitleLink></td>
                             <td className="text-center text-sm font-extralight">{entry.prod_year}</td>
                             <td className={"text-center font-light"} style={{ color: ratingColor(entry.rating) }}>{entry.rating}</td>
                         </tr>
