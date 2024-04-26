@@ -8,12 +8,6 @@ import { db } from "./drizzle/db";
 import { eq, ilike } from "drizzle-orm";
 import { things } from "./drizzle/schema";
 
-export type DbObject = {
-    id: number;
-    name: string;
-    prod_year: number;
-};
-
 export async function fetchObjects(query: string) {
     unstable_noStore();
 

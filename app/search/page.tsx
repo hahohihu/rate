@@ -1,6 +1,5 @@
-import { DbObject, fetchObjects } from '../../data/object';
-import Link from "next/link";
-import styles from "@/ui/searchbar/search.module.css";
+import { Thing } from '@/data/drizzle/schema';
+import { fetchObjects } from '../../data/object';
 
 export default async function Page({
   searchParams
@@ -10,7 +9,7 @@ export default async function Page({
   }
 }) {
   const query = searchParams?.name || '';
-  let matches: DbObject[] = [];
+  let matches: Thing[] = [];
   if (query) {
     matches = await fetchObjects(query);
   } else {
