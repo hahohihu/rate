@@ -1,4 +1,5 @@
 import { getThing } from "@/data/thing";
+import { ThingTitle } from "@/ui/text";
 
 export default async function ThingInfo({ id, className }: { id: number, className?: string }) {
     let thing = await getThing(id);
@@ -9,9 +10,9 @@ export default async function ThingInfo({ id, className }: { id: number, classNa
 
     return (
         <div className={`flex flex-col ${className}`}>
-            <div className="flex items-end gap-2">
-                <span className="text-2xl font-normal text-fg-dominant leading-none">{thing.name}</span>
-                <span className="text-fg-reach text-sm leading-none">{thing.prod_year}</span>
+            <div className="flex gap-2 items-center">
+                <ThingTitle className="text-2xl" name={thing.name} />
+                <span className="text-fg-reach text-sm">{thing.prod_year}</span>
             </div>
         </div>
     );
