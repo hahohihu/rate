@@ -13,6 +13,7 @@ export type Entry = {
 
 export type FullEntry = Entry & {
     name: string;
+    object_id: number;
     prod_year: number;
 };
 
@@ -20,7 +21,7 @@ export async function fetchEntries() {
     unstable_noStore();
 
     const data = await sql<FullEntry> `
-        SELECT entries.id, objects.name, objects.prod_year, entries.watch_date, entries.rating 
+        SELECT entries.id, entries.object_id, objects.name, objects.prod_year, entries.watch_date, entries.rating 
         FROM entries
         JOIN objects ON objects.id = entries.object_id
         ORDER BY watch_date DESC

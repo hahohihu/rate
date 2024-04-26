@@ -1,13 +1,11 @@
 import Link from "next/link";
 
-export function Title({ object, className }: {
-    object: {
-        name: string;
-        id: number;
-    },
+export function Title({ name, objectId, className }: {
+    name: string,
+    objectId: number,
     className?: string
 }) {
-    return <Link href={`/object/${object.id}`} className={`${className} action-link`}>
-        {object.name}
+    return <Link href={`/object/${objectId}`} className={`${className} action-link`}>
+        {name}
     </Link>;
 }

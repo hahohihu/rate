@@ -29,7 +29,7 @@ export default async function Diary() {
                         <tr key={entry.id}>
                             <td className={`text-center text-sm font-extralight`}>{monthYear}</td>
                             <td className={`text-center text-sm font-extralight`}>{entry.watch_date.getDate()}</td>
-                            <td><Title className="" object={entry}></Title>
+                            <td><Title name={entry.name} objectId={entry.object_id}></Title>
                             </td>
                             <td className="text-center text-sm font-extralight">{entry.prod_year}</td>
                             <td className={"text-center font-light"} style={{ color: ratingColor(entry.rating) }}>{entry.rating}</td>
