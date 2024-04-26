@@ -50,7 +50,7 @@ export default function SearchBar({ className }: { className: string }) {
                         router.push(`/search?name=${value}`);
                     }
                 }}
-                />
+            />
         </AutoComplete>
     );
 }
