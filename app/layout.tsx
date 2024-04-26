@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/ui/header/header";
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider } from "antd";
 
-const inter = Inter({ subsets: ["latin"] });
+const dmSans = DM_Sans({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: "Nikki",
@@ -31,7 +31,7 @@ export default function RootLayout({
         }}
       >
         <AntdRegistry>
-          <body className={inter.className + " min-h-screen flex flex-col items-center"}>
+          <body className={dmSans.className + " min-h-screen flex flex-col items-center"}>
             <Header />
             {children}
           </body>
