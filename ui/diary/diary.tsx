@@ -1,6 +1,7 @@
 import { fetchEntries } from '../../data/entry';
 import './diary.css';
 import { ratingColor } from "../../lib/utility";
+import { Title } from '../text';
 
 export default async function Diary() {
     let entries = await fetchEntries();
@@ -26,11 +27,12 @@ export default async function Diary() {
                     }
                     return (
                         <tr key={movie.id}>
-                            <td className="text-center">{monthYear}</td>
-                            <td className="text-center">{movie.watch_date.getDate()}</td>
-                            <td>{movie.name}</td>
-                            <td className="text-center text-sm">{movie.prod_year}</td>
-                            <td className="text-center" style={{ color: ratingColor(movie.rating) }}>{movie.rating}</td>
+                            <td className={`text-center text-sm font-extralight`}>{monthYear}</td>
+                            <td className={`text-center text-sm font-extralight`}>{movie.watch_date.getDate()}</td>
+                            <td><Title className="" object={movie}></Title>
+                            </td>
+                            <td className="text-center text-sm font-extralight">{movie.prod_year}</td>
+                            <td className={"text-center font-light"} style={{ color: ratingColor(movie.rating) }}>{movie.rating}</td>
                         </tr>
                     );
                 })}

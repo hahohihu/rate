@@ -6,7 +6,8 @@
         td {
             padding-left: 20px;
             font-size: small;
-            color: var(--fg-reach)
+            color: var(--fg-reach);
+            font-weight: 200;
         }
     }
     tbody {
