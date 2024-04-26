@@ -5,7 +5,7 @@ export function Title({ name, objectId, className }: {
     objectId: number,
     className?: string
 }) {
-    return <Link href={`/object/${objectId}`} className={`${className} action-link font-normal`}>
+    return <Link href={`/object/${objectId}`} className={`${className} text-fg-dominant action-link font-normal`}>
         {name}
     </Link>;
 }

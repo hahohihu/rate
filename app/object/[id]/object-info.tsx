@@ -6,10 +6,10 @@ export default async function ObjectInfo({ id, className }: { id: number, classN
 
     return (
         <Flex vertical className={className}>
-            <Flex gap="small" align="end">
-                <h1 className="text-xl font-normal text-fg-dominant">{object.name}</h1>
-                <h2 className="text-fg-reach">({object.prod_year})</h2>
-            </Flex>
+            <div className="flex items-end gap-2">
+                <span className="text-2xl font-normal text-fg-dominant leading-none">{object.name}</span>
+                <span className="text-fg-reach text-sm leading-none">{object.prod_year}</span>
+            </div>
         </Flex>
     );
 }
