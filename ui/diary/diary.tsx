@@ -18,7 +18,9 @@ export default async function Diary() {
                 </tr>
             </thead>
             <tbody>
-                {entries?.map(entry => {
+                {entries?.map(fullEntry => {
+                    let entry = fullEntry.entries;
+                    let object = fullEntry.things;
                     let currentMonth = entry.watch_date.getMonth();
                     let monthYear;
                     if (currentMonth != prevMonth) {
@@ -29,8 +31,8 @@ export default async function Diary() {
                         <tr key={entry.id}>
                             <td className={`text-center text-sm font-extralight`}>{monthYear}</td>
                             <td className={`text-center text-sm font-extralight`}>{entry.watch_date.getDate()}</td>
-                            <td><ObjectTitleLink name={entry.name} objectId={entry.object_id}></ObjectTitleLink></td>
-                            <td className="text-center text-sm font-extralight">{entry.prod_year}</td>
+                            <td><ObjectTitleLink name={object.name} objectId={entry.object_id}></ObjectTitleLink></td>
+                            <td className="text-center text-sm font-extralight">{object.prod_year}</td>
                             <td className={"text-center font-light"} style={{ color: ratingColor(entry.rating) }}>{entry.rating}</td>
                         </tr>
                     );

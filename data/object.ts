@@ -4,6 +4,9 @@ import { sql } from "@vercel/postgres";
 import { unstable_noStore } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
+import { db } from "./drizzle/db";
+import { eq, ilike } from "drizzle-orm";
+import { things } from "./drizzle/schema";
 
 export type DbObject = {
     id: number;
@@ -14,24 +17,16 @@ export type DbObject = {
 export async function fetchObjects(query: string) {
     unstable_noStore();
 
-    const data = await sql<DbObject> `
-        SELECT id, name, prod_year
-        FROM objects
-        WHERE name ILIKE ${`%${query}%`}
-        LIMIT 25;
-    `;
-
-    return data.rows;
+    return db.query.things.findMany({
+        limit: 25,
+        where: ilike(things.name, query)
+    });
 }
 
 export async function getObject(id: number) {
-    const data = await sql<DbObject> `
-        SELECT id, name, prod_year
-        FROM objects
-        WHERE id = ${id}
-    `;
-
-    return data.rows[0];
+    return db.query.things.findFirst({
+        where: eq(things.id, id)
+    });
 }
 
 const AddObjectSchema = z.object({
