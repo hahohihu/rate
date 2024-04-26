@@ -1,9 +1,5 @@
 const { db } = require('@vercel/postgres');
 
-function formatDatePostgres(date) {
-    return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
-}
-
 class Movie {
     constructor(name, watch, release, rating) {
         this.name = name;
