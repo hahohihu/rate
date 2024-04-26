@@ -1,6 +1,6 @@
 'use client';
 
-import SearchBar from "@/ui/searchbar/searchbar";
+import SearchBar from "@/ui/header/searchbar";
 import logo from '@/public/logo.svg';
 import Image from 'next/image'
 import Link from "next/link";
