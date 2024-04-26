@@ -18,7 +18,7 @@ export async function fetchEntries() {
         .limit(50);
 }
 
-export async function fetchEntriesForObject(thing_id: number) {
+export async function fetchEntriesForThing(thing_id: number) {
     unstable_noStore();
 
     return db.query.entries.findMany({

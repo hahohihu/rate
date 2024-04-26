@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const titleStyle = "text-fg-dominant action-link font-normal";
 
-export function ObjectTitleLink({ name, thingId, className }: {
+export function ThingTitleLink({ name, thingId, className }: {
     name: string,
     thingId: number,
     className?: string,
@@ -12,7 +12,7 @@ export function ObjectTitleLink({ name, thingId, className }: {
     </Link>;
 }
 
-export function ObjectTitle({ name, className }: {
+export function ThingTitle({ name, className }: {
     name: string,
     className?: string,
 }) {

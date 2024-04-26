@@ -1,6 +1,6 @@
 import { getThing } from "@/data/thing";
 
-export default async function ObjectInfo({ id, className }: { id: number, className?: string }) {
+export default async function ThingInfo({ id, className }: { id: number, className?: string }) {
     let thing = await getThing(id);
 
     return (
