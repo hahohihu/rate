@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const titleStyle = "text-fg-dominant action-link font-normal";
+const titleStyle = "text-fg-dominant font-normal";
 
 export function ThingTitleLink({ name, thingId, className }: {
     name: string,
