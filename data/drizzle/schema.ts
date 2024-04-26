@@ -1,4 +1,6 @@
-import { pgTable, real, serial, smallint, timestamp, varchar } from 'drizzle-orm/pg-core';
+import {
+    pgTable, real, serial, smallint, timestamp, varchar,
+} from 'drizzle-orm/pg-core';
 
 export const things = pgTable('things', {
     id: serial('id').primaryKey(),
@@ -12,7 +14,7 @@ export const entries = pgTable('entries', {
     id: serial('id').primaryKey(),
     thing_id: serial('thing_id').references(() => things.id).notNull(),
     watch_date: timestamp('watch_date').notNull(),
-    rating: real('rating').notNull()
+    rating: real('rating').notNull(),
 });
 
 export type Entry = typeof entries.$inferSelect;

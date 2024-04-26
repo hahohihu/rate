@@ -7,9 +7,9 @@ function interpolate(a: number, b: number, weight: number) {
 }
 
 function pickHex(color1: number[], color2: number[], weight: number) {
-    var w1 = weight;
-    var w2 = 1 - w1;
-    var rgb = [Math.round(color1[0] * w1 + color2[0] * w2),
+    const w1 = weight;
+    const w2 = 1 - w1;
+    const rgb = [Math.round(color1[0] * w1 + color2[0] * w2),
         Math.round(color1[1] * w1 + color2[1] * w2),
         Math.round(color1[2] * w1 + color2[2] * w2)];
     return rgb;
@@ -29,7 +29,7 @@ export function ratingColor(rating: number) {
         normalizedRating = rating / -MAX_RATING;
         hue = RED;
     }
-    let lightness = interpolate(50, 100, normalizedRating);
+    const lightness = interpolate(50, 100, normalizedRating);
     return `hsl(${hue}, 90%, ${lightness}%)`;
 }
 

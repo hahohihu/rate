@@ -1,12 +1,12 @@
 'use server';
 
-import { sql } from "@vercel/postgres";
-import { revalidatePath, unstable_noStore } from "next/cache";
-import { redirect } from "next/navigation";
-import { z } from "zod";
-import { db } from "./drizzle/db";
-import { desc, eq } from "drizzle-orm";
-import { entries, things } from "./drizzle/schema";
+import { sql } from '@vercel/postgres';
+import { revalidatePath, unstable_noStore } from 'next/cache';
+import { redirect } from 'next/navigation';
+import { z } from 'zod';
+import { desc, eq } from 'drizzle-orm';
+import { db } from './drizzle/db';
+import { entries, things } from './drizzle/schema';
 
 export async function fetchEntries() {
     unstable_noStore();
@@ -23,7 +23,7 @@ export async function fetchEntriesForThing(thing_id: number) {
 
     return db.query.entries.findMany({
         where: eq(entries.thing_id, thing_id),
-        orderBy: [desc(entries.watch_date)]
+        orderBy: [desc(entries.watch_date)],
     });
 }
 
@@ -43,7 +43,6 @@ export async function addEntry(thing_id: number, formData: FormData) {
     `;
 
     // todo: navigate to thing
-    revalidatePath("/");
-    redirect("/");
+    revalidatePath('/');
+    redirect('/');
 }
-

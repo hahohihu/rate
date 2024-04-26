@@ -2,7 +2,7 @@ import { Thing } from '@/data/drizzle/schema';
 import { fetchThings } from '../../data/thing';
 
 export default async function Page({
-    searchParams
+    searchParams,
 }: {
   searchParams?: {
     name?: string;
@@ -16,7 +16,9 @@ export default async function Page({
         matches = [];
     }
 
-    return <div>
-    TODO
-    </div>;
+    return (
+        <div>
+      TODO
+        </div>
+    );
 }

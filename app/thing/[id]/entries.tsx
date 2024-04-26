@@ -1,13 +1,13 @@
-import { fetchEntriesForThing } from "@/data/entry";
-import { ratingColor } from "@/lib/utility";
+import { fetchEntriesForThing } from '@/data/entry';
+import { ratingColor } from '@/lib/utility';
 
 export default async function Entries({ thingId, className }: { thingId: number, className?: string }) {
-    let entries = await fetchEntriesForThing(thingId);
+    const entries = await fetchEntriesForThing(thingId);
 
     return (
         <div className={className}>
             <ul>
-                {entries.map(entry => (
+                {entries.map((entry) => (
                     <li key={entry.id} className="flex gap-2 items-center">
                         <span className="text-lg" style={{ color: ratingColor(entry.rating) }}>
                             {entry.rating}
@@ -17,7 +17,7 @@ export default async function Entries({ thingId, className }: { thingId: number,
                                 .toLocaleDateString('default', {
                                     year: 'numeric',
                                     month: 'short',
-                                    day: 'numeric'
+                                    day: 'numeric',
                                 })}
                         </span>
                     </li>

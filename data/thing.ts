@@ -1,25 +1,25 @@
 'use server';
 
-import { sql } from "@vercel/postgres";
-import { unstable_noStore } from "next/cache";
-import { redirect } from "next/navigation";
-import { z } from "zod";
-import { db } from "./drizzle/db";
-import { eq, ilike } from "drizzle-orm";
-import { things } from "./drizzle/schema";
+import { sql } from '@vercel/postgres';
+import { unstable_noStore } from 'next/cache';
+import { redirect } from 'next/navigation';
+import { z } from 'zod';
+import { eq, ilike } from 'drizzle-orm';
+import { db } from './drizzle/db';
+import { things } from './drizzle/schema';
 
 export async function fetchThings(query: string) {
     unstable_noStore();
 
     return db.query.things.findMany({
         limit: 25,
-        where: ilike(things.name, query)
+        where: ilike(things.name, query),
     });
 }
 
 export async function getThing(id: number) {
     return db.query.things.findFirst({
-        where: eq(things.id, id)
+        where: eq(things.id, id),
     });
 }
 
@@ -40,8 +40,7 @@ export async function addThing(formData: FormData) {
         RETURNING id;
     `;
 
-    const id = res.rows[0].id;
+    const { id } = res.rows[0];
     // todo: navigate to /add/entry
-    redirect("/add/entry?thing=" + id);
+    redirect(`/add/entry?thing=${id}`);
 }
-
