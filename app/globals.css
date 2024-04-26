@@ -23,6 +23,7 @@
 
 body {
   color: var(--fg-ordinary);
+  font-weight: 300;
   background: linear-gradient(
       to bottom,
       hsl(var(--bg-hue), 15%, 15%),

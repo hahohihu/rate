@@ -8,7 +8,7 @@ export default async function Entries({ objectId, className }: { objectId: numbe
         <div className={className}>
             <ul>
                 {entries.map(entry => (
-                    <li key={entry.id} className="flex gap-1 items-center">
+                    <li key={entry.id} className="flex gap-2 items-center">
                         <span className="text-lg" style={{ color: ratingColor(entry.rating) }}>
                             {entry.rating}
                         </span>
