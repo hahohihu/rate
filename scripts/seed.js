@@ -68,7 +68,7 @@ async function seedEntries(client) {
         CREATE TABLE IF NOT EXISTS entries (
             id SERIAL PRIMARY KEY,
             object_id SERIAL REFERENCES objects(id),
-            watch_date DATE NOT NULL,
+            watch_date TIMESTAMP NOT NULL,
             rating REAL NOT NULL CHECK (rating <> 'NaN')
         );
     `;
@@ -79,7 +79,7 @@ async function seedEntries(client) {
         movies.map(movie => {
             return client.sql`
                 INSERT INTO entries (object_id, watch_date, rating)
-                SELECT objects.id,  ${formatDatePostgres(movie.watch)}, ${movie.rating}
+                SELECT objects.id, to_timestamp(${movie.watch.getTime() / 1000}), ${movie.rating}
                 FROM objects WHERE objects.name = ${movie.name}
                 `;
         })
