@@ -3,27 +3,30 @@
 @tailwind utilities;
 
 :root {
-  --foreground-color: rgb(220, 220, 235);
-  --foreground2-color: rgb(200, 225, 230);
-  --foreground3-color: hsl(0 0% 70%);
-  --header1-color: rgb(60, 65, 65);
-  --header2-color: rgb(50, 50, 50);
-  --background-start-color: rgb(30, 34, 34);
-  --background-end-color: rgb(50, 55, 60);
-  --separator-color: rgb(120, 120, 120);
-  --background-action-color: rgb(80, 140, 160);
-  --action-color: hsl(210, 100%, 67%);
-  --highlight-color: rgb(120, 245, 245);
+  /* Foreground colors */
+  --fg-hue: 180;
+  --fg-brand: hsl(0, 0, 0);
+  --fg-dominant: hsl(var(--fg-hue), 10%, 100%);
+  --fg-hover: hsl(200, 100%, 60%);
+  --fg-ordinary: hsl(var(--fg-hue), 20%, 90%);
+  --fg-reach: hsla(var(--fg-hue), 0%, 70%);
+  --fg-separator: hsla(var(--fg-hue), 10%, 60%);
+  --fg-noise: hsla(var(--fg-hue), 5%, 60%, 70%);
+
+  /* Background colors */
+  --bg-hue: 235;
+  --bg-bottom: hsl(var(--bg-hue), 15%, 15%);
+  --bg-middle: hsl(var(--bg-hue), 15%, 20%);
+  --bg-top: hsl(var(--bg-hue), 15%, 28%);
 }
 
 body {
-  color: var(--foreground-color);
+  color: var(--fg-ordinary);
   background: linear-gradient(
       to bottom,
-      transparent,
-      var(--background-end-color)
-    )
-    var(--background-start-color);
+      hsl(var(--bg-hue), 15%, 8%) 0%,
+      var(--bg-bottom) 30%
+    );
   border-collapse: collapse;
 }
 
@@ -32,7 +35,7 @@ body {
 }
 
 .action-link:hover {
-  color: var(--action-color);
+  color: var(--fg-hover);
 }
 
 @layer utilities {

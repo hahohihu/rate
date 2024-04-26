@@ -7,8 +7,8 @@ export default async function ObjectInfo({ id, className }: { id: number, classN
     return (
         <Flex vertical className={className}>
             <Flex gap="small" align="end">
-                <h1 className="text-xl">{object.name}</h1>
-                <h2 className="text-fg2-c">({object.prod_year})</h2>
+                <h1 className="text-xl text-fg-dominant">{object.name}</h1>
+                <h2 className="text-fg-reach">({object.prod_year})</h2>
             </Flex>
         </Flex>
     );

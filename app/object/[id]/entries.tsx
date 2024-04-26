@@ -12,7 +12,7 @@ export default async function Entries({ objectId, className }: { objectId: numbe
                         <span className="text-lg" style={{ color: ratingColor(entry.rating) }}>
                             {entry.rating}
                         </span>
-                        <span className="text-fg3-c text-sm">
+                        <span className="text-fg-reach text-sm">
                             {entry.watch_date
                                 .toLocaleDateString('default', {
                                     year: 'numeric',

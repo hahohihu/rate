@@ -8,7 +8,7 @@ import { Flex } from "antd";
 
 export default function Header() {
     return (
-        <div className="h-12 bg-h1-c w-full">
+        <div className="h-12 bg-bg-top w-full">
             <Flex className="h-full max-w-5xl ml-auto mr-auto p-2" gap="middle">
                 <Link href="/" className="min-h-full w-auto">
                     <Image src={logo} alt="home" className="min-h-full min-w-max"></Image>

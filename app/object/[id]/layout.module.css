@@ -10,7 +10,7 @@
 }
 
 .add_entry {
-    border-bottom: 1px solid var(--separator-color);
+    border-bottom: 1px solid var(--fg-separator);
     width: 100%;
     text-align: center;
     margin-bottom: .5rem;
@@ -18,10 +18,10 @@
 }
 
 .entries {
-    border-top: 1px solid var(--separator-color);
+    border-top: 1px solid var(--fg-separator);
     @media not (max-width: 600px) {
         padding: 0 1rem 1rem 1rem;
-        border: 1px solid var(--separator-color);
+        border: 1px solid var(--fg-separator);
         border-radius: .25em;
     }
 }

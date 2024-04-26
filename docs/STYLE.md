@@ -26,11 +26,11 @@ These are the colors of the things I'll be reading / trying to get something out
 
 ### Ordinary: 
 	Most common, middle ground that's easily readable but not too eye-catching.
-	e.g. text, section labels, minor metadata, dividers
+	e.g. text, section labels, minor metadata
 
 ### Reach: 
 	They know if they want it, so it should be in the background.
-	e.g. dates, metadata (watch time), etc.
+	e.g. dividers, even more minor metadata
 
 ## Background Colors
 This is the color of the backgrounds of the overall page, headers, inputs, etc. Due to the choice to make ratings colored, the main background needs to be plain and relatively dark, and things above it should be lighter. These are just the same palette ordered from most to least dark. 
