@@ -1,9 +1,5 @@
-- Split up entries and objects (e.g. watching vs. movie)
-    3. Add a page for objects
-    4. Add a page for entries
-    5. Link towards those pages in other pages
-        - Diary, post-add
-    6. Relocate queries to domain-specific folders
+- Add popup to add entries (currently routes to a separate page)
+    - Then have it support edits
 - Add reviews
     1. 0 or 1 per entry
     2. New table
@@ -11,6 +7,10 @@
     4. /view/entry
     5. Click to expand in diary
     6. Far down the line: WYSIWYG editing / ability to include images
+- Implement search page
+- Breaking changes
+    - Add type (e.g. novel, manga, TV, movie, etc.)
+    - Add specificity to entry time (currenty out of order)
 - Add other-site webscraping
     - Automatically capture metadata and add object
         - mangaupdates
@@ -20,12 +20,12 @@
     - Brainstorm displaying some metadata (e.g. genre, maker, crew, etc)
     - Search other sites for media
     - Note: this precludes ever making this public since that would probably touch their target markets
-- Add type (e.g. novel, manga, TV, movie, etc.)
-- Add poster/image?
-     - Doesn't quite line up with the rest of the aesthetic, maybe omit
-- Add specificity to entry time (currenty out of order)
-- Add maker (major associated names: director, mangaka, etc.)
-- Add tags (arbitrary)
+- Non-breaking nice-to-have metadata
+    - Add poster/image?
+        - Doesn't quite line up with the rest of the aesthetic, maybe omit
+    - Add maker (major associated names: director, mangaka, etc.)
+    - Add tags (arbitrary)
+    - Add genres 
 - Have entries support segments of objects (e.g. chapters 1-50)
     1. Effectively just an associated range + unit
         - How to handle volumes + chapters?
@@ -52,6 +52,3 @@
             - Niche things & experiences won't have any image unless I upload one
     - Text-based grid won't work - too much horizontal eye movement
     - List view is still useful, esp if it adds a sidebar where I can read information
-- Rework font choices
-    - Restyle month, date, name
-- Add genres 
