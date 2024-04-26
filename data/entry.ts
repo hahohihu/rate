@@ -13,16 +13,16 @@ export async function fetchEntries() {
 
     return db.select()
         .from(entries)
-        .innerJoin(things, eq(things.id, entries.object_id))
+        .innerJoin(things, eq(things.id, entries.thing_id))
         .orderBy(desc(entries.watch_date))
         .limit(50);
 }
 
-export async function fetchEntriesForObject(objectId: number) {
+export async function fetchEntriesForObject(thing_id: number) {
     unstable_noStore();
 
     return db.query.entries.findMany({
-        where: eq(entries.object_id, objectId),
+        where: eq(entries.thing_id, thing_id),
         orderBy: [desc(entries.watch_date)]
     });
 }
@@ -31,18 +31,18 @@ const AddEntrySchema = z.object({
     rating: z.coerce.number(),
 });
 
-export async function addEntry(object_id: number, formData: FormData) {
+export async function addEntry(thing_id: number, formData: FormData) {
     const { rating } = AddEntrySchema.parse({
         rating: formData.get('rating'),
     });
 
     // todo: not handling timezones
     await sql`
-        INSERT INTO entries (object_id, watch_date, rating)
-        VALUES (${object_id}, NOW(), ${rating});
+        INSERT INTO entries (thing_id, watch_date, rating)
+        VALUES (${thing_id}, NOW(), ${rating});
     `;
 
-    // todo: navigate to object
+    // todo: navigate to thing
     revalidatePath("/");
     redirect("/");
 }

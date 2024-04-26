@@ -1,11 +1,11 @@
-import { fetchObjects } from "@/data/object";
+import { fetchThings } from "@/data/thing";
 import { AutoComplete, Input } from "antd";
 import { DefaultOptionType } from "antd/es/select";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function SearchBar({ className }: { className: string }) {
-    // Need this to dynamically display objects from DB
+    // Need this to dynamically display things from DB
     let [options, setOptions] = useState<DefaultOptionType[]>([]);
     // Need this to clear shown value on select
     let [shown, setShown] = useState('');
@@ -13,13 +13,13 @@ export default function SearchBar({ className }: { className: string }) {
     async function onEdit(value: string) {
         setShown(value);
         if (value) {
-            let objects = await fetchObjects(value);
-            setOptions(objects.map(object => {
-                let year = object.prod_year ? `(${object.prod_year})` : '';
+            let things = await fetchThings(value);
+            setOptions(things.map(thing => {
+                let year = thing.prod_year ? `(${thing.prod_year})` : '';
                 return {
-                    value: object.name,
-                    label: `${object.name} ${year}`,
-                    id: object.id
+                    value: thing.name,
+                    label: `${thing.name} ${year}`,
+                    id: thing.id
                 }
             }));
         } else {
@@ -36,13 +36,13 @@ export default function SearchBar({ className }: { className: string }) {
             value={shown}
             onSelect={(_, opt) => {
                 setShown('')
-                router.push(`/object/${opt.id}`);
+                router.push(`/thing/${opt.id}`);
             }}
             options={options}
             className={className}
         >
             <Input.Search 
-                placeholder="search objects"
+                placeholder="search things"
                 enterButton
                 variant="filled"
                 onSearch={value => {

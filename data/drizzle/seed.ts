@@ -37,7 +37,7 @@ async function seedMovies() {
         movies.map(async movie => {
             let thing = await db.insert(things).values(movie).returning( { insertedId: things.id } );
             let entry = movie as any;
-            entry.object_id = thing[0].insertedId;
+            entry.thing_id = thing[0].insertedId;
             await db.insert(entries).values(entry);
         })
     );

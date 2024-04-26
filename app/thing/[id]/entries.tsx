@@ -1,8 +1,8 @@
 import { fetchEntriesForObject } from "@/data/entry";
 import { ratingColor } from "@/lib/utility";
 
-export default async function Entries({ objectId, className }: { objectId: number, className?: string }) {
-    let entries = await fetchEntriesForObject(objectId);
+export default async function Entries({ thingId, className }: { thingId: number, className?: string }) {
+    let entries = await fetchEntriesForObject(thingId);
 
     return (
         <div className={className}>

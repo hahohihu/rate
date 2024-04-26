@@ -8,7 +8,7 @@ import { db } from "./drizzle/db";
 import { eq, ilike } from "drizzle-orm";
 import { things } from "./drizzle/schema";
 
-export async function fetchObjects(query: string) {
+export async function fetchThings(query: string) {
     unstable_noStore();
 
     return db.query.things.findMany({
@@ -17,31 +17,31 @@ export async function fetchObjects(query: string) {
     });
 }
 
-export async function getObject(id: number) {
+export async function getThing(id: number) {
     return db.query.things.findFirst({
         where: eq(things.id, id)
     });
 }
 
-const AddObjectSchema = z.object({
+const AddThingSchema = z.object({
     media_name: z.string(),
     prod_year: z.coerce.number().int(),
 });
 
-export async function addObject(formData: FormData) {
-    const { media_name, prod_year } = AddObjectSchema.parse({
+export async function addThing(formData: FormData) {
+    const { media_name, prod_year } = AddThingSchema.parse({
         media_name: formData.get('media_name'),
         prod_year: formData.get('prod_year'),
     });
 
     const res = await sql`
-        INSERT INTO objects (name, prod_year)
+        INSERT INTO things (name, prod_year)
         VALUES (${media_name}, ${prod_year})
         RETURNING id;
     `;
 
     const id = res.rows[0].id;
     // todo: navigate to /add/entry
-    redirect("/add/entry?object=" + id);
+    redirect("/add/entry?thing=" + id);
 }
 

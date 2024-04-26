@@ -10,7 +10,7 @@ export type Thing = typeof things.$inferSelect;
 
 export const entries = pgTable('entries', {
     id: serial('id').primaryKey(),
-    object_id: serial('thing_id').references(() => things.id).notNull(),
+    thing_id: serial('thing_id').references(() => things.id).notNull(),
     watch_date: timestamp('watch_date').notNull(),
     rating: real('rating').notNull()
 });

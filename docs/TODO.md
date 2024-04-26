@@ -9,11 +9,11 @@
     6. Far down the line: WYSIWYG editing / ability to include images
 - Implement search page
 - Add other-site webscraping
-    - Automatically capture metadata and add object
+    - Automatically capture metadata and add thing
         - mangaupdates
         - Letterboxd
         - YouTube
-    - Extern link for more information (part of object page)
+    - Extern link for more information (part of thing page)
     - Brainstorm displaying some metadata (e.g. genre, maker, crew, etc)
     - Search other sites for media
     - Note: this precludes ever making this public since that would probably touch their target markets
@@ -27,7 +27,7 @@
     - Add genres 
 - Add type (e.g. novel, manga, TV, movie, etc.)
     - Open question: Should this actually be a media type, or should it be bound to providers? It's just going to be filled in from the provider anyways, so converting to type early is just losing information. That also adds an ability to associate links. On the flip side, there could be multiple providers, so this should just be another added table, which also allows for inference and/or manual input.
-- Have entries support segments of objects (e.g. chapters 1-50)
+- Have entries support segments of things (e.g. chapters 1-50)
     1. Effectively just an associated range + unit
         - How to handle volumes + chapters?
             - Model as tuples of (range, unit)

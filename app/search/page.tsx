@@ -1,5 +1,5 @@
 import { Thing } from '@/data/drizzle/schema';
-import { fetchObjects } from '../../data/object';
+import { fetchThings } from '../../data/thing';
 
 export default async function Page({
   searchParams
@@ -11,7 +11,7 @@ export default async function Page({
   const query = searchParams?.name || '';
   let matches: Thing[] = [];
   if (query) {
-    matches = await fetchObjects(query);
+    matches = await fetchThings(query);
   } else {
     matches = [];
   }
