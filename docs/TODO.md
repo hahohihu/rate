@@ -1,3 +1,6 @@
+- Rework colors
+    - Figure out how to theme antd
+    - Choose a more normal dark palette
 - Add popup to add entries (currently routes to a separate page)
     - Then have it support edits
 - Add reviews
