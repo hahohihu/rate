@@ -1,12 +1,8 @@
-import { getThing } from '@/data/thing';
+import { fetchThing } from '@/data/thing';
 import { ThingTitle } from '@/ui/text';
 
 export default async function ThingInfo({ id, className }: { id: number, className?: string }) {
-    const thing = await getThing(id);
-
-    if (!thing) {
-        throw new Error(`Thing (${id}) doesn't exist`);
-    }
+    const thing = await fetchThing(id);
 
     return (
         <div className={`flex flex-col ${className}`}>

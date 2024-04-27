@@ -8,6 +8,12 @@ import { desc, eq } from 'drizzle-orm';
 import { db } from './drizzle/db';
 import { entries, things } from './drizzle/schema';
 
+export async function fetchEntry(id: number) {
+    return db.query.entries.findFirst({
+        where: eq(entries.id, id)
+    });
+}
+
 export async function fetchEntries() {
     unstable_noStore();
 

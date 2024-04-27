@@ -17,10 +17,14 @@ export async function fetchThings(query: string) {
     });
 }
 
-export async function getThing(id: number) {
-    return db.query.things.findFirst({
+export async function fetchThing(id: number) {
+    const thing = await db.query.things.findFirst({
         where: eq(things.id, id),
     });
+    if (!thing) {
+        throw new Error(`Unexpected: Thing ID (${id}) was not found`);
+    }
+    return thing;
 }
 
 const AddThingSchema = z.object({
