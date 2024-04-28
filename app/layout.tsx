@@ -27,6 +27,8 @@ export default function RootLayout({
                         colorTextQuaternary: 'var(--fg-reach)',
                         // antd doesn't work using a var here for some reason
                         colorPrimary: 'hsl(265, 50%, 50%)',
+                        colorBgBase: 'hsl(235, 15%, 20%)',
+                        colorText: 'hsl(180, 20%, 90%)'
                     },
                 }}
             >
