@@ -36,8 +36,8 @@ export function EntryAddButton({ ctx, className, children }: {
         <>
             <button className={className} onClick={openModal}>{children}</button>
             <Modal open={modalOpen} onCancel={closeModal} footer={
-                <div>
-                    <input className="rounded px-3 py-1 bg-color-brand hover:bg-color-hover duration-150 text-white" type="submit" form="entry-form" value="submit" onClick={closeModal} />
+                <div className="mt-5">
+                    <input className="rounded px-5 py-2 bg-color-brand hover:bg-color-hover duration-150 text-white font-normal" type="submit" form="entry-form" value="submit" onClick={closeModal} />
                 </div>
             }>
                 <div className="flex gap-2 items-end mb-2">
