@@ -9,6 +9,7 @@ export const things = pgTable('things', {
 });
 
 export type Thing = typeof things.$inferSelect;
+export type ThingInsert = typeof things.$inferInsert;
 
 export const entries = pgTable('entries', {
     id: serial('id').primaryKey(),
@@ -18,3 +19,4 @@ export const entries = pgTable('entries', {
 });
 
 export type Entry = typeof entries.$inferSelect;
+export type EntryInsert = typeof entries.$inferInsert;
