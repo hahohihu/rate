@@ -32,7 +32,7 @@ export function EntryAddButton({ ctx, className, children }: {
             <button className={className} onClick={openModal}>{children}</button>
             <Modal open={modalOpen} onCancel={closeModal} footer={<div>Footer</div>}>
                 <div className={className}>
-                    <div className="flex gap-2 items-end">
+                    <div className="flex gap-2 items-end mb-2">
                         <ThingTitle className="text-2xl leading-none" name={thing?.name ?? "<name>"} />
                         <span className="text-color-reach text-sm leading-none">{thing?.prod_year ?? "----"}</span>
                     </div>
