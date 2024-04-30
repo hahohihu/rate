@@ -26,6 +26,7 @@ const config: Config = {
         "color-middle": "var(--color-middle)",
         "color-top": "var(--color-top)",
         "color-fly": "var(--color-fly)",
+        "color-star": "var(--color-star)",
       }
     },
   },

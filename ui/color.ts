@@ -5,6 +5,7 @@ const COLORS = {
     bottom: 'hsl(235, 15%, 25%)',
     middle: 'hsl(235, 15%, 30%)',
     fly: 'hsl(235, 15%, 35%)',
+    star: 'hsl(235, 15%, 45%)',
 
     // fg
     brand: 'hsl(265, 50%, 50%)',

@@ -27,6 +27,7 @@ export function EntryAddButton({ ctx, className, children }: {
     };
     const closeModal = () => setOpen(false);
     const action = addEntry.bind(null, ctx.thingId);
+    const [rating, setRating] = useState(0);
 
     return (
         <>
@@ -39,12 +40,18 @@ export function EntryAddButton({ ctx, className, children }: {
                 <form action={action}>
                     <div className="select-none">
                         <label htmlFor="rating">rating</label>
-                        <input className="w-full" id="rating" type="range" min="-3" max="3" step="0.1" defaultValue="0" list="rating-values" />
-                        <datalist id="rating-values" className="flex w-full justify-between text-center">
-                            {
-                                [-3, -2, -1, 0, 1, 2, 3].map(key => (<option key={key} className="w-2 p-0" value={key}>{key}</option>))
-                            }
-                        </datalist>
+                        <div className="flex h-full">
+                            <div className='relative w-full' aria-hidden={true}>
+                                <div className="h-full w-full absolute flex justify-evenly pointer-events-none">
+                                    {[-2, -1, 0, 1, 2].map(n => (<div className="h-full w-0 border-l border-color-fly"></div>))}
+                                </div>
+                                <input className="w-full h-full" id="rating"
+                                    value={rating} onInput={e => setRating(e.target.value)}
+                                    type="range" min="-3" max="3" step="0.01" defaultValue="0"
+                                    list="rating-values" />
+                            </div>
+                            <input type="number" step=".01" className="p-1 bg-color-star w-14" value={rating} onInput={e => setRating(e.target.value)} />
+                        </div>
                     </div>
                 </form>
             </Modal>
