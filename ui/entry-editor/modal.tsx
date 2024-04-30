@@ -41,8 +41,8 @@ export function EntryAddButton({ ctx, className, children }: {
                 </div>
             }>
                 <div className="flex gap-2 items-end mb-2">
-                    <ThingTitle className="text-2xl leading-none" name={thing?.name ?? "<name>"} />
-                    <span className="text-color-reach text-sm leading-none">{thing?.prod_year ?? "----"}</span>
+                    <ThingTitle className="text-2xl leading-none" name={thing?.name ?? "name"} />
+                    <span className="text-color-reach text-sm leading-none">{thing?.prod_year ?? "year"}</span>
                 </div>
                 <form action={action} id="entry-form" className="select-none">
                     <label htmlFor="rating-num">rating</label>
