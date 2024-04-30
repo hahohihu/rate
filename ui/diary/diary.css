@@ -6,14 +6,14 @@
         td {
             padding-left: 20px;
             font-size: small;
-            color: var(--fg-reach);
+            color: var(--color-reach);
             font-weight: 200;
         }
     }
     tbody {
         tr {
-            border-top: 1px solid var(--fg-noise);
-            border-bottom: 1px solid var(--fg-noise);
+            border-top: 1px solid var(--color-noise);
+            border-bottom: 1px solid var(--color-noise);
         }
         td {
             padding: 5px 0 5px 20px;

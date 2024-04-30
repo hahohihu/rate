@@ -8,7 +8,7 @@ export default async function ThingInfo({ id, className }: { id: number, classNa
         <div className={`flex flex-col ${className}`}>
             <div className="flex gap-2 items-center">
                 <ThingTitle className="text-2xl" name={thing.name} />
-                <span className="text-fg-reach text-sm">{thing.prod_year}</span>
+                <span className="text-color-reach text-sm">{thing.prod_year}</span>
             </div>
         </div>
     );

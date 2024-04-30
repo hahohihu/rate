@@ -2,32 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* Foreground colors */
-  --fg-hue: 180;
-  --fg-brand: hsl(265, 50%, 50%);
-  --fg-dominant: hsl(var(--fg-hue), 10%, 100%);
-  --fg-hover: hsl(265, 65%, 65%);
-  --fg-ordinary: hsl(var(--fg-hue), 20%, 90%);
-  --fg-reach: hsla(var(--fg-hue), 0%, 70%);
-  --fg-separator: hsla(var(--fg-hue), 10%, 60%);
-  --fg-noise: hsla(var(--fg-hue), 5%, 60%, 70%);
-
-  /* Background colors */
-  --bg-hue: 235;
-  --bg-bottom: hsl(var(--bg-hue), 15%, 20%);
-  --bg-middle: hsl(var(--bg-hue), 15%, 20%);
-  --bg-top: hsl(var(--bg-hue), 15%, 25%);
-  --bg-fly: hsl(var(--bg-hue), 15%, 35%);
-}
-
 body {
-  color: var(--fg-ordinary);
+  color: var(--color-ordinary);
   font-weight: 300;
   background: linear-gradient(
       to bottom,
-      hsl(var(--bg-hue), 15%, 15%),
-      var(--bg-bottom)
+      var(--color-middle),
+      var(--color-bottom)
     );
   border-collapse: collapse;
 }
@@ -37,7 +18,7 @@ body {
 }
 
 .action-link:hover {
-  color: var(--fg-hover);
+  color: var(--color-hover);
 }
 
 @layer utilities {

@@ -10,16 +10,16 @@
 }
 
 .add_entry {
-    border-bottom: 1px solid var(--fg-separator);
+    border-bottom: 1px solid var(--color-separator);
     width: 100%;
     text-align: center;
     padding: .5rem;
 }
 
 .entries {
-    border-top: 1px solid var(--fg-separator);
+    border-top: 1px solid var(--color-separator);
     @media not (max-width: 600px) {
-        border: 1px solid var(--fg-separator);
+        border: 1px solid var(--color-separator);
         border-radius: .25em;
     }
 }
