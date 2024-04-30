@@ -18,7 +18,11 @@
         appearance: none;
         height: 100%;
         cursor: ew-resize;
-        background: var(--color-top);
+        background: var(--color-bottom);
+    }
+
+    input[type='range']:hover::-webkit-slider-thumb {
+        width: 2px;
     }
 
     input[type=number]::-webkit-inner-spin-button,
