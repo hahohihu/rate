@@ -44,24 +44,22 @@ export function EntryAddButton({ ctx, className, children }: {
                     <ThingTitle className="text-2xl leading-none" name={thing?.name ?? "<name>"} />
                     <span className="text-color-reach text-sm leading-none">{thing?.prod_year ?? "----"}</span>
                 </div>
-                <form action={action} id="entry-form">
-                    <div className="select-none">
-                        <label htmlFor="rating">rating</label>
-                        <div className="flex h-full">
-                            <div className='relative w-full' aria-hidden={true}>
-                                <div className="h-full w-full absolute flex justify-evenly pointer-events-none">
-                                    <div className="h-1/5 w-0 border-l border-color-fly"></div>
-                                    <div className="h-1/5 w-0 border-l border-color-fly"></div>
-                                    <div className="h-1/5 w-0 border-l border-color-fly"></div>
-                                    <div className="h-1/5 w-0 border-l border-color-fly"></div>
-                                    <div className="h-1/5 w-0 border-l border-color-fly"></div>
-                                </div>
-                                <input className="w-full h-full" value={rating} onInput={syncRating}
-                                    type="range" min="-3" max="3" step="0.01" />
+                <form action={action} id="entry-form" className="select-none">
+                    <label htmlFor="rating">rating</label>
+                    <div className="flex h-full">
+                        <div className='relative w-full' aria-hidden={true}>
+                            <div className="h-full w-full absolute flex justify-evenly pointer-events-none">
+                                <div className="h-1/5 w-0 border-l border-color-fly"></div>
+                                <div className="h-1/5 w-0 border-l border-color-fly"></div>
+                                <div className="h-1/5 w-0 border-l border-color-fly"></div>
+                                <div className="h-1/5 w-0 border-l border-color-fly"></div>
+                                <div className="h-1/5 w-0 border-l border-color-fly"></div>
                             </div>
-                            <input className="p-1 bg-color-star w-14" id="rating" name="rating" 
-                                type="number" step=".01" value={rating} onInput={syncRating}/>
+                            <input className="w-full h-full" value={rating} onInput={syncRating}
+                                type="range" min="-3" max="3" step="0.01" />
                         </div>
+                        <input className="p-1 bg-color-star w-14" id="rating" name="rating"
+                            type="number" step=".01" value={rating} onInput={syncRating} />
                     </div>
                 </form>
             </Modal>
