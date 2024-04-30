@@ -35,12 +35,16 @@ export function EntryAddButton({ ctx, className, children }: {
     return (
         <>
             <button className={className} onClick={openModal}>{children}</button>
-            <Modal open={modalOpen} onCancel={closeModal} footer={<div>Footer</div>}>
+            <Modal open={modalOpen} onCancel={closeModal} footer={
+                <div>
+                    <input className="rounded px-3 py-1 bg-color-brand hover:bg-color-hover duration-150 text-white" type="submit" form="entry-form" value="submit" onClick={closeModal} />
+                </div>
+            }>
                 <div className="flex gap-2 items-end mb-2">
                     <ThingTitle className="text-2xl leading-none" name={thing?.name ?? "<name>"} />
                     <span className="text-color-reach text-sm leading-none">{thing?.prod_year ?? "----"}</span>
                 </div>
-                <form action={action}>
+                <form action={action} id="entry-form">
                     <div className="select-none">
                         <label htmlFor="rating">rating</label>
                         <div className="flex h-full">

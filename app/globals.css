@@ -14,7 +14,7 @@ body {
 }
 
 .action-link {
-  transition: color .3s;
+  transition: color .15s;
 }
 
 .action-link:hover {

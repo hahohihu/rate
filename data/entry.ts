@@ -42,13 +42,12 @@ export async function addEntry(thing_id: number, formData: FormData) {
         rating: formData.get('rating'),
     });
 
-    // todo: not handling timezones
     await sql`
         INSERT INTO entries (thing_id, watch_date, rating)
         VALUES (${thing_id}, NOW(), ${rating});
     `;
 
-    // todo: navigate to thing
-    revalidatePath('/');
-    redirect('/');
+    const url = `/thing/${thing_id}`;
+    revalidatePath(url);
+    redirect(url);
 }
