@@ -43,7 +43,7 @@ export function EntryAddButton({ ctx, className, children }: {
                         <div className="flex h-full">
                             <div className='relative w-full' aria-hidden={true}>
                                 <div className="h-full w-full absolute flex justify-evenly pointer-events-none">
-                                    {[-2, -1, 0, 1, 2].map(n => (<div className="h-full w-0 border-l border-color-fly"></div>))}
+                                    {Array(5).fill(<div className="h-full w-0 border-l border-color-fly"></div>)}
                                 </div>
                                 <input className="w-full h-full" id="rating"
                                     value={rating} onInput={e => setRating(e.target.value)}
