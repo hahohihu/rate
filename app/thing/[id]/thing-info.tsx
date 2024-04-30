@@ -7,8 +7,8 @@ export default async function ThingInfo({ id, className }: { id: number, classNa
     return (
         <section className={`flex flex-col ${className}`}>
             <div className="flex gap-2 items-end">
-                <ThingTitle className="text-2xl" name={thing.name} />
-                <span className="text-color-reach text-sm">{thing.prod_year}</span>
+                <ThingTitle className="text-2xl leading-none" name={thing.name} />
+                <span className="text-color-reach text-sm leading-none">{thing.prod_year}</span>
             </div>
         </section>
     );
