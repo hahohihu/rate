@@ -46,11 +46,11 @@ export function EntryAddButton({ ctx, className, children }: {
                         <div className="flex h-full">
                             <div className='relative w-full' aria-hidden={true}>
                                 <div className="h-full w-full absolute flex justify-evenly pointer-events-none">
-                                    <div className="h-full w-0 border-l border-color-fly"></div>
-                                    <div className="h-full w-0 border-l border-color-fly"></div>
-                                    <div className="h-full w-0 border-l border-color-fly"></div>
-                                    <div className="h-full w-0 border-l border-color-fly"></div>
-                                    <div className="h-full w-0 border-l border-color-fly"></div>
+                                    <div className="h-1/5 w-0 border-l border-color-fly"></div>
+                                    <div className="h-1/5 w-0 border-l border-color-fly"></div>
+                                    <div className="h-1/5 w-0 border-l border-color-fly"></div>
+                                    <div className="h-1/5 w-0 border-l border-color-fly"></div>
+                                    <div className="h-1/5 w-0 border-l border-color-fly"></div>
                                 </div>
                                 <input className="w-full h-full" value={rating} onInput={syncRating}
                                     type="range" min="-3" max="3" step="0.01" />
