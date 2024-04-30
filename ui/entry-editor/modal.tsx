@@ -28,6 +28,9 @@ export function EntryAddButton({ ctx, className, children }: {
     const closeModal = () => setOpen(false);
     const action = addEntry.bind(null, ctx.thingId);
     const [rating, setRating] = useState(0);
+    function syncRating(e: React.ChangeEvent<HTMLInputElement>) {
+        setRating(Number(e.target.value));
+    }
 
     return (
         <>
@@ -45,11 +48,11 @@ export function EntryAddButton({ ctx, className, children }: {
                                 <div className="h-full w-full absolute flex justify-evenly pointer-events-none">
                                     {Array(5).fill(<div className="h-full w-0 border-l border-color-fly"></div>)}
                                 </div>
-                                <input className="w-full h-full" value={rating} onInput={e => setRating(e.target.value)}
+                                <input className="w-full h-full" value={rating} onInput={syncRating}
                                     type="range" min="-3" max="3" step="0.01" defaultValue="0" />
                             </div>
-                            <input id="rating" name="rating" type="number" step=".01"  className="p-1 bg-color-star w-14" 
-                                value={rating} onInput={e => setRating(e.target.value)} />
+                            <input className="p-1 bg-color-star w-14" id="rating" name="rating" 
+                                type="number" step=".01" value={rating} onInput={syncRating}/>
                         </div>
                     </div>
                 </form>
