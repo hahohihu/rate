@@ -1,32 +1,30 @@
-/*Chrome*/
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-    input[type='range'] {
-        overflow: hidden;
-        appearance: none;
-        background: linear-gradient(to right,
-                hsl(360, 90%, 50%),
-                white,
-                hsl(120, 90%, 50%));
-    }
+/* Chrome only */
+#rating-slider {
+    overflow: hidden;
+    appearance: none;
+    background: linear-gradient(to right,
+            hsl(360, 90%, 50%),
+            white,
+            hsl(120, 90%, 50%));
+}
 
-    input[type='range']::-webkit-slider-runnable-track {
-        height: 100%;
-    }
+#rating-slider::-webkit-slider-runnable-track {
+    height: 100%;
+}
 
-    input[type='range']::-webkit-slider-thumb {
-        width: 1px;
-        appearance: none;
-        height: 100%;
-        cursor: ew-resize;
-        background: var(--color-bottom);
-    }
+#rating-slider::-webkit-slider-thumb {
+    width: 1px;
+    appearance: none;
+    height: 100%;
+    cursor: ew-resize;
+    background: var(--color-bottom);
+}
 
-    input[type='range']:hover::-webkit-slider-thumb {
-        width: 2px;
-    }
+#rating-slider:hover::-webkit-slider-thumb {
+    width: 2px;
+}
 
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-        opacity: 1;
-    }
+#rating-num::-webkit-inner-spin-button,
+#rating-num::-webkit-outer-spin-button {
+    opacity: 1;
 }
