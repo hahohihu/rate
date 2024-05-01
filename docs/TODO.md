@@ -1,8 +1,3 @@
-- Rework colors
-    - Figure out how to theme antd
-    - Choose a more normal dark palette
-- Add popup to add entries (currently routes to a separate page)
-    - Then have it support edits
 - Add reviews
     1. 0 or 1 per entry
     2. New table
@@ -47,6 +42,7 @@
         - edge -> <empty>
         - edge LHS must be >= RHS
         - each additional edge on the left of the LHS is interpreted as a collapsed segment
+- Add entry edits
 - Brainstorm alternative space-efficient display
     - Segments probably need to leak to next row
     - Images allow for a grid and are compact

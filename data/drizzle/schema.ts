@@ -20,3 +20,12 @@ export const entries = pgTable('entries', {
 
 export type Entry = typeof entries.$inferSelect;
 export type EntryInsert = typeof entries.$inferInsert;
+
+export const reviews = pgTable('reviews', {
+    id: serial('id').primaryKey(),
+    entry_id: serial('entry_id').references(() => entries.id).notNull(),
+    text: varchar('text', { length: 8192 }).notNull()
+});
+
+export type Review = typeof entries.$inferSelect;
+export type ReviewInsert = typeof entries.$inferInsert;
