@@ -22,19 +22,19 @@ function InnerRatingSlider({ rating }: { rating: number }) {
     }
     return (<>
         {/* track */}
-        <div aria-hidden={true} className="absolute h-2 top-[66%] translate-y-[-50%] w-full rounded-full bg-color-bottom" />
+        <div aria-hidden={true} className="absolute h-2 top-[33%] translate-y-[-50%] w-full rounded-full bg-color-bottom" />
         {/* fill */}
-        <div aria-hidden={true} className="absolute h-2 top-[66%] translate-y-[-50%]" style={fillStyle} />
+        <div aria-hidden={true} className="absolute h-2 top-[33%] translate-y-[-50%]" style={fillStyle} />
         {/* tick marks */}
-        <div aria-hidden={true} className="h-3 w-full absolute top-[66%] flex justify-evenly pointer-events-none">
+        <div aria-hidden={true} className="h-3 w-full absolute top-[33%] flex justify-evenly pointer-events-none">
             {[-2, -1, 0, 1, 2].map(n => {
                 return <div key={n} className="relative -top-1 h-2 w-0 border-4 border-color-fly">
-                    <div className={`absolute w-8 -top-7 text-center -left-4 ${dmMono.className}`}>{n}</div>
+                    <div className={`absolute w-8 top-2 text-center -left-4 ${dmMono.className}`}>{n}</div>
                 </div>;
             })}
         </div>
-        <SliderThumb name="rating" className={`h-5 w-5 top-[66%] ${styles.rating_thumb}`}>
-            <StylizedRating className={"w-max absolute -top-[145%] -left-[70%] text-xs bg-color-bottom rounded px-1 py-[2px]"} rating={rating} />
+        <SliderThumb name="rating" className={`h-5 w-5 top-[33%] ${styles.rating_thumb}`}>
+            <StylizedRating className={"w-max absolute top-[120%] -left-[70%] text-xs bg-color-bottom rounded px-1 py-[2px]"} rating={rating} />
         </SliderThumb>
     </>);
 }
@@ -75,10 +75,10 @@ export function EntryAddButton({ ctx, className, children }: {
                     <ThingTitle className="text-2xl leading-none" name={thing?.name ?? "name"} />
                     <span className="text-color-reach text-sm leading-none">{thing?.prod_year ?? "year"}</span>
                 </div>
-                <form action={action} id="entry-form" className="select-none flex flex-col gap-4">
-                    <Slider minValue={-3} maxValue={3} step={.1} value={rating} onChange={setRating} className="flex flex-col w-full relative">
+                <form action={action} id="entry-form" className="select-none flex flex-col">
+                    <Slider minValue={-3} maxValue={3} step={.1} value={rating} onChange={setRating} className="flex flex-col w-full relative mb-3">
                         <Label className="w-full text-color-reach">rating</Label>
-                        <SliderTrack className="h-7 mt-3">
+                        <SliderTrack className="h-7">
                             <InnerRatingSlider rating={rating} />
                         </SliderTrack>
                     </Slider>
