@@ -23,7 +23,7 @@ export default async function Entries({ thingId, className }: { thingId: number,
                             </span>
                         </div>
                         {entry.reviews ?
-                            <div>
+                            <div className="border-l-2 border-color-noise px-2">
                                 {entry.reviews.text}
                             </div>
                             : null
