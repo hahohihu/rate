@@ -1,5 +1,6 @@
 import { fetchEntriesForThing } from '@/data/entry';
 import { ratingColor } from '@/lib/utility';
+import { StylizedRating } from '@/ui/text';
 
 export default async function Entries({ thingId, className }: { thingId: number, className?: string }) {
     const entries = await fetchEntriesForThing(thingId);
@@ -10,9 +11,7 @@ export default async function Entries({ thingId, className }: { thingId: number,
                 {entries.map((entry) => (
                     <li key={entry.entries.id}>
                         <div className="flex gap-2 items-center">
-                            <span className="text-lg" style={{ color: ratingColor(entry.entries.rating) }}>
-                                {entry.entries.rating}
-                            </span>
+                            <StylizedRating rating={entry.entries.rating} className="text-lg" />
                             <span className="text-color-reach text-sm">
                                 {entry.entries.watch_date
                                     .toLocaleDateString('default', {
