@@ -50,7 +50,7 @@ export function EntryAddButton({ ctx, className, children }: {
                     <div className="flex h-full">
                         <div className='relative w-full mt-6' aria-hidden={true}>
                             <Slider minValue={-3} maxValue={3} step={.01} value={rating} onChange={setRating} className="orientation-horizontal:grid orientation-vertical:flex grid-cols-[1fr_auto] flex-col items-center gap-2 orientation-horizontal:w-64">
-                                <SliderTrack className="h-6">
+                                <SliderTrack className="h-4">
                                     {({ state }) => {
                                         let rating = state.getThumbValue(0);
                                         let fillStyle: any = {
@@ -76,7 +76,7 @@ export function EntryAddButton({ ctx, className, children }: {
                                                 })}
                                             </div>
                                             <SliderThumb className="h-4 w-4 top-[50%] rounded-full border border-solid border-black bg-white transition dragging:bg-purple-100 outline-none focus-visible:ring-2 ring-black">
-                                                <StylizedRating className={"w-max absolute -top-[200%] -left-[100%] text-xs bg-color-bottom rounded p-1"} rating={rating} />
+                                                <StylizedRating className={"w-max absolute -top-[170%] -left-[100%] text-xs bg-color-bottom rounded px-1 py-[2px]"} rating={rating} />
                                             </SliderThumb>
                                         </>);
                                     }}
