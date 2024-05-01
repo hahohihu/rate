@@ -48,9 +48,9 @@ export function EntryAddButton({ ctx, className, children }: {
                 <form action={action} id="entry-form" className="select-none flex flex-col">
                     <label htmlFor="rating-num" className="text-center w-full text-color-reach">rating</label>
                     <div className="flex h-full">
-                        <div className='relative w-full mt-6' aria-hidden={true}>
+                        <div className='relative w-full mt-3' aria-hidden={true}>
                             <Slider minValue={-3} maxValue={3} step={.01} value={rating} onChange={setRating} className="orientation-horizontal:grid orientation-vertical:flex grid-cols-[1fr_auto] flex-col items-center gap-2 orientation-horizontal:w-64">
-                                <SliderTrack className="h-4">
+                                <SliderTrack className="h-7">
                                     {({ state }) => {
                                         let rating = state.getThumbValue(0);
                                         let fillStyle: any = {
@@ -64,18 +64,18 @@ export function EntryAddButton({ ctx, className, children }: {
                                         }
                                         return (<>
                                             {/* track */}
-                                            <div className="absolute h-2 top-[50%] translate-y-[-50%] w-full rounded-full bg-color-bottom" />
+                                            <div className="absolute h-2 top-[66%] translate-y-[-50%] w-full rounded-full bg-color-bottom" />
                                             {/* fill */}
-                                            <div className="absolute h-2 top-[50%] translate-y-[-50%]" style={fillStyle} />
+                                            <div className="absolute h-2 top-[66%] translate-y-[-50%]" style={fillStyle} />
                                             {/* tick marks */}
-                                            <div className="h-3 w-full absolute top-[50%] flex justify-evenly pointer-events-none">
+                                            <div className="h-3 w-full absolute top-[66%] flex justify-evenly pointer-events-none">
                                                 {[-2, -1, 0, 1, 2].map(n => {
                                                     return <div key={n} className="relative -top-1 h-2 w-0 border-4 border-color-fly">
                                                         <div className="absolute w-4 -top-7 text-center -left-2">{n}</div>
                                                     </div>;
                                                 })}
                                             </div>
-                                            <SliderThumb className="h-4 w-4 top-[50%] rounded-full border border-solid border-black bg-white">
+                                            <SliderThumb className="h-4 w-4 top-[66%] rounded-full border border-solid border-black bg-white">
                                                 <StylizedRating className={"w-max absolute -top-[170%] -left-[100%] text-xs bg-color-bottom rounded px-1 py-[2px]"} rating={rating} />
                                             </SliderThumb>
                                         </>);
