@@ -75,7 +75,7 @@ export function EntryAddButton({ ctx, className, children }: {
                                                     </div>;
                                                 })}
                                             </div>
-                                            <SliderThumb className="h-4 w-4 top-[50%] rounded-full border border-solid border-black bg-white transition dragging:bg-purple-100 outline-none focus-visible:ring-2 ring-black">
+                                            <SliderThumb className="h-4 w-4 top-[50%] rounded-full border border-solid border-black bg-white">
                                                 <StylizedRating className={"w-max absolute -top-[170%] -left-[100%] text-xs bg-color-bottom rounded px-1 py-[2px]"} rating={rating} />
                                             </SliderThumb>
                                         </>);
