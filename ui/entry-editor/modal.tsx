@@ -49,7 +49,7 @@ export function EntryAddButton({ ctx, className, children }: {
                     <label htmlFor="rating-num" className="text-center w-full text-color-reach">rating</label>
                     <div className="flex h-full">
                         <div className='relative w-full mt-3' aria-hidden={true}>
-                            <Slider minValue={-3} maxValue={3} step={.01} value={rating} onChange={setRating} className="orientation-horizontal:grid orientation-vertical:flex grid-cols-[1fr_auto] flex-col items-center gap-2 orientation-horizontal:w-64">
+                            <Slider minValue={-3} maxValue={3} step={.1} value={rating} onChange={setRating} className="orientation-horizontal:grid orientation-vertical:flex grid-cols-[1fr_auto] flex-col items-center gap-2 orientation-horizontal:w-64">
                                 <SliderTrack className="h-7">
                                     {({ state }) => {
                                         let rating = state.getThumbValue(0);
@@ -83,7 +83,7 @@ export function EntryAddButton({ ctx, className, children }: {
                                 </SliderTrack>
                             </Slider>
                         </div>
-                        <input className="hidden p-1 bg-color-star w-14 " id="rating-num" name="rating" type="number" step=".01" value={rating} onInput={syncRating} />
+                        <input className="hidden p-1 bg-color-star w-14 " id="rating-num" name="rating" type="number" step=".1" value={rating} onInput={syncRating} />
                     </div>
                 </form>
             </Modal>

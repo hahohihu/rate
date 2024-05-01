@@ -40,6 +40,6 @@ export function StylizedRating({ rating, className }: {
         prefix = "=";
     }
     return <span className={`${dmMono.className} ${className}`} style={{ color: ratingColor(rating) }}>
-        {prefix + rating.toFixed(2)}
+        {prefix + rating.toFixed(1)}
     </span>
 }
