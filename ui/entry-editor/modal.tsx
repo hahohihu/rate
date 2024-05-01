@@ -83,7 +83,7 @@ export function EntryAddButton({ ctx, className, children }: {
                                 </SliderTrack>
                             </Slider>
                         </div>
-                        <input className="hidden p-1 bg-color-star w-14 " id="rating-num" name="rating" type="number" step=".1" value={rating} onInput={syncRating} />
+                        <input className="hidden" id="rating-num" name="rating" type="number" step=".1" value={rating} onInput={syncRating} />
                     </div>
                 </form>
             </Modal>
