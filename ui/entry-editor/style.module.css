@@ -1,0 +1,13 @@
+.rating_thumb {
+    background-color: var(--color-ordinary);
+    border: 2px solid var(--color-fly);
+    border-radius: 50%;
+    
+    &[data-dragging] {
+        background-color: var(--color-reach);
+    }
+
+    &[data-focus-visible] {
+        outline: 2px solid var(--color-ordinary);
+    }
+}

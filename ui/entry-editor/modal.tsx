@@ -8,8 +8,9 @@ import { Form, Input, Modal } from "antd";
 import { addEntry } from "@/data/entry";
 import { Label, Slider, SliderOutput, SliderThumb, SliderTrack } from "react-aria-components";
 import { ratingColor } from "@/lib/utility";
+import styles from './style.module.css';
 
-function InnerSlider({ rating }: { rating: number }) {
+function InnerRatingSlider({ rating }: { rating: number }) {
     let fillStyle: CSSProperties = {
         width: `${100 * Math.abs(rating) / 6}%`
     };
@@ -32,9 +33,8 @@ function InnerSlider({ rating }: { rating: number }) {
                 </div>;
             })}
         </div>
-        <SliderThumb
-            className="h-4 w-4 top-[66%] rounded-full border border-solid border-black bg-white">
-            <StylizedRating className={"w-max absolute -top-[170%] -left-[100%] text-xs bg-color-bottom rounded px-1 py-[2px]"} rating={rating} />
+        <SliderThumb name="rating" className={`h-5 w-5 top-[66%] ${styles.rating_thumb}`}>
+            <StylizedRating className={"w-max absolute -top-[145%] -left-[70%] text-xs bg-color-bottom rounded px-1 py-[2px]"} rating={rating} />
         </SliderThumb>
     </>);
 }
@@ -81,7 +81,7 @@ export function EntryAddButton({ ctx, className, children }: {
                             <Slider minValue={-3} maxValue={3} step={.1} value={rating} onChange={setRating} className="flex flex-col">
                                 <Label className="text-center w-full text-color-reach">rating</Label>
                                 <SliderTrack className="h-7 mt-3">
-                                    <InnerSlider rating={rating} />
+                                    <InnerRatingSlider rating={rating} />
                                 </SliderTrack>
                             </Slider>
                         </div>
