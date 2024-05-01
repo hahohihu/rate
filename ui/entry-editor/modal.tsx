@@ -3,7 +3,7 @@ import { fetchEntry } from "@/data/entry";
 import { fetchThing } from "@/data/thing";
 import { useState } from "react";
 import { Entry, Thing } from "@/data/drizzle/schema";
-import { ThingTitle } from "../text";
+import { StylizedRating, ThingTitle } from "../text";
 import { Form, Input, Modal } from "antd";
 import { addEntry } from "@/data/entry";
 import { Label, Slider, SliderOutput, SliderThumb, SliderTrack } from "react-aria-components";
@@ -45,10 +45,10 @@ export function EntryAddButton({ ctx, className, children }: {
                     <ThingTitle className="text-2xl leading-none" name={thing?.name ?? "name"} />
                     <span className="text-color-reach text-sm leading-none">{thing?.prod_year ?? "year"}</span>
                 </div>
-                <form action={action} id="entry-form" className="select-none">
-                    <label htmlFor="rating-num">rating</label>
+                <form action={action} id="entry-form" className="select-none flex flex-col">
+                    <label htmlFor="rating-num" className="text-center w-full text-color-reach">rating</label>
                     <div className="flex h-full">
-                        <div className='relative w-full my-3' aria-hidden={true}>
+                        <div className='relative w-full my-4' aria-hidden={true}>
                             <Slider minValue={-3} maxValue={3} step={.01} value={rating} onChange={setRating} className="orientation-horizontal:grid orientation-vertical:flex grid-cols-[1fr_auto] flex-col items-center gap-2 orientation-horizontal:w-64">
                                 <SliderTrack className="h-6">
                                     {({ state }) => {
@@ -76,9 +76,7 @@ export function EntryAddButton({ ctx, className, children }: {
                                                 })}
                                             </div>
                                             <SliderThumb className="h-4 w-4 top-[50%] rounded-full border border-solid border-black bg-white transition dragging:bg-purple-100 outline-none focus-visible:ring-2 ring-black">
-                                                {/* <div className="w-8 absolute -top-[150%] -left-1">
-                                                    {rating}
-                                                </div> */}
+                                                <StylizedRating className={"w-max absolute -top-[150%] -left-[100%] text-xs"} rating={rating} />
                                             </SliderThumb>
                                         </>);
                                     }}
