@@ -1,13 +1,43 @@
 "use client";
 import { fetchEntry } from "@/data/entry";
 import { fetchThing } from "@/data/thing";
-import { useState } from "react";
+import { CSSProperties, useState } from "react";
 import { Entry, Thing } from "@/data/drizzle/schema";
 import { StylizedRating, ThingTitle, dmMono } from "../text";
 import { Form, Input, Modal } from "antd";
 import { addEntry } from "@/data/entry";
 import { Label, Slider, SliderOutput, SliderThumb, SliderTrack } from "react-aria-components";
 import { ratingColor } from "@/lib/utility";
+
+function InnerSlider({ rating }: { rating: number }) {
+    let fillStyle: CSSProperties = {
+        width: `${100 * Math.abs(rating) / 6}%`
+    };
+    fillStyle.backgroundColor = ratingColor(rating);
+    if (rating >= 0) {
+        fillStyle.left = "50%";
+    } else {
+        fillStyle.right = "50%";
+    }
+    return (<>
+        {/* track */}
+        <div aria-hidden={true} className="absolute h-2 top-[66%] translate-y-[-50%] w-full rounded-full bg-color-bottom" />
+        {/* fill */}
+        <div aria-hidden={true} className="absolute h-2 top-[66%] translate-y-[-50%]" style={fillStyle} />
+        {/* tick marks */}
+        <div aria-hidden={true} className="h-3 w-full absolute top-[66%] flex justify-evenly pointer-events-none">
+            {[-2, -1, 0, 1, 2].map(n => {
+                return <div key={n} className="relative -top-1 h-2 w-0 border-4 border-color-fly">
+                    <div className={`absolute w-8 -top-7 text-center -left-4 ${dmMono.className}`}>{n}</div>
+                </div>;
+            })}
+        </div>
+        <SliderThumb
+            className="h-4 w-4 top-[66%] rounded-full border border-solid border-black bg-white">
+            <StylizedRating className={"w-max absolute -top-[170%] -left-[100%] text-xs bg-color-bottom rounded px-1 py-[2px]"} rating={rating} />
+        </SliderThumb>
+    </>);
+}
 
 export function EntryAddButton({ ctx, className, children }: {
     ctx: {
@@ -46,40 +76,12 @@ export function EntryAddButton({ ctx, className, children }: {
                     <span className="text-color-reach text-sm leading-none">{thing?.prod_year ?? "year"}</span>
                 </div>
                 <form action={action} id="entry-form" className="select-none flex flex-col">
-                    <label htmlFor="rating-num" className="text-center w-full text-color-reach">rating</label>
                     <div className="flex h-full">
-                        <div className='relative w-full mt-3' aria-hidden={true}>
-                            <Slider minValue={-3} maxValue={3} step={.1} value={rating} onChange={setRating} className="orientation-horizontal:grid orientation-vertical:flex grid-cols-[1fr_auto] flex-col items-center gap-2 orientation-horizontal:w-64">
-                                <SliderTrack className="h-7">
-                                    {({ state }) => {
-                                        let rating = state.getThumbValue(0);
-                                        let fillStyle: any = {
-                                            width: `${100 * Math.abs(rating) / 6}%`
-                                        };
-                                        fillStyle["background-color"] = ratingColor(rating);
-                                        if (rating >= 0) {
-                                            fillStyle.left = "50%";
-                                        } else {
-                                            fillStyle.right = "50%";
-                                        }
-                                        return (<>
-                                            {/* track */}
-                                            <div className="absolute h-2 top-[66%] translate-y-[-50%] w-full rounded-full bg-color-bottom" />
-                                            {/* fill */}
-                                            <div className="absolute h-2 top-[66%] translate-y-[-50%]" style={fillStyle} />
-                                            {/* tick marks */}
-                                            <div className="h-3 w-full absolute top-[66%] flex justify-evenly pointer-events-none">
-                                                {[-2, -1, 0, 1, 2].map(n => {
-                                                    return <div key={n} className="relative -top-1 h-2 w-0 border-4 border-color-fly">
-                                                        <div className={`absolute w-8 -top-7 text-center -left-4 ${dmMono.className}`}>{n}</div>
-                                                    </div>;
-                                                })}
-                                            </div>
-                                            <SliderThumb className="h-4 w-4 top-[66%] rounded-full border border-solid border-black bg-white">
-                                                <StylizedRating className={"w-max absolute -top-[170%] -left-[100%] text-xs bg-color-bottom rounded px-1 py-[2px]"} rating={rating} />
-                                            </SliderThumb>
-                                        </>);
-                                    }}
+                        <div className='relative w-full'>
+                            <Slider minValue={-3} maxValue={3} step={.1} value={rating} onChange={setRating} className="flex flex-col">
+                                <Label className="text-center w-full text-color-reach">rating</Label>
+                                <SliderTrack className="h-7 mt-3">
+                                    <InnerSlider rating={rating} />
                                 </SliderTrack>
                             </Slider>
                         </div>
