@@ -48,7 +48,7 @@ export function EntryAddButton({ ctx, className, children }: {
                 <form action={action} id="entry-form" className="select-none flex flex-col">
                     <label htmlFor="rating-num" className="text-center w-full text-color-reach">rating</label>
                     <div className="flex h-full">
-                        <div className='relative w-full my-4' aria-hidden={true}>
+                        <div className='relative w-full mt-6' aria-hidden={true}>
                             <Slider minValue={-3} maxValue={3} step={.01} value={rating} onChange={setRating} className="orientation-horizontal:grid orientation-vertical:flex grid-cols-[1fr_auto] flex-col items-center gap-2 orientation-horizontal:w-64">
                                 <SliderTrack className="h-6">
                                     {({ state }) => {
@@ -71,12 +71,12 @@ export function EntryAddButton({ ctx, className, children }: {
                                             <div className="h-3 w-full absolute top-[50%] flex justify-evenly pointer-events-none">
                                                 {[-2, -1, 0, 1, 2].map(n => {
                                                     return <div key={n} className="relative -top-1 h-2 w-0 border-4 border-color-fly">
-                                                        <div className="absolute w-4 top-2 text-center -left-2">{n}</div>
+                                                        <div className="absolute w-4 -top-7 text-center -left-2">{n}</div>
                                                     </div>;
                                                 })}
                                             </div>
                                             <SliderThumb className="h-4 w-4 top-[50%] rounded-full border border-solid border-black bg-white transition dragging:bg-purple-100 outline-none focus-visible:ring-2 ring-black">
-                                                <StylizedRating className={"w-max absolute -top-[150%] -left-[100%] text-xs"} rating={rating} />
+                                                <StylizedRating className={"w-max absolute -top-[200%] -left-[100%] text-xs bg-color-bottom rounded p-1"} rating={rating} />
                                             </SliderThumb>
                                         </>);
                                     }}
