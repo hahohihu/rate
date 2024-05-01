@@ -6,7 +6,8 @@ import { Entry, Thing } from "@/data/drizzle/schema";
 import { ThingTitle } from "../text";
 import { Form, Input, Modal } from "antd";
 import { addEntry } from "@/data/entry";
-import './editor.css';
+import { Label, Slider, SliderOutput, SliderThumb, SliderTrack } from "react-aria-components";
+import { ratingColor } from "@/lib/utility";
 
 export function EntryAddButton({ ctx, className, children }: {
     ctx: {
@@ -27,7 +28,7 @@ export function EntryAddButton({ ctx, className, children }: {
     };
     const closeModal = () => setOpen(false);
     const action = addEntry.bind(null, ctx.thingId);
-    const [rating, setRating] = useState(0);
+    const [rating, setRating] = useState(0.5);
     function syncRating(e: React.ChangeEvent<HTMLInputElement>) {
         setRating(Number(e.target.value));
     }
@@ -47,19 +48,44 @@ export function EntryAddButton({ ctx, className, children }: {
                 <form action={action} id="entry-form" className="select-none">
                     <label htmlFor="rating-num">rating</label>
                     <div className="flex h-full">
-                        <div className='relative w-full' aria-hidden={true}>
-                            <div className="h-full w-full absolute flex justify-evenly pointer-events-none">
-                                <div className="h-1/5 w-0 border-l border-color-fly"></div>
-                                <div className="h-1/5 w-0 border-l border-color-fly"></div>
-                                <div className="h-1/5 w-0 border-l border-color-fly"></div>
-                                <div className="h-1/5 w-0 border-l border-color-fly"></div>
-                                <div className="h-1/5 w-0 border-l border-color-fly"></div>
-                            </div>
-                            <input className="w-full h-full" id="rating-slider" value={rating} onInput={syncRating}
-                                type="range" min="-3" max="3" step="0.01" />
+                        <div className='relative w-full my-3' aria-hidden={true}>
+                            <Slider minValue={-3} maxValue={3} step={.01} value={rating} onChange={setRating} className="orientation-horizontal:grid orientation-vertical:flex grid-cols-[1fr_auto] flex-col items-center gap-2 orientation-horizontal:w-64">
+                                <SliderTrack className="h-6">
+                                    {({ state }) => {
+                                        let rating = state.getThumbValue(0);
+                                        let fillStyle: any = {
+                                            width: `${100 * Math.abs(rating) / 6}%`
+                                        };
+                                        fillStyle["background-color"] = ratingColor(rating);
+                                        if (rating >= 0) {
+                                            fillStyle.left = "50%";
+                                        } else {
+                                            fillStyle.right = "50%";
+                                        }
+                                        return (<>
+                                            {/* track */}
+                                            <div className="absolute h-2 top-[50%] translate-y-[-50%] w-full rounded-full bg-color-bottom" />
+                                            {/* fill */}
+                                            <div className="absolute h-2 top-[50%] translate-y-[-50%]" style={fillStyle} />
+                                            {/* tick marks */}
+                                            <div className="h-3 w-full absolute top-[50%] flex justify-evenly pointer-events-none">
+                                                {[-2, -1, 0, 1, 2].map(n => {
+                                                    return <div key={n} className="relative -top-1 h-2 w-0 border-4 border-color-fly">
+                                                        <div className="absolute w-4 top-2 text-center -left-2">{n}</div>
+                                                    </div>;
+                                                })}
+                                            </div>
+                                            <SliderThumb className="h-4 w-4 top-[50%] rounded-full border border-solid border-black bg-white transition dragging:bg-purple-100 outline-none focus-visible:ring-2 ring-black">
+                                                {/* <div className="w-8 absolute -top-[150%] -left-1">
+                                                    {rating}
+                                                </div> */}
+                                            </SliderThumb>
+                                        </>);
+                                    }}
+                                </SliderTrack>
+                            </Slider>
                         </div>
-                        <input className="p-1 bg-color-star w-14" id="rating-num" name="rating"
-                            type="number" step=".01" value={rating} onInput={syncRating} />
+                        <input className="hidden p-1 bg-color-star w-14 " id="rating-num" name="rating" type="number" step=".01" value={rating} onInput={syncRating} />
                     </div>
                 </form>
             </Modal>
