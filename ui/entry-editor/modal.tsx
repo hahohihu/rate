@@ -75,13 +75,17 @@ export function EntryAddButton({ ctx, className, children }: {
                     <ThingTitle className="text-2xl leading-none" name={thing?.name ?? "name"} />
                     <span className="text-color-reach text-sm leading-none">{thing?.prod_year ?? "year"}</span>
                 </div>
-                <form action={action} id="entry-form" className="select-none flex flex-col">
+                <form action={action} id="entry-form" className="select-none flex flex-col gap-4">
                     <Slider minValue={-3} maxValue={3} step={.1} value={rating} onChange={setRating} className="flex flex-col w-full relative">
-                        <Label className="text-center w-full text-color-reach">rating</Label>
+                        <Label className="w-full text-color-reach">rating</Label>
                         <SliderTrack className="h-7 mt-3">
                             <InnerRatingSlider rating={rating} />
                         </SliderTrack>
                     </Slider>
+                    <div className="flex flex-col">
+                        <label htmlFor="review" className="text-color-reach">review</label>
+                        <textarea id="review" className="bg-color-bottom p-1 min-h-20"></textarea>
+                    </div>
                 </form>
             </Modal>
         </>
