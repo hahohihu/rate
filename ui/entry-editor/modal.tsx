@@ -3,7 +3,7 @@ import { fetchEntry } from "@/data/entry";
 import { fetchThing } from "@/data/thing";
 import { useState } from "react";
 import { Entry, Thing } from "@/data/drizzle/schema";
-import { StylizedRating, ThingTitle } from "../text";
+import { StylizedRating, ThingTitle, dmMono } from "../text";
 import { Form, Input, Modal } from "antd";
 import { addEntry } from "@/data/entry";
 import { Label, Slider, SliderOutput, SliderThumb, SliderTrack } from "react-aria-components";
@@ -71,7 +71,7 @@ export function EntryAddButton({ ctx, className, children }: {
                                             <div className="h-3 w-full absolute top-[66%] flex justify-evenly pointer-events-none">
                                                 {[-2, -1, 0, 1, 2].map(n => {
                                                     return <div key={n} className="relative -top-1 h-2 w-0 border-4 border-color-fly">
-                                                        <div className="absolute w-4 -top-7 text-center -left-2">{n}</div>
+                                                        <div className={`absolute w-8 -top-7 text-center -left-4 ${dmMono.className}`}>{n}</div>
                                                     </div>;
                                                 })}
                                             </div>

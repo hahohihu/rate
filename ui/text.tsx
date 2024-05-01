@@ -2,7 +2,7 @@ import { ratingColor } from '@/lib/utility';
 import Link from 'next/link';
 import { DM_Mono } from 'next/font/google';
 
-const dmMono = DM_Mono({ subsets: ['latin'], weight: "300" });
+export const dmMono = DM_Mono({ subsets: ['latin'], weight: "300" });
 
 const titleStyle = 'text-color-dominant font-normal';
 
