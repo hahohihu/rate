@@ -1,6 +1,7 @@
 import { Provider, ExternThingDescription } from '@/data/provider/interface';
 import { ProviderView } from '@/ui/provider/provider';
 import { PROVIDERS } from '@/data/provider/all';
+import { NativeSearchView } from '@/ui/provider/native';
 
 
 async function ProviderList(provider: Provider, query: string) {
@@ -25,6 +26,7 @@ export default async function Page({
 
     return (
         <main className="p-4 space-y-4">
+            <NativeSearchView query={query} />
             {PROVIDERS.map(provider => ProviderList(provider, query))}
         </main>
     );

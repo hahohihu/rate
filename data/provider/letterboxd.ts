@@ -17,7 +17,6 @@ class LetterboxdAPI {
 }
 
 export interface LetterboxdThing extends ExternThingDescription {
-    id: string;
     name: string;
     prod_year: number;
 }
@@ -28,9 +27,10 @@ export class LetterboxdProvider implements Provider {
     async searchThings(query: string): Promise<LetterboxdThing[]> {
         let matches = await LetterboxdAPI.search(query);
         return matches.map(thing => {
+            let link = thing.film.links.find((link: any) => link.type === "letterboxd");
             return {
-                id: thing.film.id,
                 name: thing.film.name,
+                url_source: link.url,
                 prod_year: thing.film.releaseYear
             }
         });

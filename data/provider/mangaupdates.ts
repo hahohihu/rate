@@ -34,6 +34,7 @@ export class MangaupdatesProvider implements Provider {
         return matches.map(thing => {
             return {
                 name: thing.record.title,
+                url_source: thing.record.url,
                 prod_year: Number(thing.record.year)
             }
         });

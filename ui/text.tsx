@@ -4,7 +4,7 @@ import { DM_Mono } from 'next/font/google';
 
 export const dmMono = DM_Mono({ subsets: ['latin'], weight: "300" });
 
-const titleStyle = 'text-color-dominant font-normal';
+export const titleStyle = 'text-color-dominant leading-none';
 
 export function ThingTitleLink({ name, thingId, className }: {
     name: string,

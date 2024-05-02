@@ -5,6 +5,7 @@ export interface ExternThings {
 
 export interface ExternThingDescription {
     name: string;
+    url_source: string;
     prod_year?: number | null;
 }
 

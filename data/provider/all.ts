@@ -6,7 +6,6 @@ import { NativeDataProvider } from "./native";
 export const PROVIDERS = [
     new LetterboxdProvider(),
     new MangaupdatesProvider(),
-    new NativeDataProvider(),
 ];
 
 const PROVIDER_MAPPING = PROVIDERS
