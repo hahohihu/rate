@@ -1,4 +1,3 @@
-- Implement search page
 - Add other-site webscraping
     - Automatically capture metadata and add thing
         - mangaupdates
