@@ -31,7 +31,7 @@ export default async function Diary() {
                         <tr key={entry.id}>
                             <td className="text-center text-sm font-extralight">{monthYear}</td>
                             <td className="text-center text-sm font-extralight">{entry.watch_date.getDate()}</td>
-                            <td><ThingTitleLink name={thing.name} thingId={entry.thing_id} className="action-link" /></td>
+                            <td className="max-w-80"><ThingTitleLink name={thing.name} thingId={entry.thing_id} className="action-link" /></td>
                             <td className="text-center text-sm font-extralight">{thing.prod_year}</td>
                             <td className="text-center font-light text-sm">
                                 <StylizedRating rating={entry.rating}/>

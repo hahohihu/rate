@@ -1,17 +1,9 @@
-- Add other-site webscraping
-    - Automatically capture metadata and add thing
-        - mangaupdates
-        - Letterboxd
-        - YouTube
-    - Extern link for more information (part of thing page)
-    - Brainstorm displaying some metadata (e.g. genre, maker, crew, etc)
-    - Search other sites for media
-    - Note: this precludes ever making this public since that would probably touch their target markets
-- Minor
-    - Line up scores in the entries view
+- Add placeholders for major components
+    - Currently takes 600-1200 ms to load usually - feels a bit slow when it's stuck on a white screen for a period of time.
 - Non-breaking nice-to-have metadata
     - Add poster/image?
         - Doesn't quite line up with the rest of the aesthetic, maybe omit
+    - Add description
     - Add maker (major associated names: director, mangaka, etc.)
     - Add tags (arbitrary)
     - Add genres 
