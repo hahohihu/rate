@@ -5,11 +5,15 @@ import { ExternThings } from "@/data/provider/interface";
 import { useRouter } from "next/navigation";
 import { titleStyle } from "../text";
 import { ProviderShell } from "./shell";
+import AddIcon from '@/public/add.svg';
+import Image from 'next/image'
+import styles from './styles.module.css';
+import { Link } from "react-aria-components";
 
 export function ProviderView({ matches }: { matches: ExternThings }) {
     const router = useRouter();
     return (
-        <ProviderShell header={matches.provider_name} expandable={matches.things.length > 5}>
+        <ProviderShell header={matches.provider_name} expandable={matches.things.length > 4}>
             {
                 matches.things.map((thing, i) => {
                     async function createNewThing() {
@@ -17,11 +21,16 @@ export function ProviderView({ matches }: { matches: ExternThings }) {
                         let id = await provider.insertThing(thing);
                         router.push(`/thing/${id}`);
                     }
-                    return <li key={i}>
-                        <div className="flex gap-2 items-end">
-                            <button className={`text-lg action-link ${titleStyle}`} onClick={() => createNewThing()}>
-                                {thing.name}
-                            </button>
+                    return <li key={i} className="border-b border-color-noise pb-2 max-w-[25rem]">
+                        <div className="flex gap-2 items-center">
+                            <button aria-label="Add new thing"
+                                className="w-[20px] h-[20px] bg-color-reach hover:bg-color-hover"
+                                style={{
+                                    maskImage: `url(${AddIcon.src})`,
+                                }}
+                                onClick={() => createNewThing()}
+                                ></button>
+                            <Link className={`text-lg action-link ${titleStyle}`} href={thing.url_source}>{thing.name}</Link>
                             <span className="text-color-reach text-sm leading-none">{thing.prod_year}</span>
                         </div>
                     </li>;
