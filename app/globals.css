@@ -5,11 +5,7 @@
 body {
   color: var(--color-ordinary);
   font-weight: 300;
-  background: linear-gradient(
-      to bottom,
-      var(--color-middle),
-      var(--color-bottom)
-    );
+  background: var(--color-bottom);
   border-collapse: collapse;
 }
 

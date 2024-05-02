@@ -2,8 +2,8 @@
 const COLORS = {
     // bg
     top: 'hsl(235, 15%, 20%)',
-    bottom: 'hsl(235, 15%, 25%)',
-    middle: 'hsl(235, 15%, 30%)',
+    bottom: 'hsl(235, 15%, 30%)',
+    middle: 'hsl(235, 15%, 25%)',
     fly: 'hsl(235, 15%, 35%)',
     star: 'hsl(235, 15%, 45%)',
 

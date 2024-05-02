@@ -8,7 +8,7 @@ export function ProviderView({ matches }: { matches: ExternThings }) {
     const router = useRouter();
     return (
         <div className="relative border p-5 min-w-40">
-            <h1 className="absolute bg-color-middle px-1 -top-3">{matches.provider_name}</h1>
+            <h1 className="absolute bg-color-bottom px-1 -top-3">{matches.provider_name}</h1>
             <ul className="space-y-3">
                 {
                     matches.things.map((thing, i) => {
