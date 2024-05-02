@@ -1,7 +1,6 @@
 import { Provider, ExternThingDescription } from "./interface";
 import { LetterboxdProvider } from "./letterboxd";
 import { MangaupdatesProvider } from "./mangaupdates";
-import { NativeDataProvider } from "./native";
 
 export const PROVIDERS = [
     new LetterboxdProvider(),

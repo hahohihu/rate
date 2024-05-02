@@ -1,3 +1,5 @@
+- Add letterboxd sync
+- Add local DB support
 - Add placeholders for major components
     - Currently takes 600-1200 ms to load usually - feels a bit slow when it's stuck on a white screen for a period of time.
 - Non-breaking nice-to-have metadata
