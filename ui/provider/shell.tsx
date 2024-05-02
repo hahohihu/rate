@@ -10,7 +10,7 @@ export function ProviderShell({ header, children }: { header: React.ReactNode, c
             <ul className={`p-5 space-y-3 overflow-hidden ${minimized ? "max-h-40" : ""}`}>
                 {children}
             </ul>
-            <button onClick={() => setMinimized(!minimized)} className="text-center w-full border-t">{minimized ? "expand" : "minimize"}</button>
+            <button onClick={() => setMinimized(!minimized)} className="text-center w-full border-t action-link">{minimized ? "expand" : "minimize"}</button>
         </div>
     );
 }
