@@ -12,7 +12,7 @@ export function ThingTitleLink({ name, thingId, className }: {
     className?: string,
 }) {
     return (
-        <Link href={`/thing/${thingId}`} className={`${className} ${titleStyle}`}>
+        <Link href={`/thing/${thingId}`} className={`action-link ${className} ${titleStyle}`}>
             {name}
         </Link>
     );
