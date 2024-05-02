@@ -19,7 +19,7 @@ export default async function Page({
 
   return (
     <main className="p-4">
-      <div className="relative border p-5">
+      <div className="relative border p-5 min-w-40">
         <h1 className="absolute bg-color-middle px-1 -top-3">native</h1>
         <ul className="space-y-3">
           {
