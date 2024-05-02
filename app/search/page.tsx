@@ -25,7 +25,7 @@ export default async function Page({
     }
 
     return (
-        <main className="p-4 space-y-8">
+        <main className="p-8 space-y-8">
             <NativeSearchView query={query} />
             {PROVIDERS.map(provider => ProviderList(provider, query))}
         </main>
