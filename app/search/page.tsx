@@ -1,6 +1,12 @@
-import { Thing } from '@/data/drizzle/schema';
-import { fetchThings } from '../../data/thing';
-import { ThingTitle, ThingTitleLink } from '@/ui/text';
+import { Provider, ExternThingDescription } from '@/data/provider/interface';
+import { ProviderView } from '@/ui/provider/provider';
+import { PROVIDERS } from '@/data/provider/all';
+
+
+async function ProviderList(provider: Provider, query: string) {
+  let things = await provider.searchThings(query);
+  return <ProviderView matches={{ provider_name: provider.name, things }} />
+}
 
 export default async function Page({
   searchParams,
@@ -10,30 +16,13 @@ export default async function Page({
   }
 }) {
   const query = searchParams?.name || '';
-  let matches: Thing[] = [];
-  if (query) {
-    matches = await fetchThings(query);
-  } else {
-    matches = [];
+  if (query == '') {
+    throw new Error("Empty search - display this a bit nicer");
   }
 
   return (
     <main className="p-4">
-      <div className="relative border p-5 min-w-40">
-        <h1 className="absolute bg-color-middle px-1 -top-3">native</h1>
-        <ul className="space-y-3">
-          {
-            matches.map(thing => {
-              return <li key={thing.id}>
-                <div className="flex gap-2 items-end">
-                  <ThingTitleLink className="text-lg leading-none" name={thing.name} thingId={thing.id} />
-                  <span className="text-color-reach text-sm leading-none">{thing.prod_year}</span>
-                </div>
-              </li>;
-            })
-          }
-        </ul>
-      </div>
+      {PROVIDERS.map(provider => ProviderList(provider, query))}
     </main>
   );
 }
