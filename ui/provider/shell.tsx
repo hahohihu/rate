@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 export function ProviderShell({ header, expandable, children }: { header: React.ReactNode, expandable: boolean, children: React.ReactNode }) {
-    let [minimized, setMinimized] = useState(!expandable);
+    let [minimized, setMinimized] = useState(expandable);
     return (
         <div className={"relative border"}>
             <h1 className="absolute bg-color-bottom px-1 -top-3 left-2">{header}</h1>
