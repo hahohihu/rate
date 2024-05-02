@@ -9,7 +9,7 @@ import { ProviderShell } from "./shell";
 export function ProviderView({ matches }: { matches: ExternThings }) {
     const router = useRouter();
     return (
-        <ProviderShell header={matches.provider_name}>
+        <ProviderShell header={matches.provider_name} expandable={matches.things.length > 5}>
             {
                 matches.things.map((thing, i) => {
                     async function createNewThing() {

@@ -8,7 +8,7 @@ export async function NativeSearchView({ query }: { query: string }) {
         return <></>;
     }
     return (
-        <ProviderShell header={"native"}>
+        <ProviderShell header={"native"} expandable={things.length > 5}>
             {
                 things.map((thing, i) => {
                     return <li key={i}>
