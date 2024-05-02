@@ -24,9 +24,10 @@ export function ProviderView({ matches }: { matches: ExternThings }) {
                     return <li key={i} className="border-b border-color-noise pb-2 max-w-[25rem]">
                         <div className="flex gap-2 items-center">
                             <button aria-label="Add new thing"
-                                className="w-[20px] h-[20px] bg-color-reach hover:bg-color-hover"
+                                className="min-w-[20px] min-h-[20px] bg-color-reach hover:bg-color-hover"
                                 style={{
                                     maskImage: `url(${AddIcon.src})`,
+                                    backgroundRepeat: "no-repeat"
                                 }}
                                 onClick={() => createNewThing()}
                                 ></button>
