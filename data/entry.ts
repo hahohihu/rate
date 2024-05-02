@@ -36,17 +36,29 @@ export async function fetchEntriesForThing(thing_id: number) {
 
 const AddEntrySchema = z.object({
     rating: z.coerce.number(),
+    review: z.string().optional(),
 });
 
 export async function addEntry(thing_id: number, formData: FormData) {
-    const { rating } = AddEntrySchema.parse({
+    const { rating, review } = AddEntrySchema.parse({
         rating: formData.get('rating'),
+        review: formData.get('review')
     });
 
-    await sql`
-        INSERT INTO entries (thing_id, watch_date, rating)
-        VALUES (${thing_id}, NOW(), ${rating});
-    `;
+    const entry = await db.insert(entries).values({
+        rating,
+        thing_id,
+        watch_date: new Date(),
+    }).returning({
+        insertedId: entries.id
+    });
+
+    if (review) {
+        await db.insert(reviews).values({
+            text: review,
+            entry_id: entry[0].insertedId
+        });
+    }
 
     const url = `/thing/${thing_id}`;
     revalidatePath(url);

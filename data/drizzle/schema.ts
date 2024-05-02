@@ -27,5 +27,5 @@ export const reviews = pgTable('reviews', {
     text: varchar('text', { length: 8192 }).notNull()
 });
 
-export type Review = typeof entries.$inferSelect;
-export type ReviewInsert = typeof entries.$inferInsert;
+export type Review = typeof reviews.$inferSelect;
+export type ReviewInsert = typeof reviews.$inferInsert;

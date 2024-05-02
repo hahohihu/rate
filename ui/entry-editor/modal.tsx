@@ -84,7 +84,7 @@ export function EntryAddButton({ ctx, className, children }: {
                     </Slider>
                     <div className="flex flex-col">
                         <label htmlFor="review" className="text-color-reach">review</label>
-                        <textarea id="review" className="bg-color-bottom p-2 min-h-[120px]"></textarea>
+                        <textarea id="review" name="review" className="bg-color-bottom p-2 min-h-[120px]"></textarea>
                     </div>
                 </form>
             </Modal>
