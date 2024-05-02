@@ -17,6 +17,7 @@
 }
 
 .entries {
+    min-width: 20vw;
     max-width: 700px;
     border-top: 1px solid var(--color-separator);
     @media not (max-width: 600px) {

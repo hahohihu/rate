@@ -9,7 +9,7 @@ export default async function Entries({ thingId, className }: { thingId: number,
         <div className={className}>
             <ul>
                 {entries.map((entry) => (
-                    <li key={entry.entries.id}>
+                    <li key={entry.entries.id} className="mb-2 border-b border-color-noise">
                         <div className="flex gap-2 items-center">
                             <StylizedRating rating={entry.entries.rating} className="text-lg" />
                             <span className="text-color-reach text-sm">
