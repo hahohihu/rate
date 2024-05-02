@@ -28,7 +28,6 @@ export class LetterboxdProvider implements Provider {
     async searchThings(query: string): Promise<LetterboxdThing[]> {
         let matches = await LetterboxdAPI.search(query);
         return matches.map(thing => {
-            console.log(thing);
             return {
                 id: thing.film.id,
                 name: thing.film.name,

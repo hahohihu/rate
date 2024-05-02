@@ -3,13 +3,15 @@
 import { getProvider } from "@/data/provider/all";
 import { ExternThings } from "@/data/provider/interface";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export function ProviderView({ matches }: { matches: ExternThings }) {
     const router = useRouter();
+    let [minimized, setMinimized] = useState(true);
     return (
-        <div className="relative border p-5 min-w-40">
-            <h1 className="absolute bg-color-bottom px-1 -top-3">{matches.provider_name}</h1>
-            <ul className="space-y-3">
+        <div className={"relative border"}>
+            <h1 className="absolute bg-color-bottom px-1 -top-3 left-2">{matches.provider_name}</h1>
+            <ul className={`p-5 space-y-3 overflow-hidden ${minimized ? "max-h-40" : ""}`}>
                 {
                     matches.things.map((thing, i) => {
                         async function createNewThing() {
@@ -28,6 +30,7 @@ export function ProviderView({ matches }: { matches: ExternThings }) {
                     })
                 }
             </ul>
+            <button onClick={() => setMinimized(!minimized)} className="text-center w-full border-t">{minimized ? "expand" : "minimize"}</button>
         </div>
     );
 }
