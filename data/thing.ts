@@ -27,24 +27,27 @@ export async function fetchThing(id: number) {
     return thing;
 }
 
+export async function addThing(name: string, year?: number): Promise<number> {
+    const res = await sql`
+        INSERT INTO things (name, prod_year)
+        VALUES (${name}, ${year})
+        RETURNING id;
+    `;
+    return res.rows[0].id;
+}
+
 const AddThingSchema = z.object({
     media_name: z.string(),
     prod_year: z.coerce.number().int(),
 });
 
-export async function addThing(formData: FormData) {
+export async function addThingForm(formData: FormData) {
     const { media_name, prod_year } = AddThingSchema.parse({
         media_name: formData.get('media_name'),
         prod_year: formData.get('prod_year'),
     });
 
-    const res = await sql`
-        INSERT INTO things (name, prod_year)
-        VALUES (${media_name}, ${prod_year})
-        RETURNING id;
-    `;
+    const id = await addThing(media_name, prod_year);
 
-    const { id } = res.rows[0];
-    // todo: navigate to /add/entry
     redirect(`/add/entry?thing=${id}`);
 }

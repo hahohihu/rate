@@ -5,6 +5,9 @@ import { PROVIDERS } from '@/data/provider/all';
 
 async function ProviderList(provider: Provider, query: string) {
   let things = await provider.searchThings(query);
+  if (things.length == 0) {
+    return <></>
+  }
   return <ProviderView matches={{ provider_name: provider.name, things }} />
 }
 
@@ -21,7 +24,7 @@ export default async function Page({
   }
 
   return (
-    <main className="p-4">
+    <main className="p-4 space-y-4">
       {PROVIDERS.map(provider => ProviderList(provider, query))}
     </main>
   );

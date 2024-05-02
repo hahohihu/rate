@@ -1,8 +1,10 @@
 import { Provider, ExternThingDescription } from "./interface";
+import { LetterboxdProvider } from "./letterboxd";
 import { NativeDataProvider } from "./native";
 
 export const PROVIDERS = [
-    new NativeDataProvider()
+    new LetterboxdProvider(),
+    new NativeDataProvider(),
 ];
 
 const PROVIDER_MAPPING = PROVIDERS
