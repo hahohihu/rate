@@ -9,7 +9,7 @@ async function ProviderList(provider: Provider, query: string) {
     if (things.length == 0) {
         return <></>
     }
-    return <ProviderView matches={{ provider_name: provider.name, things }} />
+    return <ProviderView matches={{ provider: Object.assign({}, provider), things }} />
 }
 
 export default async function Page({
@@ -25,7 +25,7 @@ export default async function Page({
     }
 
     return (
-        <main className="p-4 space-y-4">
+        <main className="p-4 space-y-8">
             <NativeSearchView query={query} />
             {PROVIDERS.map(provider => ProviderList(provider, query))}
         </main>

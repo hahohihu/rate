@@ -6,18 +6,23 @@ import { useRouter } from "next/navigation";
 import { titleStyle } from "../text";
 import { ProviderShell } from "./shell";
 import AddIcon from '@/public/add.svg';
-import Image from 'next/image'
-import styles from './styles.module.css';
 import { Link } from "react-aria-components";
+import Image from "next/image";
+
 
 export function ProviderView({ matches }: { matches: ExternThings }) {
     const router = useRouter();
     return (
-        <ProviderShell header={matches.provider_name} expandable={matches.things.length > 4}>
+        <ProviderShell header={
+            <span className="flex gap-1">
+                <Image width="24" height="24" src={matches.provider.icon} alt="" aria-hidden="true" />
+                {matches.provider.name}
+            </span>
+        } expandable={matches.things.length > 4}>
             {
                 matches.things.map((thing, i) => {
                     async function createNewThing() {
-                        let provider = getProvider(matches.provider_name);
+                        let provider = getProvider(matches.provider.name);
                         let id = await provider.insertThing(thing);
                         router.push(`/thing/${id}`);
                     }

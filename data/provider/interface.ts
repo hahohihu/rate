@@ -1,5 +1,12 @@
-export interface ExternThings {
-    provider_name: string;
+import { StaticImageData } from "next/image";
+
+interface ProviderInfo {
+    name: string;
+    icon: StaticImageData;
+}
+
+export type ExternThings = {
+    provider: ProviderInfo;
     things: ExternThingDescription[];
 }
 
@@ -9,8 +16,7 @@ export interface ExternThingDescription {
     prod_year?: number | null;
 }
 
-export interface Provider {
-    name: string;
+export interface Provider extends ProviderInfo {
     searchThings(query: string): Promise<ExternThingDescription[]>;
     insertThing(thing: ExternThingDescription): Promise<number>;
 }

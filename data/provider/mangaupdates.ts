@@ -1,5 +1,6 @@
 import { addThing } from "../thing";
 import { ExternThingDescription, Provider } from "./interface";
+import icon from '@/public/provider/mangaupdates-favicon.ico';
 
 class MangaupdatesAPI {
     static url = "https://api.mangaupdates.com/v1";
@@ -28,6 +29,7 @@ export interface MangaupdatesThing extends ExternThingDescription {
 
 export class MangaupdatesProvider implements Provider {
     name = "mangaupdates";
+    icon = icon;
 
     async searchThings(query: string): Promise<MangaupdatesThing[]> {
         let matches = await MangaupdatesAPI.search(query);
