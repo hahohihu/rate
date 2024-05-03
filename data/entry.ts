@@ -1,6 +1,5 @@
 'use server';
 
-import { sql } from '@vercel/postgres';
 import { revalidatePath, unstable_noStore } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';

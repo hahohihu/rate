@@ -1,6 +1,5 @@
 'use server';
 
-import { sql } from '@vercel/postgres';
 import { unstable_noStore } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
@@ -27,13 +26,11 @@ export async function fetchThing(id: number) {
     return thing;
 }
 
-export async function addThing(name: string, year?: number): Promise<number> {
-    const res = await sql`
-        INSERT INTO things (name, prod_year)
-        VALUES (${name}, ${year})
-        RETURNING id;
-    `;
-    return res.rows[0].id;
+export async function addThing(name: string, prod_year?: number): Promise<number> {
+    const res = await db.insert(things)
+        .values({ name, prod_year })
+        .returning({ insertedId: things.id });
+    return res[0].insertedId;
 }
 
 const AddThingSchema = z.object({
