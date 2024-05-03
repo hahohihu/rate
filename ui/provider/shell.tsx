@@ -1,13 +1,20 @@
 "use client";
 
+import { css } from "@emotion/css";
 import { useState } from "react";
+
+const hiddenChildren = css`
+    li:nth-child(n+5) {
+        display: none;
+    }
+`;
 
 export function ProviderShell({ header, expandable, children }: { header: React.ReactNode, expandable: boolean, children: React.ReactNode }) {
     let [minimized, setMinimized] = useState(expandable);
     return (
         <div className={"relative border"}>
             <h1 className="absolute bg-color-bottom px-1 -top-3 left-2">{header}</h1>
-            <ul className={`p-5 space-y-3 overflow-hidden ${minimized ? "max-h-40" : ""}`}>
+            <ul className={`p-5 space-y-3 overflow-hidden ${minimized ? hiddenChildren : ""}`}>
                 {children}
             </ul>
             {
