@@ -12,7 +12,7 @@ const hiddenChildren = css`
 export function ProviderShell({ header, expandable, children }: { header: React.ReactNode, expandable: boolean, children: React.ReactNode }) {
     let [minimized, setMinimized] = useState(expandable);
     return (
-        <div className={"relative border"}>
+        <div className={"relative border w-[400px] max-w-full"}>
             <h1 className="absolute bg-color-bottom px-1 -top-3 left-2">{header}</h1>
             <ul className={`p-5 space-y-3 overflow-hidden ${minimized ? hiddenChildren : ""}`}>
                 {children}

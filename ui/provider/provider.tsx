@@ -26,7 +26,7 @@ export function ProviderView({ matches }: { matches: ExternThings }) {
                         let id = await provider.insertThing(thing);
                         router.push(`/thing/${id}`);
                     }
-                    return <li key={i} className="border-b border-color-noise pb-2 max-w-[25rem]">
+                    return <li key={i} className="border-b border-color-noise pb-2">
                         <div className="flex gap-2 items-center">
                             <Link className={`text-lg action-link ${titleStyle}`} href={thing.url_source}>{thing.name}</Link>
                             <span className="text-color-reach text-sm leading-none">{thing.prod_year}</span>
