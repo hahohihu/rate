@@ -12,7 +12,7 @@ export async function NativeSearchView({ query }: { query: string }) {
             {
                 things.map((thing, i) => {
                     return <li key={i}>
-                        <div className="flex gap-2 items-end">
+                        <div className="flex gap-2 items-center">
                             <ThingTitleLink thingId={thing.id} name={thing.name} className="text-lg" />
                             <span className="text-color-reach text-sm leading-none">{thing.prod_year}</span>
                         </div>
