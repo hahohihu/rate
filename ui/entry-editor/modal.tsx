@@ -10,33 +10,41 @@ import { Label, Slider, SliderThumb, SliderTrack } from "react-aria-components";
 import { ratingColor } from "@/lib/utility";
 import styles from './style.module.css';
 
-function InnerRatingSlider({ rating }: { rating: number }) {
-    let fillStyle: CSSProperties = {
-        width: `${100 * Math.abs(rating) / 6}%`
-    };
-    fillStyle.backgroundColor = ratingColor(rating);
-    if (rating >= 0) {
-        fillStyle.left = "50%";
-    } else {
-        fillStyle.right = "50%";
-    }
-    return (<>
-        {/* track */}
-        <div aria-hidden={true} className="absolute h-2 top-[33%] translate-y-[-50%] w-full rounded-full bg-color-bottom" />
-        {/* fill */}
-        <div aria-hidden={true} className="absolute h-2 top-[33%] translate-y-[-50%]" style={fillStyle} />
-        {/* tick marks */}
-        <div aria-hidden={true} className="h-3 w-full absolute top-[33%] flex justify-evenly pointer-events-none">
-            {[-2, -1, 0, 1, 2].map(n => {
-                return <div key={n} className="relative -top-1 h-2 w-0 border-4 border-color-fly">
-                    <div className={`absolute w-8 top-2 text-center -left-4 ${dmMono.className}`}>{n}</div>
-                </div>;
-            })}
-        </div>
-        <SliderThumb name="rating" className={`h-5 w-5 top-[33%] ${styles.rating_thumb}`}>
-            <StylizedRating className={"w-max absolute top-[120%] -left-[70%] text-xs bg-color-bottom rounded px-1 py-[2px]"} rating={rating} />
-        </SliderThumb>
-    </>);
+function RatingSlider({ name }: { name: string }) {
+    return <Slider minValue={-3} maxValue={3} step={.1} defaultValue={0} className="flex flex-col w-full relative mb-3">
+        <Label className="w-full text-color-reach">rating</Label>
+        <SliderTrack className="h-7">
+            {(state) => {
+                let rating = state.state.values[0];
+                let fillStyle: CSSProperties = {
+                    width: `${100 * Math.abs(rating) / 6}%`
+                };
+                fillStyle.backgroundColor = ratingColor(rating);
+                if (rating >= 0) {
+                    fillStyle.left = "50%";
+                } else {
+                    fillStyle.right = "50%";
+                }
+                return (<>
+                    {/* track */}
+                    <div aria-hidden={true} className="absolute h-2 top-[33%] translate-y-[-50%] w-full rounded-full bg-color-bottom" />
+                    {/* fill */}
+                    <div aria-hidden={true} className="absolute h-2 top-[33%] translate-y-[-50%]" style={fillStyle} />
+                    {/* tick marks */}
+                    <div aria-hidden={true} className="h-3 w-full absolute top-[33%] flex justify-evenly pointer-events-none">
+                        {[-2, -1, 0, 1, 2].map(n => {
+                            return <div key={n} className="relative -top-1 h-2 w-0 border-4 border-color-fly">
+                                <div className={`absolute w-8 top-2 text-center -left-4 ${dmMono.className}`}>{n}</div>
+                            </div>;
+                        })}
+                    </div>
+                    <SliderThumb name={name} className={`h-5 w-5 top-[33%] ${styles.rating_thumb}`}>
+                        <StylizedRating className={"w-max absolute top-[120%] -left-[70%] text-xs bg-color-bottom rounded px-1 py-[2px]"} rating={rating} />
+                    </SliderThumb>
+                </>);
+            }}
+        </SliderTrack>
+    </Slider>;
 }
 
 export function EntryAddButton({ ctx, className, children }: {
@@ -58,7 +66,6 @@ export function EntryAddButton({ ctx, className, children }: {
     };
     const closeModal = () => setOpen(false);
     const action = addEntry.bind(null, ctx.thingId);
-    const [rating, setRating] = useState(0.5);
 
     return (
         <>
@@ -73,12 +80,7 @@ export function EntryAddButton({ ctx, className, children }: {
                     <span className="text-color-reach text-sm leading-none">{thing?.prod_year ?? "year"}</span>
                 </div>
                 <form action={action} id="entry-form" className="select-none flex flex-col">
-                    <Slider minValue={-3} maxValue={3} step={.1} value={rating} onChange={setRating} className="flex flex-col w-full relative mb-3">
-                        <Label className="w-full text-color-reach">rating</Label>
-                        <SliderTrack className="h-7">
-                            <InnerRatingSlider rating={rating} />
-                        </SliderTrack>
-                    </Slider>
+                    <RatingSlider name="rating" />
                     <div className="flex flex-col">
                         <label htmlFor="review" className="text-color-reach">review</label>
                         <textarea id="review" name="review" className="bg-color-bottom p-2 min-h-[120px]"></textarea>
