@@ -4,9 +4,9 @@ import { fetchThing } from "@/data/thing";
 import { CSSProperties, useState } from "react";
 import { Entry, Thing } from "@/data/drizzle/schema";
 import { StylizedRating, ThingTitle, dmMono } from "../text";
-import { Form, Input, Modal } from "antd";
+import { Modal } from "antd";
 import { addEntry } from "@/data/entry";
-import { Label, Slider, SliderOutput, SliderThumb, SliderTrack } from "react-aria-components";
+import { Label, Slider, SliderThumb, SliderTrack } from "react-aria-components";
 import { ratingColor } from "@/lib/utility";
 import styles from './style.module.css';
 
@@ -51,17 +51,14 @@ export function EntryAddButton({ ctx, className, children }: {
     const [thing, setThing] = useState<Thing | undefined>(undefined);
     const [entry, setEntry] = useState<Entry | undefined>(undefined);
     const openModal = async () => {
-        setOpen(true);
         const [thing, entry] = await Promise.all([fetchThing(ctx.thingId), ctx.entryId ? fetchEntry(ctx.entryId) : undefined]);
         setThing(thing);
         setEntry(entry);
+        setOpen(true);
     };
     const closeModal = () => setOpen(false);
     const action = addEntry.bind(null, ctx.thingId);
     const [rating, setRating] = useState(0.5);
-    function syncRating(e: React.ChangeEvent<HTMLInputElement>) {
-        setRating(Number(e.target.value));
-    }
 
     return (
         <>
