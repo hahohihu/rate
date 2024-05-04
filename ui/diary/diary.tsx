@@ -2,6 +2,7 @@ import { fetchEntries } from '../../data/entry';
 import './diary.css';
 import { StylizedRating, ThingTitleLink } from '../text';
 import { Suspense } from 'react';
+import { SkeletonLine } from '../skeleton';
 
 function DiaryHeader({ children }: { children: React.ReactNode }) {
     return <table className="diary_table">
@@ -53,16 +54,13 @@ async function DiaryInner() {
 }
 
 function DiarySkeleton() {
-    function Bit({ className }: { className?: string }) {
-        return <td><div className={`bg-color-noise rounded-full h-4 m-1 ${className}`}></div></td>;
-    }
     function Row() {
         return <tr>
-            <Bit className="w-full" />
-            <Bit className="w-full" />
-            <Bit className="w-40" />
-            <Bit className="w-full" />
-            <Bit className="w-full" />
+            <td><SkeletonLine className="w-full" /></td>
+            <td><SkeletonLine className="w-full" /></td>
+            <td><SkeletonLine className="w-40" /></td>
+            <td><SkeletonLine className="w-full" /></td>
+            <td><SkeletonLine className="w-full" /></td>
         </tr>;
     }
     return <DiaryHeader>
