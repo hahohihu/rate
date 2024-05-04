@@ -1,8 +1,5 @@
-import { drizzle } from 'drizzle-orm/vercel-postgres';
-import { sql } from '@vercel/postgres';
 import { EntryInsert, ThingInsert, entries, reviews, things } from './schema';
-
-const db = drizzle(sql);
+import { db } from './db';
 
 type ExtraFields = {
     review?: string
@@ -41,12 +38,12 @@ const movies = [
 async function seedMovies() {
     await Promise.all(
         movies.map(async (row) => {
-            const thing = await db.insert(things).values(row).returning({ insertedId: things.id });
+            const thing = await db.insert(things).values(row).returning();
             const entry = await db.insert(entries)
-                .values({ thing_id: thing[0].insertedId, ...row })
-                .returning({ insertedId: entries.id });
+                .values({ thing_id: thing[0].id, ...row })
+                .returning();
             if (row.review) {
-                await db.insert(reviews).values({ entry_id: entry[0].insertedId, text: row.review });
+                await db.insert(reviews).values({ entry_id: entry[0].id, text: row.review });
             }
         }),
     );
@@ -54,6 +51,8 @@ async function seedMovies() {
 
 async function main() {
     await seedMovies();
+    // DB stays alive otherwise and no way to close it with Drizzle
+    process.exit();
 }
 
 main();

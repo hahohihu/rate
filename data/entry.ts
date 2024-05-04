@@ -48,14 +48,12 @@ export async function addEntry(thing_id: number, formData: FormData) {
         rating,
         thing_id,
         watch_date: new Date(),
-    }).returning({
-        insertedId: entries.id
-    });
+    }).returning();
 
     if (review) {
         await db.insert(reviews).values({
             text: review,
-            entry_id: entry[0].insertedId
+            entry_id: entry[0].id
         });
     }
 

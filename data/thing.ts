@@ -29,8 +29,8 @@ export async function fetchThing(id: number) {
 export async function addThing(name: string, prod_year?: number): Promise<number> {
     const res = await db.insert(things)
         .values({ name, prod_year })
-        .returning({ insertedId: things.id });
-    return res[0].insertedId;
+        .returning();
+    return res[0].id;
 }
 
 const AddThingSchema = z.object({
