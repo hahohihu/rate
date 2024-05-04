@@ -1,10 +1,10 @@
 import {
-    pgTable, real, serial, smallint, timestamp, varchar,
+    pgTable, real, serial, smallint, text, timestamp
 } from 'drizzle-orm/pg-core';
 
 export const things = pgTable('things', {
     id: serial('id').primaryKey(),
-    name: varchar('name', { length: 256 }).notNull(),
+    name: text('name').notNull(),
     prod_year: smallint('prod_year'),
 });
 
@@ -24,7 +24,7 @@ export type EntryInsert = typeof entries.$inferInsert;
 export const reviews = pgTable('reviews', {
     id: serial('id').primaryKey(),
     entry_id: serial('entry_id').references(() => entries.id).notNull(),
-    text: varchar('text', { length: 8192 }).notNull()
+    text: text('text').notNull()
 });
 
 export type Review = typeof reviews.$inferSelect;
