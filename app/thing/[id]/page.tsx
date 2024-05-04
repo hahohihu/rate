@@ -1,5 +1,5 @@
-import ThingInfo from './thing-info';
-import Entries from './entries';
+import ThingInfo from '@/ui/thing/thing-info';
+import Entries from '@/ui/thing/entries';
 import styles from './layout.module.css';
 import { EntryAddButton } from '@/ui/entry-editor/modal';
 
