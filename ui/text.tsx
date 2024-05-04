@@ -1,6 +1,7 @@
 import { ratingColor } from '@/lib/utility';
 import Link from 'next/link';
 import { DM_Mono } from 'next/font/google';
+import { SkeletonLine } from './skeleton';
 
 export const dmMono = DM_Mono({ subsets: ['latin'], weight: "300" });
 
@@ -27,6 +28,13 @@ export function ThingTitle({ name, className }: {
             {name}
         </span>
     );
+}
+
+export function ThingTitleSkeleton() {
+    return <div className="flex">
+        <SkeletonLine className="w-40" />
+        <SkeletonLine className="w-12" />
+    </div>;
 }
 
 export function StylizedRating({ rating, className }: {

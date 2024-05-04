@@ -1,6 +1,5 @@
 import { fetchThing } from '@/data/thing';
-import { ThingTitle } from '@/ui/text';
-import { SkeletonLine } from '../skeleton';
+import { ThingTitle, ThingTitleSkeleton } from '@/ui/text';
 import { Suspense } from 'react';
 
 type Args = { id: number, className?: string };
@@ -17,10 +16,7 @@ async function ThingInfoInner({ id, className }: Args) {
 }
 
 function ThingInfoSkeleton() {
-    return <div className="flex">
-        <SkeletonLine className="w-40" />
-        <SkeletonLine className="w-12" />
-    </div>
+    return <ThingTitleSkeleton />;
 }
 
 export default function ThingInfo(args: Args) {
