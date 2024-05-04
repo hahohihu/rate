@@ -6,7 +6,6 @@ import { Suspense } from 'react';
 type Args = { id: number, className?: string };
 
 async function ThingInfoInner({ id, className }: Args) {
-    await new Promise(r => setTimeout(r, 2000));
     const thing = await fetchThing(id);
 
     return (

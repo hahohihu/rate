@@ -22,7 +22,6 @@ function DiaryHeader({ children }: { children: React.ReactNode }) {
 }
 
 async function DiaryInner() {
-    await new Promise(r => setTimeout(r, 2000));
     const entries = await fetchEntries();
     let prevMonth: number;
     return (
