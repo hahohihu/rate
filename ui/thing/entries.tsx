@@ -1,12 +1,15 @@
 import { fetchEntriesForThing } from '@/data/entry';
-import { ratingColor } from '@/lib/utility';
 import { StylizedRating } from '@/ui/text';
+import { Suspense } from 'react';
+import { SkeletonLine } from '../skeleton';
 
-export default async function Entries({ thingId, className }: { thingId: number, className?: string }) {
+type Args = { thingId: number };
+
+async function EntriesInner({ thingId }: Args) {
     const entries = await fetchEntriesForThing(thingId);
 
     return (
-        <div className={className}>
+        <div className="p-4">
             <ul>
                 {entries.map((entry) => (
                     <li key={entry.entries.id} className="mb-2 border-b border-color-noise">
@@ -32,4 +35,30 @@ export default async function Entries({ thingId, className }: { thingId: number,
             </ul>
         </div>
     );
+}
+
+function EntriesSkeleton() {
+    function Review() {
+        return <div className="flex flex-col">
+            <div className="flex">
+                <SkeletonLine className="w-10" />
+                <SkeletonLine className="w-20" />
+            </div>
+            <SkeletonLine className="ml-4 w-80"/>
+            <SkeletonLine className="ml-4 w-80"/>
+            <SkeletonLine className="ml-4 w-80"/>
+        </div>;
+    }
+
+    return <div className="p-4 flex flex-col gap-2">
+        <Review />
+        <Review />
+        <Review />
+    </div>
+}
+
+export default function Entries(args: Args) {
+    return <Suspense fallback={<EntriesSkeleton />}>
+        <EntriesInner {...args} />
+    </Suspense>
 }
