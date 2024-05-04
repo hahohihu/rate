@@ -1,8 +1,12 @@
+import { Suspense } from "react";
 import { ThingTitleLink } from "../text";
 import { ProviderShell } from "./shell";
 import { fetchThings } from "@/data/thing";
+import { SkeletonLine } from "../skeleton";
 
-export async function NativeSearchView({ query }: { query: string }) {
+type Args = { query: string };
+
+async function NativeSearchViewInner({ query }: Args) {
     let things = await fetchThings(query);
     if (things.length === 0) {
         return <></>;
@@ -16,9 +20,26 @@ export async function NativeSearchView({ query }: { query: string }) {
                             <ThingTitleLink thingId={thing.id} name={thing.name} className="text-lg" />
                             <span className="text-color-reach text-sm leading-none">{thing.prod_year}</span>
                         </div>
-                    </li>;
+                    </li>
                 })
             }
         </ProviderShell>
     );
+}
+
+function NativeViewSkeleton() {
+    return (
+        <ProviderShell header={"native"} expandable={false}>
+            <SkeletonLine/>
+            <SkeletonLine/>
+            <SkeletonLine/>
+            <SkeletonLine/>
+        </ProviderShell>
+    )
+}
+
+export function NativeSearchView(args: Args) {
+    return <Suspense fallback={<NativeViewSkeleton/>}>
+        <NativeSearchViewInner {...args} />
+    </Suspense>
 }

@@ -1,16 +1,6 @@
-import { Provider, ExternThingDescription } from '@/data/provider/interface';
-import { ProviderView } from '@/ui/provider/provider';
 import { PROVIDERS } from '@/data/provider/all';
 import { NativeSearchView } from '@/ui/provider/native';
-
-
-async function ProviderList(provider: Provider, query: string) {
-    let things = await provider.searchThings(query);
-    if (things.length == 0) {
-        return <></>
-    }
-    return <ProviderView matches={{ provider: Object.assign({}, provider), things }} />
-}
+import { ProviderList } from '@/ui/provider/extern';
 
 export default async function Page({
     searchParams,
@@ -25,9 +15,9 @@ export default async function Page({
     }
 
     return (
-        <main className="p-8 space-y-8">
+        <main className="p-8 flex flex-col gap-6">
             <NativeSearchView query={query} />
-            {PROVIDERS.map(provider => ProviderList(provider, query))}
+            {PROVIDERS.map(provider => <ProviderList provider={provider} query={query} />)}
         </main>
     );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { getProvider } from "@/data/provider/all";
-import { ExternThings } from "@/data/provider/interface";
+import { ExternThings, ProviderInfo } from "@/data/provider/interface";
 import { useRouter } from "next/navigation";
 import { titleStyle } from "../text";
 import { ProviderShell } from "./shell";
@@ -9,15 +9,18 @@ import AddIcon from '@/public/add.svg';
 import { Link } from "react-aria-components";
 import Image from "next/image";
 
+export function ProviderHeader({ providerInfo }: { providerInfo: ProviderInfo }) {
+    return <span className="flex gap-1">
+        <Image width="24" height="24" src={providerInfo.icon} alt="" aria-hidden="true" />
+        {providerInfo.name}
+    </span>;
+}
 
 export function ProviderView({ matches }: { matches: ExternThings }) {
     const router = useRouter();
     return (
         <ProviderShell header={
-            <span className="flex gap-1">
-                <Image width="24" height="24" src={matches.provider.icon} alt="" aria-hidden="true" />
-                {matches.provider.name}
-            </span>
+            <ProviderHeader providerInfo={matches.provider} />
         } expandable={matches.things.length > 4}>
             {
                 matches.things.map((thing, i) => {

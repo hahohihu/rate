@@ -1,6 +1,6 @@
 import { StaticImageData } from "next/image";
 
-interface ProviderInfo {
+export interface ProviderInfo {
     name: string;
     icon: StaticImageData;
 }
@@ -19,4 +19,8 @@ export interface ExternThingDescription {
 export interface Provider extends ProviderInfo {
     searchThings(query: string): Promise<ExternThingDescription[]>;
     insertThing(thing: ExternThingDescription): Promise<number>;
+}
+
+export function isolateProviderInfo(provider: Provider): ProviderInfo {
+    return Object.assign({}, provider);
 }
