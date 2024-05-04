@@ -30,16 +30,16 @@ async function NativeSearchViewInner({ query }: Args) {
 function NativeViewSkeleton() {
     return (
         <ProviderShell header={"native"} expandable={false}>
-            <SkeletonLine/>
-            <SkeletonLine/>
-            <SkeletonLine/>
-            <SkeletonLine/>
+            <SkeletonLine />
+            <SkeletonLine />
+            <SkeletonLine />
+            <SkeletonLine />
         </ProviderShell>
     )
 }
 
 export function NativeSearchView(args: Args) {
-    return <Suspense fallback={<NativeViewSkeleton/>}>
+    return <Suspense fallback={<NativeViewSkeleton />}>
         <NativeSearchViewInner {...args} />
     </Suspense>
 }
