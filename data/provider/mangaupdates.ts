@@ -1,5 +1,5 @@
 import { addThing } from "../thing";
-import { ExternThingDescription, Provider } from "./interface";
+import { ExternThingDescription, Provider, ProviderType } from "./interface";
 import icon from '@/public/provider/mangaupdates-favicon.ico';
 
 class MangaupdatesAPI {
@@ -28,7 +28,7 @@ export interface MangaupdatesThing extends ExternThingDescription {
 }
 
 export class MangaupdatesProvider implements Provider {
-    name = "mangaupdates";
+    type = ProviderType.mangaupdates;
     icon = icon;
 
     async searchThings(query: string): Promise<MangaupdatesThing[]> {

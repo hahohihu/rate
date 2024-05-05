@@ -1,7 +1,7 @@
 import { StaticImageData } from "next/image";
 
 export interface ProviderInfo {
-    name: string;
+    type: ProviderType;
     icon: StaticImageData;
 }
 
@@ -24,3 +24,9 @@ export interface Provider extends ProviderInfo {
 export function isolateProviderInfo(provider: Provider): ProviderInfo {
     return Object.assign({}, provider);
 }
+
+export enum ProviderType {
+    letterboxd,
+    mangaupdates,
+}
+

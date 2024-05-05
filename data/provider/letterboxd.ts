@@ -1,5 +1,5 @@
 import { addThing } from "../thing";
-import { ExternThingDescription, Provider } from "./interface";
+import { ExternThingDescription, Provider, ProviderType } from "./interface";
 import icon from '@/public/provider/letterboxd-favicon.ico';
 
 class LetterboxdAPI {
@@ -23,7 +23,7 @@ export interface LetterboxdThing extends ExternThingDescription {
 }
 
 export class LetterboxdProvider implements Provider {
-    name = "letterboxd";
+    type = ProviderType.letterboxd;
     icon = icon;
 
     async searchThings(query: string): Promise<LetterboxdThing[]> {
