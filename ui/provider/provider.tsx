@@ -1,7 +1,7 @@
 "use client";
 
 import { getProvider } from "@/data/provider/all";
-import { ExternThings, ProviderInfo, ProviderType } from "@/data/provider/interface";
+import { ExternThings, ProviderInfo } from "@/data/provider/interface";
 import { useRouter } from "next/navigation";
 import { titleStyle } from "../text";
 import { ProviderShell } from "./shell";
@@ -12,7 +12,7 @@ import Image from "next/image";
 export function ProviderHeader({ providerInfo }: { providerInfo: ProviderInfo }) {
     return <span className="flex gap-1">
         <Image width="24" height="24" src={providerInfo.icon} alt="" aria-hidden="true" />
-        {ProviderType[providerInfo.type]}
+        {providerInfo.name}
     </span>;
 }
 
@@ -25,7 +25,7 @@ export function ProviderView({ matches }: { matches: ExternThings }) {
             {
                 matches.things.map((thing, i) => {
                     async function createNewThing() {
-                        let provider = getProvider(matches.provider.type);
+                        let provider = getProvider(matches.provider.name);
                         let id = await provider.insertThing(thing);
                         router.push(`/thing/${id}`);
                     }

@@ -1,4 +1,4 @@
-import { Provider, ProviderType } from "./interface";
+import { Provider } from "./interface";
 import { LetterboxdProvider } from "./letterboxd";
 import { MangaupdatesProvider } from "./mangaupdates";
 
@@ -7,17 +7,15 @@ export const PROVIDERS = [
     new MangaupdatesProvider(),
 ];
 
-type ProviderMap = { [type in ProviderType]: Provider };
-
-const PROVIDER_MAPPING: ProviderMap = PROVIDERS
+const PROVIDER_MAPPING = PROVIDERS
     .reduce((
-        map: { [type in ProviderType]?: Provider },
+        map: { [type: string]: Provider },
         el: Provider
     ) => {
-        map[el.type] = el;
+        map[el.name] = el;
         return map;
-    }, {}) as ProviderMap;
+    }, {});
 
-export function getProvider(providerName: ProviderType) {
+export function getProvider(providerName: string) {
     return PROVIDER_MAPPING[providerName];
 }

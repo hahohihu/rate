@@ -1,4 +1,5 @@
 import {
+    pgEnum,
     pgTable, real, serial, smallint, text, timestamp
 } from 'drizzle-orm/pg-core';
 
@@ -29,3 +30,16 @@ export const reviews = pgTable('reviews', {
 
 export type Review = typeof reviews.$inferSelect;
 export type ReviewInsert = typeof reviews.$inferInsert;
+
+export const providerTypeStrings = ['letterboxd', 'mangaupdates'] as const;
+export const providerTypeEnum = pgEnum('provider_type', providerTypeStrings);
+
+export const thingProviders = pgTable('thing_providers', {
+    id: serial('id').primaryKey(),
+    thing_id: serial('thing_id').references(() => things.id).notNull(),
+    provider_type: providerTypeEnum('provider_type').notNull(),
+    source_url: text('source_url').notNull(),
+});
+
+export type ThingProvider = typeof thingProviders.$inferSelect;
+export type ThingProviderInsert = typeof thingProviders.$inferInsert;

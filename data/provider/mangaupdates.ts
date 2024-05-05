@@ -1,5 +1,4 @@
-import { addThing } from "../thing";
-import { ExternThingDescription, Provider, ProviderType } from "./interface";
+import { ExternThingDescription, Provider, ProviderTypeEnum, insertThingGeneric } from "./interface";
 import icon from '@/public/provider/mangaupdates-favicon.ico';
 
 class MangaupdatesAPI {
@@ -23,12 +22,12 @@ class MangaupdatesAPI {
 }
 
 export interface MangaupdatesThing extends ExternThingDescription {
-    name: string;
+    name: ProviderTypeEnum;
     prod_year: number;
 }
 
 export class MangaupdatesProvider implements Provider {
-    type = ProviderType.mangaupdates;
+    name = "mangaupdates" as const;
     icon = icon;
 
     async searchThings(query: string): Promise<MangaupdatesThing[]> {
@@ -42,7 +41,7 @@ export class MangaupdatesProvider implements Provider {
         });
     }
 
-    async insertThing(thing: MangaupdatesThing) {
-        return await addThing(thing.name, thing.prod_year);
+    async insertThing(thing: MangaupdatesThing): Promise<number> {
+        return await insertThingGeneric(this, thing);
     }
 }

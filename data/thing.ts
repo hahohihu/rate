@@ -5,12 +5,12 @@ import { redirect } from 'next/navigation';
 import { z } from 'zod';
 import { eq, ilike } from 'drizzle-orm';
 import { db } from './drizzle/db';
-import { things } from './drizzle/schema';
+import { ThingProviderInsert, thingProviders, things } from './drizzle/schema';
 
 export async function fetchThings(query: string) {
     unstable_noStore();
 
-    return db.query.things.findMany({
+    return await db.query.things.findMany({
         limit: 25,
         where: ilike(things.name, `%${query}%`),
     });
@@ -26,7 +26,14 @@ export async function fetchThing(id: number) {
     return thing;
 }
 
-export async function addThing(name: string, prod_year?: number): Promise<number> {
+export async function fetchThingProviders(thing_id: number) {
+    return await db.query.thingProviders.findMany({
+        where: eq(thingProviders.thing_id, thing_id)
+    });
+}
+
+
+export async function addThing(name: string, prod_year?: number | null): Promise<number> {
     const res = await db.insert(things)
         .values({ name, prod_year })
         .returning();
@@ -48,3 +55,8 @@ export async function addThingForm(formData: FormData) {
 
     redirect(`/add/entry?thing=${id}`);
 }
+
+export async function addThingProvider(data: ThingProviderInsert) {
+    await db.insert(thingProviders).values(data);
+}
+
