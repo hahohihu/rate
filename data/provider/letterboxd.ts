@@ -16,16 +16,11 @@ class LetterboxdAPI {
     }
 }
 
-export interface LetterboxdThing extends ExternThingDescription {
-    name: string;
-    prod_year: number;
-}
-
 export class LetterboxdProvider implements Provider {
     name = "letterboxd" as const;
     icon = icon;
 
-    async searchThings(query: string): Promise<LetterboxdThing[]> {
+    async searchThings(query: string): Promise<ExternThingDescription[]> {
         let matches = await LetterboxdAPI.search(query);
         return matches.map(thing => {
             let link = thing.film.links.find((link: any) => link.type === "letterboxd");
@@ -37,7 +32,7 @@ export class LetterboxdProvider implements Provider {
         });
     }
 
-    async insertThing(thing: LetterboxdThing): Promise<number> {
+    async insertThing(thing: ExternThingDescription): Promise<number> {
         return await insertThingGeneric(this, thing);
     }
 }

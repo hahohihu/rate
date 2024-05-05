@@ -7,11 +7,6 @@ export interface ProviderInfo {
     icon: StaticImageData;
 }
 
-export type ExternThings = {
-    provider: ProviderInfo;
-    things: ExternThingDescription[];
-}
-
 export interface ExternThingDescription {
     name: string;
     url_source: string;

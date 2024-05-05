@@ -21,16 +21,11 @@ class MangaupdatesAPI {
     }
 }
 
-export interface MangaupdatesThing extends ExternThingDescription {
-    name: ProviderTypeEnum;
-    prod_year: number;
-}
-
 export class MangaupdatesProvider implements Provider {
     name = "mangaupdates" as const;
     icon = icon;
 
-    async searchThings(query: string): Promise<MangaupdatesThing[]> {
+    async searchThings(query: string): Promise<ExternThingDescription[]> {
         let matches = await MangaupdatesAPI.search(query);
         return matches.map(thing => {
             return {
@@ -41,7 +36,7 @@ export class MangaupdatesProvider implements Provider {
         });
     }
 
-    async insertThing(thing: MangaupdatesThing): Promise<number> {
+    async insertThing(thing: ExternThingDescription): Promise<number> {
         return await insertThingGeneric(this, thing);
     }
 }
