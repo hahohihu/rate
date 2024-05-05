@@ -7,6 +7,7 @@ export const things = pgTable('things', {
     id: serial('id').primaryKey(),
     name: text('name').notNull(),
     prod_year: smallint('prod_year'),
+    poster_url: text('poster_url')
 });
 
 export type Thing = typeof things.$inferSelect;

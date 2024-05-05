@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { eq, ilike } from 'drizzle-orm';
 import { db } from './drizzle/db';
 import { ThingProviderInsert, thingProviders, things } from './drizzle/schema';
+import { ExternThingDescription } from './provider/interface';
 
 export async function fetchThings(query: string) {
     unstable_noStore();
@@ -33,9 +34,17 @@ export async function fetchThingProviders(thing_id: number) {
 }
 
 
-export async function addThing(name: string, prod_year?: number | null): Promise<number> {
+export async function addThing(thing: {
+    name: string;
+    poster_url?: string;
+    prod_year?: number;
+}): Promise<number> {
     const res = await db.insert(things)
-        .values({ name, prod_year })
+        .values({
+            name: thing.name,
+            prod_year: thing.prod_year,
+            poster_url: thing.poster_url
+        })
         .returning();
     return res[0].id;
 }
@@ -51,7 +60,7 @@ export async function addThingForm(formData: FormData) {
         prod_year: formData.get('prod_year'),
     });
 
-    const id = await addThing(media_name, prod_year);
+    const id = await addThing({ prod_year, name: media_name });
 
     redirect(`/add/entry?thing=${id}`);
 }

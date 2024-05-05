@@ -1,4 +1,4 @@
-import { ExternThingDescription, Provider, ProviderTypeEnum, insertThingGeneric } from "./interface";
+import { ExternThingDescription, Provider } from "./interface";
 import icon from '@/public/provider/mangaupdates-favicon.ico';
 
 class MangaupdatesAPI {
@@ -21,7 +21,7 @@ class MangaupdatesAPI {
     }
 }
 
-export class MangaupdatesProvider implements Provider {
+export class MangaupdatesProvider extends Provider {
     name = "mangaupdates" as const;
     icon = icon;
 
@@ -31,12 +31,9 @@ export class MangaupdatesProvider implements Provider {
             return {
                 name: thing.record.title,
                 url_source: thing.record.url,
+                poster_url: thing.record.image.url.original,
                 prod_year: Number(thing.record.year)
             }
         });
-    }
-
-    async insertThing(thing: ExternThingDescription): Promise<number> {
-        return await insertThingGeneric(this, thing);
     }
 }

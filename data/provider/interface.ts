@@ -7,29 +7,38 @@ export interface ProviderInfo {
     icon: StaticImageData;
 }
 
+export type ExternThings = {
+    provider: ProviderInfo;
+    things: ExternThingDescription[];
+}
+
 export interface ExternThingDescription {
     name: string;
     url_source: string;
-    prod_year?: number | null;
+    poster_url?: string;
+    prod_year?: number;
 }
 
-export interface Provider extends ProviderInfo {
-    searchThings(query: string): Promise<ExternThingDescription[]>;
-    insertThing(thing: ExternThingDescription): Promise<number>;
-}
+export abstract class Provider implements ProviderInfo {
+    abstract name: ProviderTypeEnum;
+    abstract icon: StaticImageData;
 
-export function isolateProviderInfo(provider: Provider): ProviderInfo {
-    return Object.assign({}, provider);
-}
+    abstract searchThings(query: string): Promise<ExternThingDescription[]>;
+    async insertThing(thing: ExternThingDescription): Promise<number> {
+        console.log(thing);
+        let thing_id = await addThing(thing);
+        console.log(thing_id);
+        await addThingProvider({
+            thing_id,
+            provider_type: this.name,
+            source_url: thing.url_source,
+        });
+        return thing_id;
+    }
 
-export async function insertThingGeneric(provider: Provider, thing: ExternThingDescription) {
-    let thing_id = await addThing(thing.name, thing.prod_year);
-    await addThingProvider({
-        thing_id,
-        provider_type: provider.name,
-        source_url: thing.url_source,
-    })
-    return thing_id;
+    providerInfo(): ProviderInfo {
+        return Object.assign({}, this);
+    }
 }
 
 export type ProviderTypeEnum = typeof providerTypeStrings[number];

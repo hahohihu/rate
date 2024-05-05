@@ -11,7 +11,12 @@ async function ThingInfoInner({ id, className }: Args) {
     const [thing, providers] = await Promise.all([fetchThing(id), fetchThingProviders(id)]);
 
     return (
-        <section className="flex flex-col gap-2">
+        <section className="flex flex-col gap-2 items-center">
+            {
+                thing.poster_url ?
+                    <img src={thing.poster_url!} alt="" className="max-h-60" aria-hidden={true} /> :
+                    <div className="bg-color-noise rounded h-[200px] w-[150px] m-1" />
+            }
             <div className="flex gap-2 items-end">
                 <ThingTitle className="text-2xl leading-none max-w-[400px]" name={thing.name} />
                 <span className="text-color-reach text-sm leading-none">{thing.prod_year}</span>

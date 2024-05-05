@@ -1,4 +1,4 @@
-import { Provider, ProviderInfo, isolateProviderInfo } from "@/data/provider/interface";
+import { Provider, ProviderInfo } from "@/data/provider/interface";
 import { ProviderHeader, ProviderView } from "./provider";
 import { Suspense } from "react";
 import { ProviderShell } from "./shell";
@@ -11,7 +11,7 @@ export async function ProviderListInner({ provider, query }: Args) {
     if (things.length == 0) {
         return <></>
     }
-    return <ProviderView matches={{ provider: isolateProviderInfo(provider), things }} />
+    return <ProviderView matches={{ provider: provider.providerInfo(), things }} />
 }
 
 function ExternViewSkeleton({ providerInfo }: { providerInfo: ProviderInfo }) {
@@ -26,7 +26,7 @@ function ExternViewSkeleton({ providerInfo }: { providerInfo: ProviderInfo }) {
 }
 
 export function ProviderList(args: Args) {
-    return <Suspense fallback={<ExternViewSkeleton providerInfo={isolateProviderInfo(args.provider)}/>}>
+    return <Suspense fallback={<ExternViewSkeleton providerInfo={args.provider.providerInfo()}/>}>
         <ProviderListInner {...args}/>
     </Suspense>
 }

@@ -1,4 +1,4 @@
-import { ExternThingDescription, Provider, insertThingGeneric } from "./interface";
+import { ExternThingDescription, Provider } from "./interface";
 import icon from '@/public/provider/letterboxd-favicon.ico';
 
 class LetterboxdAPI {
@@ -16,7 +16,7 @@ class LetterboxdAPI {
     }
 }
 
-export class LetterboxdProvider implements Provider {
+export class LetterboxdProvider extends Provider {
     name = "letterboxd" as const;
     icon = icon;
 
@@ -24,15 +24,13 @@ export class LetterboxdProvider implements Provider {
         let matches = await LetterboxdAPI.search(query);
         return matches.map(thing => {
             let link = thing.film.links.find((link: any) => link.type === "letterboxd");
+            let poster_url = thing.film.poster?.sizes.find((poster: any) => poster.width >= 150 && poster.width <= 300).url;
             return {
                 name: thing.film.name,
                 url_source: link.url,
+                poster_url,
                 prod_year: thing.film.releaseYear
             }
         });
-    }
-
-    async insertThing(thing: ExternThingDescription): Promise<number> {
-        return await insertThingGeneric(this, thing);
     }
 }
