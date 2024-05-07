@@ -25,9 +25,7 @@ export abstract class Provider implements ProviderInfo {
 
     abstract searchThings(query: string): Promise<ExternThingDescription[]>;
     async insertThing(thing: ExternThingDescription): Promise<number> {
-        console.log(thing);
         let thing_id = await addThing(thing);
-        console.log(thing_id);
         await addThingProvider({
             thing_id,
             provider_type: this.name,
