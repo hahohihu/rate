@@ -10,6 +10,8 @@ export const { auth, signIn, signOut } = NextAuth({
             const creds = z
                 .object({ password: z.string() })
                 .safeParse(credentials);
+            // Best practice is to hash this, but here it's my own randomly generated password
+            // that I don't use anywhere else, and if they've compromised my .env file, I'm already pwned
             if (creds.data?.password == process.env.ADMIN_PASSWORD) {
                 return { id: "admin", name: "admin" };
             } else {
