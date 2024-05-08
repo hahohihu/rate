@@ -18,7 +18,7 @@ export default function LoginPage() {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
 
   return (
-    <main className="flex items-center justify-center md:h-screen">
+    <main className="flex items-center justify-center h-full my-auto">
       <form action={dispatch}>
         <label
           className="mb-1 block text-xs font-medium text-color-reach"
