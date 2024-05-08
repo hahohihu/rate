@@ -44,6 +44,8 @@ export async function addEntry(thing_id: number, formData: FormData) {
         review: formData.get('review')
     });
 
+    console.debug(`Adding entry for thing: ${thing_id}, rating: ${rating}, review: ${review}`)
+
     const entry = await db.insert(entries).values({
         rating,
         thing_id,
