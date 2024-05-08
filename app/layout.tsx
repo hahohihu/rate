@@ -6,6 +6,7 @@ import { ConfigProvider } from 'antd';
 import Header from '@/ui/header/header';
 import COLORS from '@/ui/color';
 import { CSSProperties } from 'react';
+import { auth } from '@/auth';
 
 const dmSans = DM_Sans({ subsets: ['latin'] });
 
@@ -18,11 +19,12 @@ interface CSSVars extends CSSProperties {
     [key: `--${string}`]: string | number
 }
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
+    const session = await auth();
     let css: CSSVars = {};
     for (const [key, value] of Object.entries(COLORS)) {
         css[`--color-${key}`] = value;
@@ -43,7 +45,7 @@ export default function RootLayout({
             >
                 <AntdRegistry>
                     <body className={`${dmSans.className} min-h-screen flex flex-col items-center`}>
-                        <Header />
+                        {session?.user && <Header />}
                         {children}
                     </body>
                 </AntdRegistry>
