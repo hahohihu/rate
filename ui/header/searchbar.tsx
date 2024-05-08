@@ -1,3 +1,5 @@
+"use client";
+
 import { AutoComplete, Input } from 'antd';
 import { DefaultOptionType } from 'antd/es/select';
 import { useRouter } from 'next/navigation';
