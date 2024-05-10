@@ -15,7 +15,7 @@ export default async function Page({
     }
 
     return (
-        <main className="m-8 flex flex-col gap-6">
+        <main className="mt-8 md:m-8 flex flex-col gap-6">
             <NativeSearchView query={query} />
             {PROVIDERS.map(provider => <ProviderList key={provider.name} provider={provider} query={query} />)}
         </main>
