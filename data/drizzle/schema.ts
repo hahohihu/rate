@@ -22,7 +22,7 @@ export const things = pgTable('things', {
     name: text('name').notNull(),
     prod_year: smallint('prod_year'),
     poster_url: text('poster_url'),
-    type: thingTypeEnum('type').notNull(),
+    type: thingTypeEnum('type').notNull().default('other'),
 });
 
 export type Thing = typeof things.$inferSelect;
