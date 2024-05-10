@@ -9,7 +9,7 @@ const hiddenChildren = css`
     }
 `;
 
-export function ProviderShell({ header, expandable, children, id }: { header: React.ReactNode, expandable: boolean, children: React.ReactNode, id: string }) {
+export function ProviderShell({ header, expandable, children, id }: { header: React.ReactNode, expandable: boolean, children: React.ReactNode, id?: string }) {
     let [minimized, setMinimized] = useState(expandable);
     return (
         <div className={"relative border-y sm:border w-[100vw] sm:w-[400px]"} id={id}>

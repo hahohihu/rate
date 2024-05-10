@@ -12,7 +12,7 @@ async function NativeSearchViewInner({ query }: Args) {
         return <></>;
     }
     return (
-        <ProviderShell header={"native"} expandable={things.length > 5}>
+        <ProviderShell header={"native"} expandable={things.length > 5} id="provider-native">
             {
                 things.map((thing, i) => {
                     return <li key={i}>
@@ -29,7 +29,7 @@ async function NativeSearchViewInner({ query }: Args) {
 
 function NativeViewSkeleton() {
     return (
-        <ProviderShell header={"native"} expandable={false} id="provider-native">
+        <ProviderShell header={"native"} expandable={false}>
             <SkeletonLine />
             <SkeletonLine />
             <SkeletonLine />
