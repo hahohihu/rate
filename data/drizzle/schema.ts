@@ -18,19 +18,11 @@ export const entries = pgTable('entries', {
     thing_id: serial('thing_id').references(() => things.id).notNull(),
     watch_date: timestamp('watch_date').notNull(),
     rating: real('rating').notNull(),
+    review: text('review'),
 });
 
 export type Entry = typeof entries.$inferSelect;
 export type EntryInsert = typeof entries.$inferInsert;
-
-export const reviews = pgTable('reviews', {
-    id: serial('id').primaryKey(),
-    entry_id: serial('entry_id').references(() => entries.id).notNull(),
-    text: text('text').notNull()
-});
-
-export type Review = typeof reviews.$inferSelect;
-export type ReviewInsert = typeof reviews.$inferInsert;
 
 export const providerTypeStrings = ['letterboxd', 'mangaupdates'] as const;
 export const providerTypeEnum = pgEnum('provider_type', providerTypeStrings);

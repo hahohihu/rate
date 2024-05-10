@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 import { z } from 'zod';
 import { desc, eq } from 'drizzle-orm';
 import { db } from './drizzle/db';
-import { entries, reviews, things } from './drizzle/schema';
+import { entries, things } from './drizzle/schema';
 
 export async function fetchEntry(id: number) {
     return db.query.entries.findFirst({
@@ -29,7 +29,6 @@ export async function fetchEntriesForThing(thing_id: number) {
     return db.select()
         .from(entries)
         .where(eq(entries.thing_id, thing_id))
-        .leftJoin(reviews, eq(entries.id, reviews.entry_id))
         .orderBy(desc(entries.watch_date));
 }
 
@@ -49,15 +48,9 @@ export async function addEntry(thing_id: number, formData: FormData) {
     const entry = await db.insert(entries).values({
         rating,
         thing_id,
+        review,
         watch_date: new Date(),
     }).returning();
-
-    if (review) {
-        await db.insert(reviews).values({
-            text: review,
-            entry_id: entry[0].id
-        });
-    }
 
     const url = `/thing/${thing_id}`;
     revalidatePath(url);

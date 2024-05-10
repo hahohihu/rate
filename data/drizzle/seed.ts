@@ -1,4 +1,4 @@
-import { EntryInsert, ThingInsert, entries, reviews, things } from './schema';
+import { EntryInsert, ThingInsert, entries, things } from './schema';
 import { db } from './db';
 
 type ExtraFields = {
@@ -42,9 +42,6 @@ async function seedMovies() {
             const entry = await db.insert(entries)
                 .values({ thing_id: thing[0].id, ...row })
                 .returning();
-            if (row.review) {
-                await db.insert(reviews).values({ entry_id: entry[0].id, text: row.review });
-            }
         }),
     );
 }
