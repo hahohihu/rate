@@ -29,6 +29,8 @@ export class LetterboxdProvider extends Provider {
                 name: thing.film.name,
                 url_source: link.url,
                 poster_url,
+                // this is wrong since letterboxd also includes TV series, but they don't supply that data
+                type: "movie",
                 prod_year: thing.film.releaseYear
             }
         });

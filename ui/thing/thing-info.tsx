@@ -17,22 +17,27 @@ async function ThingInfoInner({ id, className }: Args) {
                     <img src={thing.poster_url!} alt="" className="max-h-60" aria-hidden={true} /> :
                     <div className="bg-color-noise rounded h-[200px] w-[150px] m-1" />
             }
-            <div className="flex gap-2 items-end">
+            <div className="flex gap-2 items-center">
                 <ThingTitle className="text-2xl leading-none max-w-[400px]" name={thing.name} />
                 <span className="text-color-reach text-sm leading-none">{thing.prod_year}</span>
             </div>
-            <ul>
-                {
-                    providers.map(thingProvider => {
-                        let provider = getProvider(thingProvider.provider_type);
-                        return <li key={thingProvider.id} className="flex">
-                            <Link href={thingProvider.source_url} className="hover:brightness-125">
-                                <Image src={provider.icon} alt={thingProvider.provider_type} />
-                            </Link>
-                        </li>
-                    })
-                }
-            </ul>
+            <span className="flex items-center gap-2">
+                <ul>
+                    {
+                        providers.map(thingProvider => {
+                            let provider = getProvider(thingProvider.provider_type);
+                            return <li key={thingProvider.id} className="flex">
+                                <Link href={thingProvider.source_url} className="hover:brightness-125">
+                                    <Image src={provider.icon} alt={thingProvider.provider_type} />
+                                </Link>
+                            </li>
+                        })
+                    }
+                </ul>
+                <span className="text-color-reach">
+                    {thing.type}
+                </span>
+            </span>
         </section>
     );
 }

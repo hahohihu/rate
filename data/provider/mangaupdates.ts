@@ -1,3 +1,4 @@
+import { ThingTypeEnum, parseThingType } from "../drizzle/schema";
 import { ExternThingDescription, Provider } from "./interface";
 import icon from '@/public/provider/mangaupdates-favicon.ico';
 
@@ -31,6 +32,7 @@ export class MangaupdatesProvider extends Provider {
             return {
                 name: thing.record.title,
                 url_source: thing.record.url,
+                type: parseThingType((thing.record.type as string).toLowerCase()),
                 poster_url: thing.record.image.url.original,
                 prod_year: Number(thing.record.year)
             }

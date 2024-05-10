@@ -17,7 +17,8 @@ function createEntry(
         watch_date,
         prod_year,
         rating,
-        review: optional?.review
+        review: optional?.review,
+        type: "movie",
     };
 }
 

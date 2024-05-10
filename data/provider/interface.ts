@@ -1,6 +1,6 @@
 import { StaticImageData } from "next/image";
 import { addThing, addThingProvider } from "../thing";
-import { providerTypeStrings } from "../drizzle/schema";
+import { ProviderTypeEnum, ThingTypeEnum } from "../drizzle/schema";
 
 export interface ProviderInfo {
     name: ProviderTypeEnum;
@@ -15,6 +15,7 @@ export type ExternThings = {
 export interface ExternThingDescription {
     name: string;
     url_source: string;
+    type: ThingTypeEnum;
     poster_url?: string;
     prod_year?: number;
 }
@@ -38,5 +39,3 @@ export abstract class Provider implements ProviderInfo {
         return Object.assign({}, this);
     }
 }
-
-export type ProviderTypeEnum = typeof providerTypeStrings[number];
