@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "cross-env NODE_ENV=development ts-node ./data/drizzle/seed.ts"
+    "seed": "cross-env NODE_ENV=development ts-node ./data/drizzle/seed.ts",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@ant-design/nextjs-registry": "^1.0.0",
@@ -29,6 +30,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "cross-env": "^7.0.3",
+    "cypress": "^13.9.0",
     "drizzle-kit": "^0.20.17",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.2",

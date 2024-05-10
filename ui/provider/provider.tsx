@@ -21,7 +21,7 @@ export function ProviderView({ matches }: { matches: ExternThings }) {
     return (
         <ProviderShell header={
             <ProviderHeader providerInfo={matches.provider} />
-        } expandable={matches.things.length > 4}>
+        } expandable={matches.things.length > 4} id={`provider-${matches.provider.name}`}>
             {
                 matches.things.map((thing, i) => {
                     async function createNewThing() {

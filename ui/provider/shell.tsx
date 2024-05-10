@@ -9,10 +9,10 @@ const hiddenChildren = css`
     }
 `;
 
-export function ProviderShell({ header, expandable, children }: { header: React.ReactNode, expandable: boolean, children: React.ReactNode }) {
+export function ProviderShell({ header, expandable, children, id }: { header: React.ReactNode, expandable: boolean, children: React.ReactNode, id: string }) {
     let [minimized, setMinimized] = useState(expandable);
     return (
-        <div className={"relative border-y sm:border w-[100vw] sm:w-[400px]"}>
+        <div className={"relative border-y sm:border w-[100vw] sm:w-[400px]"} id={id}>
             <h1 className="absolute bg-color-bottom px-1 -top-3 left-2">{header}</h1>
             <ul className={`p-5 space-y-3 overflow-hidden ${minimized ? hiddenChildren : ""}`}>
                 {children}

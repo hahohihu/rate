@@ -41,7 +41,7 @@ export default function SearchBar({ className }: { className: string }) {
                 router.push(`/thing/${opt.id}`);
             }}
             options={options}
-            className={className}
+            className={`${className} searchbar`}
         >
             <Input.Search
                 placeholder="search things"
