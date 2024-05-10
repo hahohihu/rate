@@ -29,7 +29,7 @@ async function NativeSearchViewInner({ query }: Args) {
 
 function NativeViewSkeleton() {
     return (
-        <ProviderShell header={"native"} expandable={false}>
+        <ProviderShell header={"native"} expandable={false} id="provider-native">
             <SkeletonLine />
             <SkeletonLine />
             <SkeletonLine />
