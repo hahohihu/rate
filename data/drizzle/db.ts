@@ -8,7 +8,7 @@ import './envConfig';
 let db:
     | VercelPgDatabase<typeof schema>
     | PostgresJsDatabase<typeof schema>;;
-if (process.env.NODE_ENV === "production") {
+if (process.env.USE_VERCEL_DB) {
     db = VercelDrizzle(sql, { schema });
 } else {
     const migrationClient = postgres(process.env.POSTGRES_URL!);
