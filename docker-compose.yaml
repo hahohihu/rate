@@ -5,7 +5,8 @@ services:
     depends_on:
       - test_db
     env_file:
-      - ./.env.docker.test.local
+      - ./.env.production
+      - ./.env.local
     ports:
       - 3000:3000
 

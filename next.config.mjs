@@ -13,7 +13,7 @@ let nextConfig = {
     },
 };
 
-if (process.env.NODE_ENV === 'test') {
+if (process.env.DOCKER) {
     nextConfig.output = "standalone";
 }
 

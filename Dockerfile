@@ -10,25 +10,20 @@ WORKDIR /app
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 RUN npm ci
 
-FROM base AS schema
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
-COPY drizzle.config.ts ./data/drizzle ./
-RUN npx drizzle-kit push:pg
-
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+ENV DOCKER true
 RUN npm run build;
 
 # Production image, copy all the files and run next
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV test
+ENV NODE_ENV production
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
