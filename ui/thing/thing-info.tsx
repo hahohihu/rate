@@ -28,7 +28,7 @@ async function ThingInfoInner({ id, className }: Args) {
                             let provider = getProvider(thingProvider.provider_type);
                             return <li key={thingProvider.id} className="flex">
                                 <Link href={thingProvider.source_url} className="hover:brightness-125">
-                                    <Image src={provider.icon} alt={thingProvider.provider_type} />
+                                    <Image src={provider.icon} alt={thingProvider.provider_type} width={20} height={20} />
                                 </Link>
                             </li>
                         })

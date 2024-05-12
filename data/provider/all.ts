@@ -1,3 +1,4 @@
+import { AnilistProvider } from "./anilist";
 import { Provider } from "./interface";
 import { LetterboxdProvider } from "./letterboxd";
 import { MangaupdatesProvider } from "./mangaupdates";
@@ -5,6 +6,7 @@ import { MangaupdatesProvider } from "./mangaupdates";
 export const PROVIDERS = [
     new LetterboxdProvider(),
     new MangaupdatesProvider(),
+    new AnilistProvider(),
 ];
 
 const PROVIDER_MAPPING = PROVIDERS
