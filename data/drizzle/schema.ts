@@ -3,7 +3,7 @@ import {
     pgTable, real, serial, smallint, text, timestamp
 } from 'drizzle-orm/pg-core';
 
-export const thingTypeStrings = ['movie', 'manga', 'manhwa', 'doujinshi', 'novel', 'artbook', 'other'] as const;
+export const thingTypeStrings = ['anime', 'movie', 'manga', 'manhwa', 'doujinshi', 'novel', 'artbook', 'other'] as const;
 export const thingTypeEnum = pgEnum('thing_type', thingTypeStrings);
 export type ThingTypeEnum = typeof thingTypeStrings[number];
 const thingTypeLookup: {[str: string]: ThingTypeEnum} = (() => {
@@ -39,7 +39,7 @@ export const entries = pgTable('entries', {
 export type Entry = typeof entries.$inferSelect;
 export type EntryInsert = typeof entries.$inferInsert;
 
-export const providerTypeStrings = ['letterboxd', 'mangaupdates'] as const;
+export const providerTypeStrings = ['letterboxd', 'mangaupdates', 'anilist'] as const;
 export const providerTypeEnum = pgEnum('provider_type', providerTypeStrings);
 export type ProviderTypeEnum = typeof providerTypeStrings[number];
 
