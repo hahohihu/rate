@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+let nextConfig = {
     eslint: {
         dirs: ['app', 'data', 'lib', 'ui']
     },
@@ -12,5 +12,9 @@ const nextConfig = {
         ],
     },
 };
+
+if (process.env.DOCKER) {
+    nextConfig.output = "standalone";
+}
 
 export default nextConfig;

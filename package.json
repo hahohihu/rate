@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "cross-env NODE_ENV=development ts-node ./data/drizzle/seed.ts",
+    "seed": "ts-node ./data/drizzle/seed.ts",
     "cypress:open": "cypress open"
   },
   "dependencies": {

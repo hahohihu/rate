@@ -1,5 +1,16 @@
 services:
-  postgres:
+  test_nikki:
+    build:
+      context: .
+    depends_on:
+      - test_db
+    env_file:
+      - ./.env.production
+      - ./.env.local
+    ports:
+      - 3000:3000
+
+  test_db:
     image: "postgres:15.6-alpine"
     environment:
       POSTGRES_USER: postgres
